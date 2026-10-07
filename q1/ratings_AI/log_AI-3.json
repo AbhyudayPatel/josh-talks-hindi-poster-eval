@@ -1,0 +1,189 @@
+[
+ {
+  "run": 3,
+  "screen": 1,
+  "prompt_id": "P07",
+  "order": [
+   "g31",
+   "gpt1",
+   "g25"
+  ],
+  "response_id": "msg_011CfoJxWRsAUb6M2V6FurJx"
+ },
+ {
+  "run": 3,
+  "screen": 2,
+  "prompt_id": "P05",
+  "order": [
+   "g25",
+   "gpt1",
+   "g31"
+  ],
+  "response_id": "msg_011CfoJxWFTgafWUAfT8iv1c"
+ },
+ {
+  "run": 3,
+  "screen": 3,
+  "prompt_id": "P02",
+  "order": [
+   "g31",
+   "gpt1",
+   "g25"
+  ],
+  "response_id": "msg_011CfoJxWfkhhcjsxFpV3VN6"
+ },
+ {
+  "run": 3,
+  "screen": 4,
+  "prompt_id": "S14",
+  "order": [
+   "gpt1",
+   "g31",
+   "g25"
+  ],
+  "response_id": "msg_011CfoJxVP89DjZqnM2P4VwE"
+ },
+ {
+  "run": 3,
+  "screen": 5,
+  "prompt_id": "P03",
+  "order": [
+   "g25",
+   "g31",
+   "gpt1"
+  ],
+  "response_id": "msg_011CfoJxXZ5peqcY5eSTXy3a"
+ },
+ {
+  "run": 3,
+  "screen": 6,
+  "prompt_id": "P01",
+  "order": [
+   "g31",
+   "gpt1",
+   "g25"
+  ],
+  "response_id": "msg_011CfoJxXYqumTip6bGBcxPS"
+ },
+ {
+  "run": 3,
+  "screen": 7,
+  "prompt_id": "S13",
+  "order": [
+   "gpt1",
+   "g25",
+   "g31"
+  ],
+  "response_id": "msg_011CfoJyN6rHa5ESx93Spkzz"
+ },
+ {
+  "run": 3,
+  "screen": 8,
+  "prompt_id": "P10",
+  "order": [
+   "gpt1",
+   "g25",
+   "g31"
+  ],
+  "response_id": "msg_011CfoJyQwFQQTLCXMjh2paz"
+ },
+ {
+  "run": 3,
+  "screen": 9,
+  "prompt_id": "S15",
+  "order": [
+   "g25",
+   "gpt1",
+   "g31"
+  ],
+  "response_id": "msg_011CfoJyUqQ76knYJGd2Cjib"
+ },
+ {
+  "run": 3,
+  "screen": 10,
+  "prompt_id": "P11",
+  "order": [
+   "g25",
+   "g31",
+   "gpt1"
+  ],
+  "response_id": "msg_011CfoJybLaY47zuNFxBPMuh"
+ },
+ {
+  "run": 3,
+  "screen": 11,
+  "prompt_id": "P08",
+  "order": [
+   "g31",
+   "gpt1",
+   "g25"
+  ],
+  "response_id": "msg_011CfoJz3o3E1Wouq1PVehQX"
+ },
+ {
+  "run": 3,
+  "screen": 12,
+  "prompt_id": "P12",
+  "order": [
+   "g31",
+   "g25",
+   "gpt1"
+  ],
+  "response_id": "msg_011CfoJzAf3dYnLRfCqv2KSS"
+ },
+ {
+  "run": 3,
+  "screen": 13,
+  "prompt_id": "P04",
+  "order": [
+   "gpt1",
+   "g25",
+   "g31"
+  ],
+  "response_id": "msg_011CfoJzJ1oiXTS67jxs6rPE"
+ },
+ {
+  "run": 3,
+  "screen": 14,
+  "prompt_id": "P06",
+  "order": [
+   "g31",
+   "g25",
+   "gpt1"
+  ],
+  "response_id": "msg_011CfoJzLDGPP98WYiAcv8CY"
+ },
+ {
+  "run": 3,
+  "screen": 15,
+  "prompt_id": "P09",
+  "order": [
+   "g31",
+   "g25",
+   "gpt1"
+  ],
+  "response_id": "msg_011CfoJzVKhgUt5X4aSFqqGC"
+ },
+ {
+  "run": 3,
+  "screen": 16,
+  "prompt_id": "S16",
+  "order": [
+   "g31",
+   "g25",
+   "gpt1"
+  ],
+  "response_id": "msg_011CfoJzn6kwYyPUt4WYhyUB"
+ },
+ {
+  "run": 3,
+  "screen": 17,
+  "prompt_id": "P04",
+  "order": [
+   "gpt1",
+   "g31",
+   "g25"
+  ],
+  "response_id": "msg_011CfoJzu2ittoQkGCeHvNkB"
+ }
+]

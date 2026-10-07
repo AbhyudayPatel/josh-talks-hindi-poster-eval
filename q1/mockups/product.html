@@ -1,0 +1,119 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bharat Poster Arena - mockups</title>
+<style>
+.viz-root{ --surface-1:#fcfcfb; --card:#ffffff; --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#8a8984; --line:#e6e4de;
+  --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a; --good:#1a7f37; --warn:#b54708; --crit:#b42318; }
+*{box-sizing:border-box} body{margin:0;font-family:"Segoe UI","Nirmala UI",sans-serif;background:var(--surface-1);color:var(--text-primary)}
+.view{display:none;padding:22px 28px;width:1360px;background:#fff} .view.on{display:block}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.logo{font-family:Bahnschrift,sans-serif;font-weight:700;font-size:19px} .logo span{color:#f04e23}
+.tabs{display:flex;gap:4px;margin-left:20px} .tabs div{padding:6px 12px;border-radius:0;font-size:13px;color:var(--text-secondary)} .tabs .a{background:#111;color:#fff;font-weight:600}
+.stamp{margin-left:auto;font-family:Consolas,monospace;font-size:11px;color:var(--crit);border:1px solid var(--crit);padding:3px 10px;border-radius:999px;letter-spacing:.5px}
+.filters{display:flex;gap:8px;margin:6px 0 14px;flex-wrap:wrap} .filters div{border:1px solid #111;background:#fff;border-radius:999px;font-family:Consolas,monospace;padding:6px 10px;font-size:12.5px;color:var(--text-secondary)} .filters b{color:var(--text-primary);font-weight:600}
+.card{background:var(--card);border:1px solid #111;border-radius:0;padding:16px;margin-bottom:14px}
+h2{font-family:Bahnschrift,sans-serif;font-size:17px;margin:0 0 4px} .sub{font-size:12.5px;color:var(--text-secondary);margin-bottom:12px}
+table{border-collapse:collapse;width:100%;font-size:13px} th{font-family:Consolas,monospace;text-align:left;font-weight:400;color:var(--text-secondary);font-size:11.5px;text-transform:uppercase;letter-spacing:.3px;border-bottom:1px solid var(--line);padding:8px} td{padding:10px 8px;border-bottom:1px solid #f0efeb;vertical-align:middle}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:middle}
+.ci{position:relative;height:16px;width:180px;background:linear-gradient(to right,#f3f2ef 0,#f3f2ef 100%);border-radius:3px}
+.ci i{position:absolute;top:7px;height:2px;background:#9b9a94} .ci b{position:absolute;top:3px;width:10px;height:10px;border-radius:50%;margin-left:-5px}
+.pill{font-family:Consolas,monospace;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid #111;color:var(--text-secondary)}
+.rank{font-weight:700;font-size:15px}
+.grid3{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .kpi .v{font-family:Bahnschrift,sans-serif;font-size:28px;font-weight:600} .kpi .l{font-size:12px;color:var(--text-secondary)} .kpi .d{font-size:12px;margin-top:4px}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:8px;border:1px solid var(--line);margin-bottom:8px;font-size:13px} .alert .ic{font-weight:700;min-width:74px}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.heat td{text-align:center;font-size:12px;padding:7px} .heat td:first-child{text-align:left}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .thumbs img{width:100%;border-radius:8px;border:1px solid var(--line)} .thumbs .cap{font-size:12px;margin-top:4px;line-height:1.35} .thumbs .cap b{color:var(--crit)}
+.note{font-size:11.5px;color:var(--muted);margin-top:8px}
+</style></head>
+<body class="viz-root">
+
+<!-- ======================= LEADERBOARD ======================= -->
+<section class="view" id="lb">
+ <div class="top"><div class="logo">Bharat <span>Poster</span> Arena</div>
+  <div class="tabs"><div class="a">Leaderboard</div><div>Explore failures</div><div>Compare versions</div><div>Methodology</div></div>
+  <div class="stamp">ILLUSTRATIVE NUMBERS · LAYOUT ONLY</div></div>
+ <div class="filters"><div>Script: <b>Devanagari (Hindi)</b> ▾</div><div>Business: <b>All 8</b> ▾</div><div>Difficulty: <b>All</b> ▾</div><div>Rater pool: <b>Hindi-native, 18+</b> ▾</div><div>Eval run: <b>2026-10 · v1</b> ▾</div></div>
+ <div class="card">
+  <h2>Which model makes posters a local Indian shop would post as-is?</h2>
+  <div class="sub">Ranks populate from data. Ranked by <b>Ship-ready rate</b> (% of ratings “Post as-is”) on Hindi prompts. Models whose 95% intervals overlap share a rank band - we do not split hairs the data cannot support.</div>
+  <table>
+   <tr><th>Rank</th><th>Model</th><th>Ship-ready (Hindi)</th><th>95% interval</th><th>English twin</th><th>Hindi tax</th><th>Text exact</th><th>Looks Indian</th><th>Ratings</th><th>Status</th></tr>
+   <tr><td class="rank">-</td><td><span class="sw" style="background:var(--series-3)"></span>Gemini 3.1 Flash Image Preview<br><span class="note">Google · gemini-3.1-flash-image-preview</span></td><td><b>xx%</b></td><td><div class="ci"><i style="left:35%;width:30%"></i><b style="left:50%;background:var(--series-3)"></b></div></td><td>xx%</td><td>−xx pp</td><td>xx%</td><td>xx%</td><td>432</td><td><span class="pill">stable</span></td></tr>
+   <tr><td class="rank">-</td><td><span class="sw" style="background:var(--series-1)"></span>GPT Image 1<br><span class="note">OpenAI · gpt-image-1 · quality=high</span></td><td><b>xx%</b></td><td><div class="ci"><i style="left:35%;width:30%"></i><b style="left:50%;background:var(--series-1)"></b></div></td><td>xx%</td><td>−xx pp</td><td>xx%</td><td>xx%</td><td>432</td><td><span class="pill">stable</span></td></tr>
+   <tr><td class="rank">-</td><td><span class="sw" style="background:var(--series-2)"></span>Gemini 2.5 Flash Image<br><span class="note">Google · gemini-2.5-flash-image</span></td><td><b>xx%</b></td><td><div class="ci"><i style="left:35%;width:30%"></i><b style="left:50%;background:var(--series-2)"></b></div></td><td>xx%</td><td>−xx pp</td><td>xx%</td><td>xx%</td><td>432</td><td><span class="pill">stable</span></td></tr>
+  </table>
+  <div class="note">Hindi tax = Ship-ready(English twin) − Ship-ready(Hindi twin) on matched prompt pairs. Interval = two-level bootstrap over prompts and raters. “Provisional” = &lt;300 ratings or rater agreement α &lt; 0.4 for that model.</div>
+ </div>
+ <div class="two">
+  <div class="card"><h2>Where each model breaks (Hindi)</h2><div class="sub">Ship-ready rate by difficulty level</div>
+   <table class="heat"><tr><th>Level</th><th>GPT Image 1</th><th>Gemini 2.5</th><th>Gemini 3.1</th></tr>
+   <tr><td>L1 short greeting</td><td style="background:#e8f1fc">xx</td><td style="background:#e8f1fc">xx</td><td style="background:#e8f1fc">xx</td></tr>
+   <tr><td>L2 offer / price</td><td style="background:#e8f1fc">xx</td><td style="background:#e8f1fc">xx</td><td style="background:#e8f1fc">xx</td></tr>
+   <tr><td>L3 multi-line / code-mixed</td><td style="background:#e8f1fc">xx</td><td style="background:#e8f1fc">xx</td><td style="background:#e8f1fc">xx</td></tr>
+   <tr><td>L4 long text</td><td style="background:#e8f1fc">xx</td><td style="background:#e8f1fc">xx</td><td style="background:#e8f1fc">xx</td></tr></table></div>
+  <div class="card"><h2>Why posters get rejected</h2><div class="sub">Share of “Would not post” ratings, by reason tag</div>
+   <table><tr><th>Reason</th><th>GPT 1</th><th>Gem 2.5</th><th>Gem 3.1</th></tr>
+   <tr><td>Misspelled / gibberish Hindi</td><td>xx%</td><td>xx%</td><td>xx%</td></tr>
+   <tr><td>Extra unrequested text</td><td>xx%</td><td>xx%</td><td>xx%</td></tr>
+   <tr><td>Fake brand / logo</td><td>xx%</td><td>xx%</td><td>xx%</td></tr>
+   <tr><td>Wrong festival items</td><td>xx%</td><td>xx%</td><td>xx%</td></tr></table></div>
+ </div>
+</section>
+
+<!-- ======================= ADMIN ======================= -->
+<section class="view" id="admin">
+ <div class="top"><div class="logo">Bharat <span>Poster</span> Arena · <span style="color:var(--text-secondary);font-weight:600">Admin</span></div>
+  <div class="tabs"><div class="a">Run health</div><div>Raters</div><div>Prompts</div><div>Models</div></div><div class="stamp">ILLUSTRATIVE NUMBERS · LAYOUT ONLY</div></div>
+ <div class="grid3">
+  <div class="card kpi"><div class="l">Completed raters</div><div class="v">9 / 10</div><div class="d" style="color:var(--text-secondary)">median 21 min · 1 in progress</div></div>
+  <div class="card kpi"><div class="l">Rater agreement (text, Krippendorff α)</div><div class="v">0.xx</div><div class="d" style="color:var(--good)">✓ above 0.60 target</div></div>
+  <div class="card kpi"><div class="l">Test-retest (repeat screen)</div><div class="v">xx%</div><div class="d" style="color:var(--text-secondary)">same text label on re-shown poster</div></div>
+  <div class="card kpi"><div class="l">Position bias (pick share A/B/C)</div><div class="v">xx/xx/xx</div><div class="d" style="color:var(--good)">✓ within ±8 pp of 33%</div></div>
+ </div>
+ <div class="two">
+  <div class="card"><h2>Alerts</h2><div class="sub">Rules evaluated after every 50 new ratings</div>
+   <div class="alert" style="border-color:#f3c7a6;background:#fff8f2"><div class="ic" style="color:var(--warn)">⚠ WARNING</div><div><b>Rater R4xxxx</b> median 9 s per screen (rule: ≥15 s). Ratings held out of leaderboard pending review.</div></div>
+   <div class="alert" style="border-color:#f1b5b0;background:#fff5f4"><div class="ic" style="color:var(--crit)">■ REGRESSION</div><div><b>Model version change</b> detected (modelVersion string differs from last run). Ship-ready on nukta-bearing words fell xx pp vs previous version. Re-run triggered for 16 prompts.</div></div>
+   <div class="alert"><div class="ic" style="color:var(--series-1)">ⓘ INFO</div><div><b>Prompt S16</b> (Chhath) has lowest rater agreement (α 0.xx). Candidate for guideline clarification or expert raters from Bihar.</div></div>
+   <div class="alert"><div class="ic" style="color:var(--series-1)">ⓘ INFO</div><div>2 generation refusals logged (safety filter) - shown as “no output” = automatic Would-not-post, never silently dropped.</div></div>
+  </div>
+  <div class="card"><h2>Rater roster</h2><div class="sub">Calibration = practice item answered correctly</div>
+   <table><tr><th>Rater</th><th>Hindi</th><th>State</th><th>Calib.</th><th>Med s/screen</th><th>Agreement w/ others</th></tr>
+   <tr><td>R1xxxx</td><td>Native</td><td>UP</td><td>✓</td><td>64</td><td>0.xx</td></tr>
+   <tr><td>R2xxxx</td><td>Fluent</td><td>MP</td><td>✓</td><td>52</td><td>0.xx</td></tr>
+   <tr><td>R3xxxx</td><td>Native</td><td>Bihar</td><td>✓</td><td>71</td><td>0.xx</td></tr>
+   <tr><td style="color:var(--warn)">R4xxxx ⚠</td><td>Fluent</td><td>Delhi</td><td>✗</td><td style="color:var(--warn)">9</td><td>0.xx</td></tr>
+   <tr><td>R5xxxx</td><td>Native</td><td>Rajasthan</td><td>✓</td><td>48</td><td>0.xx</td></tr></table></div>
+ </div>
+</section>
+
+<!-- ======================= FAILURE EXPLORER ======================= -->
+<section class="view" id="explore">
+ <div class="top"><div class="logo">Bharat <span>Poster</span> Arena</div>
+  <div class="tabs"><div>Leaderboard</div><div class="a">Explore failures</div><div>Compare versions</div></div>
+  <div class="stamp" style="color:var(--good);border-color:var(--good)">REAL OUTPUTS · GPT IMAGE 1 · RESEARCHER AUDIT</div></div>
+ <div class="filters"><div>Failure type: <b>Text in Hindi</b> ▾</div><div>Model: <b>GPT Image 1</b> ▾</div><div>Sort: <b>Most severe first</b> ▾</div><div>Show: <b>English twin side-by-side</b> ☑</div></div>
+ <div class="card"><h2>Same instruction, different consequence</h2><div class="sub">GPT Image 1 adds the shop name even when told “ONLY the following text”. In English it is harmless; in Hindi it becomes gibberish.</div>
+  <div class="thumbs">
+   <div><img src="../images/P09_gpt1.png"><div class="cap">P09 · English twin<br>Extra line “Agarwal General Store, Mathura” - legible</div></div>
+   <div><img src="../images/P10_gpt1.png"><div class="cap">P10 · Hindi twin<br><b>“उपलब्ध” → “उपल्वध”; extra line “अगरावी गसरलातो सोरर” (pseudo-Hindi)</b></div></div>
+   <div><img src="../images/S14_gpt1.png"><div class="cap">S14 · 4-line Hindi<br><b>“जैसा”→“जेसा”, “डिलीवरी”→“डिलेबरी”, nukta lost ×2</b></div></div>
+   <div><img src="../images/S15_gpt1.png"><div class="cap">S15 · densest conjuncts<br>श्री कृष्ण जन्माष्टमी… - <span style="color:var(--good)">exactly correct</span></div></div>
+  </div>
+  <div class="note">Each failure card links to: prompt text · all three models' outputs · every rater's label & comment · generation log (request id, timestamp, settings).</div>
+ </div>
+</section>
+
+<!-- ======================= VERSION COMPARE ======================= -->
+<section class="view" id="versions">
+ <div class="top"><div class="logo">Bharat <span>Poster</span> Arena</div>
+  <div class="tabs"><div>Leaderboard</div><div>Explore failures</div><div class="a">Compare versions</div></div><div class="stamp">ILLUSTRATIVE NUMBERS · LAYOUT ONLY</div></div>
+ <div class="card"><h2>Did the new version fix Hindi?</h2><div class="sub">Same frozen prompt set, same rater pool, re-run on each model release. A change counts only if its interval excludes zero.</div>
+  <table><tr><th>Model</th><th>Previous run</th><th>This run</th><th>Δ Ship-ready (Hindi)</th><th>Δ interval</th><th>Δ Hindi tax</th><th>Verdict</th></tr>
+  <tr><td><span class="sw" style="background:var(--series-3)"></span>Model X: preview → GA release</td><td>2026-10</td><td>2027-01</td><td>+xx pp</td><td>[+x, +xx]</td><td>−xx pp</td><td style="color:var(--good)">▲ Improved</td></tr>
+  <tr><td><span class="sw" style="background:var(--series-1)"></span>Model Y: v1 → v1.5</td><td>2026-10</td><td>2027-01</td><td>+x pp</td><td>[−x, +xx]</td><td>−x pp</td><td style="color:var(--text-secondary)">● No clear change</td></tr>
+  </table></div>
+</section>
+
+<script>const v=(location.hash||"#lb").slice(1);document.getElementById(v).classList.add("on");</script>
+</body></html>

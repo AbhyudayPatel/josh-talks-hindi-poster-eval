@@ -1,0 +1,2420 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Josh Talks AI · Product Task submission</title><style>@page { size: A4; margin: 16mm 15mm 15mm 15mm; }
+:root {
+  --ink:#111111; --ink2:#4b4b4b; --ink3:#7a7a7a; --hair:#e4e4e4; --grey:#f6f7f9; --yellow:#fefbe8; --orange:#f04e23;
+  --head:"Bahnschrift","Segoe UI",sans-serif; --body:"Segoe UI","Nirmala UI",sans-serif; --mono:"Consolas","Cascadia Mono",monospace;
+}
+* { box-sizing:border-box; }
+body { font-family:var(--body); color:var(--ink); font-size:9.5pt; line-height:1.5; margin:0; }
+
+/* running header on every page */
+.runhead { position:fixed; top:-11mm; left:0; right:0; display:flex; justify-content:space-between; font-family:var(--mono); font-size:6.8pt; letter-spacing:.6pt; color:var(--ink3); text-transform:uppercase; border-bottom:1px solid var(--hair); padding-bottom:2mm; }
+.runhead b { color:var(--ink); font-weight:400; } .runhead i { display:inline-block; width:14px; height:3px; background:var(--orange); margin-right:6px; vertical-align:2px; }
+
+h1, h2, h3 { font-family:var(--head); font-weight:600; letter-spacing:-.2pt; color:var(--ink); }
+h1 { font-size:21pt; line-height:1.15; margin:0 0 4pt; }
+h2 { font-size:13.5pt; margin:16pt 0 5pt; break-after:avoid; }
+h3 { font-size:10.8pt; margin:11pt 0 3pt; break-after:avoid; }
+p { margin:3pt 0 7pt; }
+ul, ol { margin:2pt 0 8pt; padding-left:14pt; } li { margin:2.5pt 0; }
+a { color:var(--ink); text-decoration:underline; text-decoration-color:var(--orange); text-underline-offset:2px; }
+strong { font-weight:600; }
+code { font-family:var(--mono); font-size:8.3pt; background:var(--grey); padding:0 3pt; border-radius:2pt; }
+
+/* section opener */
+.opener { break-before:page; padding:6mm 0 4mm; border-bottom:1px solid var(--ink); margin-bottom:8pt; }
+.opener .eyebrow { font-family:var(--mono); font-size:7.5pt; letter-spacing:1.2pt; text-transform:uppercase; color:var(--ink2); }
+.opener .eyebrow::before { content:""; display:inline-block; width:18px; height:4px; background:var(--orange); margin-right:8px; vertical-align:2px; }
+.opener h1 { font-size:24pt; margin-top:6pt; }
+.opener p { color:var(--ink2); font-size:10.5pt; max-width:150mm; margin:4pt 0 0; }
+.eyebrow { font-family:var(--mono); font-size:7pt; letter-spacing:1pt; text-transform:uppercase; color:var(--ink3); margin:0 0 2pt; }
+
+/* panels like the reference: grey | yellow */
+.split { display:grid; grid-template-columns:1fr 1fr; margin:8pt 0 10pt; break-inside:avoid; }
+.split.wide-left { grid-template-columns:1.25fr 1fr; }
+.panel { padding:10pt 12pt; }
+.panel.grey { background:var(--grey); } .panel.yellow { background:var(--yellow); }
+.panel > :first-child { margin-top:0; } .panel > :last-child { margin-bottom:0; }
+.panel h3 { margin-top:0; }
+.block { padding:10pt 12pt; margin:8pt 0 10pt; break-inside:avoid; }
+.block.grey { background:var(--grey); } .block.yellow { background:var(--yellow); }
+.block > :first-child { margin-top:0; } .block > :last-child { margin-bottom:0; }
+
+/* bordered rows with arrows (contents list) */
+.rows { margin:6pt 0; }
+.rows p { border:1px solid var(--ink); background:#fff; padding:5pt 9pt; margin:0 0 5pt; display:flex; justify-content:space-between; font-size:9.6pt; }
+.rows p::after { content:"→"; font-size:10pt; }
+
+/* pills */
+.pill { display:inline-block; font-family:var(--mono); font-size:7.4pt; border:1px solid var(--ink); border-radius:999px; padding:1pt 7pt; margin:1pt 2pt 1pt 0; white-space:nowrap; vertical-align:1px; background:#fff; }
+.pill.dark { background:var(--ink); color:#fff; }
+.pill.real { border-color:#1a7f37; color:#1a7f37; }
+.pill.audit { border-color:#1f5fbf; color:#1f5fbf; }
+.pill.illus { border-color:#b42318; color:#b42318; }
+.pending { display:inline-block; font-family:var(--mono); font-size:7.2pt; border:1px dashed var(--orange); color:#b23a12; border-radius:999px; padding:0 6pt; background:#fff; }
+.btn { display:inline-block; background:var(--ink); color:#fff; font-family:var(--head); font-weight:600; padding:4pt 10pt; font-size:9pt; }
+
+/* stat tiles */
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:6pt; margin:6pt 0 10pt; break-inside:avoid; }
+.stats.three { grid-template-columns:repeat(3,1fr); }
+.stat { border:1px solid var(--ink); padding:7pt 9pt; background:#fff; }
+.stat .n { font-family:var(--head); font-weight:600; font-size:19pt; line-height:1.05; }
+.stat .l { font-family:var(--mono); font-size:6.9pt; text-transform:uppercase; letter-spacing:.5pt; color:var(--ink2); margin-top:3pt; line-height:1.35; }
+
+/* tables */
+table { border-collapse:collapse; width:100%; margin:5pt 0 10pt; font-size:8.3pt; }
+th { font-family:var(--mono); font-weight:400; font-size:6.9pt; text-transform:uppercase; letter-spacing:.5pt; color:var(--ink2); text-align:left; border-bottom:1px solid var(--ink); padding:4pt 5pt; }
+td { border-bottom:1px solid var(--hair); padding:4.5pt 5pt; vertical-align:top; }
+tr { break-inside:avoid; }
+
+/* signal / finding cards */
+.card { border:1px solid var(--ink); margin:8pt 0 10pt; break-inside:avoid; background:#fff; }
+.card .ch { display:flex; justify-content:space-between; align-items:baseline; padding:7pt 11pt; border-bottom:1px solid var(--ink); background:var(--yellow); }
+.card .ch h3 { margin:0; font-size:11pt; }
+.card .cb { padding:7pt 11pt; }
+.card .cb table { margin:0; }
+.card .cb td:first-child { width:24%; font-family:var(--mono); font-size:7.2pt; text-transform:uppercase; letter-spacing:.4pt; color:var(--ink2); padding-top:6pt; }
+
+.fig { text-align:center; margin:6pt 0 10pt; break-inside:avoid; }
+.fig img { max-width:100%; border:1px solid var(--hair); }
+.fig .cap { font-family:var(--mono); font-size:7pt; color:var(--ink2); margin-top:3pt; text-align:left; }
+blockquote { margin:6pt 0; padding:7pt 11pt; background:var(--grey); border-left:3px solid var(--ink); font-size:8.8pt; }
+pre.prompt { white-space:pre-wrap; font-family:var(--mono); font-size:8pt; background:var(--grey); padding:8pt; margin:5pt 0; }
+
+/* cover */
+.cover { padding-top:16mm; }
+.cover h1 { font-size:34pt; line-height:1.05; letter-spacing:-.6pt; margin:8pt 0 8pt; }
+.cover .sub { font-size:12pt; color:var(--ink2); max-width:150mm; }
+.cover .meta { font-family:var(--mono); font-size:8pt; color:var(--ink2); margin-top:10pt; letter-spacing:.3pt; }
+
+/* one-pager */
+.onepager { break-before:page; font-size:9.1pt; line-height:1.42; }
+.onepager h1 { font-size:18pt; margin-bottom:6pt; }
+.onepager .split { margin:5pt 0 6pt; }
+.onepager .panel { padding:8pt 10pt; }
+.onepager p { margin:2pt 0 5pt; } .onepager ul { margin:1pt 0 3pt; } .onepager li { margin:1.5pt 0; }
+
+table.gallery td { width:26%; text-align:center; vertical-align:middle; border-bottom:1px solid var(--hair); }
+table.gallery td:first-child { width:22%; text-align:left; font-size:7.6pt; }
+table.gallery img { width:100%; max-width:160px; border:1px solid var(--hair); }
+table.gallery .req { font-size:8pt; color:var(--ink2); }
+.small { font-size:8pt; color:var(--ink2); }
+.pagebreak { break-after:page; }
+
+.card thead { display:none; }
+</style></head><body><div class="cover">
+<div class="eyebrow">
+<p>Product Task · July 2026 · Submission</p>
+</div>
+<h1>Does it spell Hindi right?</h1>
+<p class="sub">A focused evaluation of AI-generated posters for India's local shops, and a fair system for catching low-quality transcribers.</p>
+<p class="meta">Abhyuday Patel · ai.abhyuday@gmail.com · October 2026</p>
+<div class="split">
+<div class="panel grey">
+<div class="eyebrow">
+<p>Inside this document</p>
+</div>
+<div class="rows">
+<p>One-page report</p>
+<p>Q1 · The evaluation and why it matters</p>
+<p>Q1 · How it works and how people judged</p>
+<p>Q1 · Results and findings</p>
+<p>Q1 · The eval as a product, and scale</p>
+<p>Q2 · Spotting low-quality transcribers</p>
+<p>Reflection, video script, appendix</p>
+</div>
+</div>
+<div class="panel yellow">
+<p><span class="btn">In 30 seconds</span></p>
+<p>Image models make beautiful posters. For a shop in Kanpur that wants its offer in Hindi, the question is simpler: <strong>is the Hindi spelled right, and would the owner post it?</strong> I tested this with matched English and Hindi versions of the same poster, so each model's "Hindi tax" can be measured directly.</p>
+<div class="eyebrow" style="margin-top:10pt">Models</div>
+<p><span class="pill dark">GPT Image 1</span><span class="pill">Gemini 2.5 Flash Image</span><span class="pill">Gemini 3.1 Flash Image Preview</span></p>
+<div class="eyebrow" style="margin-top:8pt">Labels used</div>
+<p><span class="pill real">REAL DATA</span><span class="pill audit">MY AUDIT</span><span class="pill illus">ILLUSTRATIVE</span><span class="pending">PENDING</span></p>
+<div class="eyebrow" style="margin-top:8pt">Video walkthrough</div>
+<p>[PASTE VIDEO LINK - unlisted YouTube / Google Drive, ≤2 min]</p>
+</div>
+</div>
+</div>
+<div class="onepager">
+<div class="eyebrow">
+<p>One-page report</p>
+</div>
+<h1>Hindi posters for local shops: how much worse do AI models get when the text is in Hindi?</h1>
+<div class="split">
+<div class="panel grey">
+<div class="eyebrow">
+<p>The eval</p>
+</div>
+<p><strong>Category:</strong> marketing for India's micro-businesses. <strong>Use case:</strong> a shop owner in a Hindi-speaking town asks an AI tool for a WhatsApp Status poster (festival greeting, discount, price, notice) with exact Hindi text.</p>
+<div class="eyebrow">
+<p>Why it matters</p>
+</div>
+<p>India has 7.3 crore registered MSMEs, almost all micro, and WhatsApp is their shop window. Hindi is the first language of 52.8 crore people. One wrong matra makes a shop look careless, and a wrong word on a price or health notice misleads customers. Public image leaderboards rank overall taste on English prompts, so they can't see this failure.</p>
+</div>
+<div class="panel yellow">
+<div class="eyebrow">
+<p>Setup</p>
+</div>
+<p>16 prompts across 8 real business types. <strong>6 matched pairs</strong> use the identical prompt in English and Hindi, which isolates the <strong>Hindi tax</strong>. 4 stress tests cover mixed scripts, long copy, dense conjuncts and Chhath Puja. One image per prompt per model, first output kept.</p>
+<div class="eyebrow">
+<p>Participants</p>
+</div>
+<p>8 to 10 Hindi-reading adults (18+, consented) rate all 48 posters blind, in random order, on a phone app I built: text accuracy, cultural fit, <em>"would you post it?"</em> and best of three. <strong>Main metric: ship-ready rate</strong>, the share rated "post as-is".</p>
+</div>
+</div>
+<div class="eyebrow">
+<p>Key findings</p>
+</div>
+<ul>
+<li><strong>English is solved; Hindi splits the models.</strong> All three spelled English perfectly (6 of 6). On the identical Hindi posters: Gemini 3.1 Flash Image Preview 6 of 6, GPT Image 1 2 of 6, Gemini 2.5 Flash Image 0 of 6. <span class="pill audit">MY AUDIT</span></li>
+<li><strong>One model generation closed the gap.</strong> Gemini 2.5 → 3.1 went from 0 to 9 of 10 Hindi posters exactly right, so India-specific results go stale fast. <span class="pill audit">MY AUDIT</span></li>
+<li><strong>Looks great ≠ usable.</strong> Every poster looked professional, yet Gemini 2.5's chemist notice got every word wrong, including the day of the free health check. Unrequested text and fake brands appeared across models. <span class="pill audit">MY AUDIT</span></li>
+<li><span class="pending">PENDING</span> Participant ship-ready ratings fill in from the rating files.</li>
+</ul>
+<div class="block yellow">
+<p><strong>Most important takeaway.</strong> "Looks great" and "usable" split apart exactly where India is different: the script. Labs should track <strong>ship-ready rate per script</strong>, not overall image quality. Products should never trust an image model to spell Indic text unchecked: verify it with OCR, or typeset the text on top of a generated background.</p>
+</div>
+<p><strong>Q2 in one line.</strong> Most of the <code>user_id</code> column turned out to be task IDs, so I validated signals against a hidden gold set (41 clips, ~126 transcribers each). Tasks submitted faster than the audio's own length were wrong <strong>99.6%</strong> of the time vs <strong>26.5%</strong> otherwise. My system combines independent signals with unannounced test clips, and never blocks anyone without a human listening to the audio.</p>
+</div>
+<div class="opener">
+<div class="eyebrow">
+<p>Question 1 · Part A</p>
+</div>
+<h1>The evaluation and why it matters</h1>
+<p>What I tested, for whom, and why this was worth testing over nine other ideas.</p>
+</div>
+<h2>What I evaluated</h2>
+<div class="split">
+<div class="panel grey">
+<div class="eyebrow">
+<p>The user</p>
+</div>
+<p>The owner of a small shop in a Hindi-speaking Tier-2 or Tier-3 town: a mithai shop in Kanpur, a kirana in Indore, a tailor in Jaipur. They market on WhatsApp Status and groups, can't afford a designer, and need a new poster for every festival and offer.</p>
+<div class="eyebrow">
+<p>Their job to be done</p>
+</div>
+<p><em>"Give me a poster I can post right now, in my customers' language, with my exact words and price."</em></p>
+</div>
+<div class="panel yellow">
+<div class="eyebrow">
+<p>What breaks</p>
+</div>
+<p>Image models handle English text well but often produce Hindi that is almost right: a dropped nukta, a misplaced ि matra, a broken conjunct, or fake letters that only look like Devanagari. To someone who doesn't read Hindi, the poster looks perfect. To the shop's customers it looks careless.</p>
+<div class="eyebrow">
+<p>What "better" means</p>
+</div>
+<p>A poster the owner would <strong>post without edits</strong>. In order: (1) exactly the requested text, (2) nothing unrequested or misleading, such as extra text or fake brands, (3) visuals that fit the shop and the occasion, (4) looks good.</p>
+</div>
+</div>
+<h2>Why this eval, and not the others</h2>
+<p>I listed ten India-specific ideas and scored each 1 to 5 on the brief's criteria: India-specificity, business use, whether it exposes model differences, ease of prompting and judging, scale, originality, value to a lab and noise. The deciding question was: <strong>can 8 to 10 ordinary raters judge it reliably, and does the answer drive a product decision?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Idea</th>
+<th>Score /50</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hindi-text posters for local shops</strong></td>
+<td><strong>48</strong></td>
+<td><strong>Chosen.</strong> Very Indian, very common, and checkable: any Hindi reader can compare a spelling with the requested text</td>
+</tr>
+<tr>
+<td>Health awareness posters in Indian languages</td>
+<td>41</td>
+<td>Same core skill, rarer use. Folded in as one pair (a chemist's free sugar test notice)</td>
+</tr>
+<tr>
+<td>Food-delivery dish photos</td>
+<td>37</td>
+<td>Judging a regional dish depends on where the rater is from</td>
+</tr>
+<tr>
+<td>Wedding invitation designs</td>
+<td>37</td>
+<td>Overlaps with posters, and is religiously sensitive</td>
+</tr>
+<tr>
+<td>Ethnic-wear catalogue shots</td>
+<td>36</td>
+<td>Big market, but judging a saree drape needs experts, not 8 lay raters</td>
+</tr>
+<tr>
+<td>Regional festival imagery</td>
+<td>33</td>
+<td>Subjective with no clear decision. Folded in as one Chhath Puja prompt</td>
+</tr>
+<tr>
+<td>Hindi-labelled school diagrams</td>
+<td>33</td>
+<td>Errors are mostly generic (labels, science), not Indian</td>
+</tr>
+<tr>
+<td>Indian faces and skin tones</td>
+<td>32</td>
+<td>Already well studied</td>
+</tr>
+<tr>
+<td>Rural/urban stereotype audit</td>
+<td>31</td>
+<td>Important but noisy, and no clear product decision</td>
+</tr>
+<tr>
+<td>Farming advisory illustrations</td>
+<td>29</td>
+<td>Needs agronomists to judge</td>
+</tr>
+</tbody>
+</table>
+<h2>Why it matters for India, and why an AI lab should care</h2>
+<ul>
+<li><strong>The users are many.</strong> India has <strong>over 7.3 crore Udyam-registered enterprises</strong>, nearly all micro (<a href="https://www.drishtiias.com/daily-updates/daily-news-analysis/year-end-review-2025-ministry-of-microsmall-and-medium-enterprises/print_manually">MSME Year-End Review 2025</a>). India is <strong>WhatsApp's largest market, with 500M+ users</strong> (<a href="https://techcrunch.com/2024/07/31/mark-zuckerberg-says-india-is-the-largest-market-for-meta-ai-usage">TechCrunch</a>).</li>
+<li><strong>The language is big and the script is hard.</strong> Hindi is the first language of <strong>52.8 crore people</strong> (<a href="https://factly.in/does-hindi-gain-from-the-exponential-population-growth-of-its-native-speakers/">Census 2011</a>), and Devanagari also serves Marathi, Nepali and Konkani. Vowel signs reorder (ि is written before the consonant it follows), consonants fuse into conjuncts (क्ष, ज्ञ, श्र), and small dots change meaning. A model can be excellent at English typography and still fail here.</li>
+<li><strong>Generic benchmarks miss it.</strong> Arenas like the ones in the brief rank overall preference, mostly on English prompts, by voters who aren't checking Hindi spelling. A model can top them and still be unusable for this user.</li>
+<li><strong>The result drives a decision.</strong> For a lab: is Indic text a weakness, and which words break (which tells you what training data to add)? For a product team building a "make my poster" feature: which model to use for Hindi, and <strong>whether a text-checking layer is required before launch</strong>.</li>
+</ul>
+<div class="opener">
+<div class="eyebrow">
+<p>Question 1 · Part B</p>
+</div>
+<h1>How the evaluation works</h1>
+<p>Prompt design, models, fairness rules, and how participants judged the outputs.</p>
+</div>
+<h2>The prompt set</h2>
+<p>Every prompt comes from <strong>one fixed template</strong>, so only the shop, the scene and the text change (all 16 are in Appendix A):</p>
+<blockquote>
+<p>Design a square promotional poster for WhatsApp Status for <em>{business}</em>. <em>{scene}</em>. The poster must contain ONLY the following text, <em>in English / in Hindi (Devanagari script)</em>, spelled exactly as given: Line 1: "..." Line 2: "..." Do not add any other words, letters, logos or watermarks. Style: bright, clean, professional design that a small local shop in India would proudly share with its customers.</p>
+</blockquote>
+<div class="split">
+<div class="panel grey">
+<div class="eyebrow">
+<p>6 matched pairs · the Hindi tax</p>
+</div>
+<p>Same prompt and scene, text in English <strong>or</strong> Hindi:</p>
+<ul>
+<li>Diwali greeting · mithai shop</li>
+<li>10% off · kirana store</li>
+<li>₹250 blouse stitching · tailor</li>
+<li>Admissions, 3 lines + phone · coaching centre</li>
+<li>Holi herbal colours · general store</li>
+<li>Free sugar test · chemist</li>
+</ul>
+</div>
+<div class="panel yellow">
+<div class="eyebrow">
+<p>4 stress tests</p>
+</div>
+<ul>
+<li><strong>Mixed scripts:</strong> English + Hindi on one poster (mobile shop)</li>
+<li><strong>Long text:</strong> 4 lines, ~17 words (tiffin service)</li>
+<li><strong>Dense conjuncts:</strong> श्री कृष्ण जन्माष्टमी (sweet shop)</li>
+<li><strong>Less-represented festival:</strong> Chhath Puja (Patna fruit shop)</li>
+</ul>
+<p>Difficulty climbs from a short greeting to long text. Real traps are spread throughout: nukta (सिर्फ़), chandrabindu (जाँच), conjuncts (क्ष, ज्ञ), ₹, digits and a phone number. Every line is something a real shop would write.</p>
+</div>
+</div>
+<p>Using the same template, quoting the exact text and saying "ONLY this text" means differences come from the models, not from vague prompts. The English versions act as a control for prompt difficulty.</p>
+<h2>Models and fairness</h2>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Model</th>
+<th>Where generated</th>
+<th>Settings</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenAI</td>
+<td>GPT Image 1 (<code>gpt-image-1</code>)</td>
+<td>OpenAI Image API</td>
+<td>1024×1024, quality high, 1 image</td>
+<td>16 of 16 generated, 2026-10-07</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>Gemini 2.5 Flash Image (<code>gemini-2.5-flash-image</code>)</td>
+<td>Google Gemini API</td>
+<td>1:1, default 1K</td>
+<td>16 of 16 generated, 2026-10-07</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>Gemini 3.1 Flash Image Preview (<code>gemini-3.1-flash-image-preview</code>)</td>
+<td>Google Gemini API</td>
+<td>1:1, default 1K</td>
+<td>16 of 16 generated, 2026-10-07</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fairness rules:</strong> identical prompt text and square format for every model. <strong>One image per prompt per model, and the first output is kept</strong> (the script won't overwrite, so there is no cherry-picking). Refusals count as "would not post". Every image is logged with its timestamp and settings (Appendix D). GPT Image 1 has a quality setting (I used high, as a shop owner would); the Gemini models don't, so they use their default. I didn't add a fourth model, because it would add a third more rating work without changing the decision.</p>
+<h2>How participants judged</h2>
+<div class="fig"><img src="assets/ui_rate.png" style="max-height:115mm"><div class="cap" markdown="1">The rating app (real, working). The requested text is pinned at the top; three blinded posters sit side by side; three questions per poster, then "which one would you post?".</div></div>
+
+<div class="split wide-left">
+<div class="panel grey">
+<div class="eyebrow">
+<p>The questions</p>
+</div>
+<ol>
+<li><strong>Text accuracy:</strong> exactly correct · small error (1 or 2 letters off, still readable) · major error (wrong, missing or extra words) · gibberish or missing</li>
+<li><strong>Looks right for this shop and occasion?</strong> yes · a bit off · clearly wrong, plus tags such as <em>fake brand</em> or <em>extra text</em></li>
+<li><strong>Would you post it?</strong> as-is · after small fixes · no</li>
+<li><strong>Which one would you post?</strong> A · B · C · none</li>
+</ol>
+</div>
+<div class="panel yellow">
+<div class="eyebrow">
+<p>Why this method</p>
+</div>
+<p>With only 8 to 10 people, every minute of rating must count. Pure A/B voting gives one bit per vote and hides <em>why</em> a model lost. Rating each poster against the exact text is close to objective. Seeing all three side by side keeps judgments consistent, and the final pick gives preference data as well.</p>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>What I did about it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Knowing the model biases the rating</td>
+<td>Images carry random IDs; the key never ships in the app</td>
+</tr>
+<tr>
+<td>Position or order effects</td>
+<td>Poster positions and prompt order are shuffled for each person</td>
+</tr>
+<tr>
+<td>Misunderstanding the scale</td>
+<td>A practice poster with one wrong matra, with feedback</td>
+</tr>
+<tr>
+<td>Careless or inconsistent rating</td>
+<td>One screen is repeated at the end; people who average under 15 s per screen are excluded</td>
+</tr>
+<tr>
+<td>Rating looks, not text</td>
+<td>The text question comes first; the reference text is pinned; tap to zoom</td>
+</tr>
+<tr>
+<td>Eligibility</td>
+<td>18+ gate, consent checkbox, "can you read Hindi?" check</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Design in numbers:</strong> 16 prompts × 3 models = 48 posters. Every participant rates every poster (16 screens + 1 repeat, about 20 minutes). With 9 people that is 432 poster ratings and 144 best-of-three picks.</p>
+<p><strong>What this sample can and can't prove.</strong> Ratings of the same poster aren't independent, so the real sample size is <strong>16 prompts</strong>, not 432 ratings. I use intervals that resample both prompts and raters. With 16 prompts, only gaps of <strong>about 25 percentage points or more</strong> count as a real direction; smaller gaps are reported as description. Agreement between raters is measured with Krippendorff's alpha. I planned this analysis before seeing any ratings, and I deliberately avoid significance tests on single prompts.</p>
+<div class="opener">
+<div class="eyebrow">
+<p>Question 1 · Part C</p>
+</div>
+<h1>Results and findings</h1>
+<p>What I can show today, clearly labelled by where it comes from.</p>
+</div>
+<h2>Results</h2>
+<h3>My letter-by-letter audit of the outputs <span class="pill audit">MY AUDIT</span></h3>
+<p>Before the study, I read every poster against the requested text. This is my own inspection of real outputs, not participant data; it will be compared with the participants' labels.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>English text exact</th>
+<th>Hindi text exact (all 10 Hindi/mixed)</th>
+<th>Hindi exact - 6 twins only</th>
+<th>Hindi readable (exact + small)</th>
+<th>Hindi major/gibberish</th>
+<th>Unrequested text</th>
+<th>Fake brand/logo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT Image 1</td>
+<td>6/6</td>
+<td>3/10</td>
+<td>2/6</td>
+<td>7/10</td>
+<td>3/10</td>
+<td>4/16</td>
+<td>2/16</td>
+</tr>
+<tr>
+<td>Gemini 2.5 Flash Image</td>
+<td>6/6</td>
+<td>0/10</td>
+<td>0/6</td>
+<td>0/10</td>
+<td>10/10</td>
+<td>5/16</td>
+<td>3/16</td>
+</tr>
+<tr>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>6/6</td>
+<td>9/10</td>
+<td>6/6</td>
+<td>10/10</td>
+<td>0/10</td>
+<td>1/16</td>
+<td>1/16</td>
+</tr>
+</tbody>
+</table>
+<p>Per-image notes are in Appendix C.</p>
+<h3>AI-judge panel <span class="pill illus">AI, NOT HUMAN</span></h3>
+<p>To get an early read and to test the "can we automate judging?" question from the scaling plan, I ran the exact participant protocol with an AI judge: Claude Opus 5 saw the same blinded, shuffled screens and answered the same questions, in 3 independent runs. <strong>This is not participant data and does not replace the human study.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Would post as-is (95% CI)</th>
+<th>Text exactly correct</th>
+<th>Picked as best</th>
+<th>Hindi tax (post as-is)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td><strong>65%</strong> (44% to 85%)</td>
+<td>94%</td>
+<td>65%</td>
+<td>-67 pp (28% → 94%)</td>
+</tr>
+<tr>
+<td>GPT Image 1</td>
+<td><strong>46%</strong> (21% to 71%)</td>
+<td>44%</td>
+<td>29%</td>
+<td>83 pp (94% → 11%)</td>
+</tr>
+<tr>
+<td>Gemini 2.5 Flash Image</td>
+<td><strong>10%</strong> (0% to 25%)</td>
+<td>31%</td>
+<td>6%</td>
+<td>28 pp (28% → 0%)</td>
+</tr>
+</tbody>
+</table>
+<div class="fig"><img src="assets/ai_fig_hindi_tax.png" style="max-height:62mm"></div>
+
+<p><strong>How far can it be trusted?</strong> Agreement between the three AI runs on text accuracy: Krippendorff's alpha 0.95. Its median text label matched my letter-by-letter audit on <strong>85%</strong> of posters (98% within one level). Same label on the repeated screen: 100%. The judge also transcribes what it reads, which makes every label auditable.</p>
+<p><strong>Where it diverges, and why that matters.</strong> On "would you post it?" the AI judge is very strict about tiny background lettering in photo-realistic scenes: garbled text on packet labels, book spines or a clock face. It downgraded Gemini 3.1's English posters for this even when the headline text was perfect, which produces an odd negative "Hindi tax" for that model. A shop owner may never notice those details. So the AI judge is ready to pre-screen <strong>text accuracy</strong>, but <strong>"would you post it?" should stay a human judgment</strong> until it is checked against the participant ratings.</p>
+<h3>Participant study (humans)</h3>
+<div class="block grey">
+<p><span class="pending">PENDING</span> <strong>Participant ratings.</strong> This section fills in automatically from the rating files: the leaderboard with 95% intervals, the Hindi tax per model, the per-prompt view, rater agreement, repeat-screen consistency and position bias. Nothing here is estimated or simulated.</p>
+</div>
+<h2>Findings</h2>
+<p>These findings come from my letter-by-letter audit of all 48 real outputs. The participant ratings will confirm or overturn them.</p>
+<div class="card">
+<div class="ch">
+<h3>F1 · English is solved. Hindi separates the models completely</h3>
+<p><span class="pill audit">MY AUDIT</span></p>
+</div>
+<div class="cb">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observation</td>
+<td>All three models got the English text exactly right on 6 of 6 posters. On the identical Hindi versions: Gemini 3.1 Flash Image Preview 6 of 6, GPT Image 1 2 of 6, Gemini 2.5 Flash Image 0 of 6.</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Hindi tax on exact text: <strong>0 pp, 67 pp and 100 pp</strong>. Across all 10 Hindi prompts: 9, 3 and 0 exactly right. Gemini 2.5 produced 4 unreadable posters; Gemini 3.1 produced none.</td>
+</tr>
+<tr>
+<td>Interpretation</td>
+<td>The pairs share everything except the language, so this gap is pure script rendering. An English-only benchmark would score these three models as roughly equal.</td>
+</tr>
+<tr>
+<td>Implication</td>
+<td>A "make my poster" feature tested in English could ship to Hindi users with a model that cannot spell a single Hindi poster correctly.</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>Measure and gate launches per script. On this sample, Hindi posters should go to Gemini 3.1, with an OCR check as a safety net.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<div class="ch">
+<h3>F2 · One model generation closed the gap</h3>
+<p><span class="pill audit">MY AUDIT</span></p>
+</div>
+<div class="cb">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observation</td>
+<td>Within the same company, Gemini 2.5 Flash Image → Gemini 3.1 Flash Image Preview went from 0 of 10 to 9 of 10 exactly right in Hindi, while English stayed perfect.</td>
+</tr>
+<tr>
+<td>Interpretation</td>
+<td>India-specific quality moves fast and independently of English quality. A lab that tested last year's model would wrongly conclude that Hindi posters can't ship.</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>Treat this as a regression suite, not a one-off study: version every leaderboard entry and re-run the frozen prompts on every model release (the admin dashboard's "model version changed" alert).</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<div class="ch">
+<h3>F3 · Looking great is not the same as being usable</h3>
+<p><span class="pill audit">MY AUDIT</span></p>
+</div>
+<div class="cb">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observation</td>
+<td>All 48 posters look professional, with correct festival objects and Indian settings. Yet Gemini 2.5's chemist notice reads "हर रनिवार मुफ्टि शुमार जॉच्छ / श्री मडिजल स्तोष": every word is wrong, including the day of the free health check.</td>
+</tr>
+<tr>
+<td>Interpretation</td>
+<td>A preference vote by someone who doesn't read Hindi would rate this poster highly. For the shop, it is unusable, and on a health notice it is misleading.</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>India-focused evals need native-script raters and a "would you post it?" question, not just "which looks better?".</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<div class="ch">
+<h3>F4 · Same mistake, very different consequence</h3>
+<p><span class="pill audit">MY AUDIT</span></p>
+</div>
+<div class="cb">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observation</td>
+<td>Despite "ONLY the following text", models added text nobody asked for: GPT Image 1 on 4 of 16 posters, Gemini 2.5 on 5, Gemini 3.1 on 1.</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>In English the extra shop name was readable (GPT, P09). In Hindi it became fake words: GPT's "अगरावी गसरलातो सोरर", Gemini 2.5's "मां तारा फ्रोट बन्दार, पतना, बेहार". Gemini 3.1 printed the instruction word "WhatsApp Status" as a heading.</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>Measure instruction-following per script; in product, strip or OCR-check any text that wasn't requested.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<div class="ch">
+<h3>F5 · Culture is not the bottleneck. Text and brands are</h3>
+<p><span class="pill audit">MY AUDIT</span></p>
+</div>
+<div class="cb">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observation</td>
+<td>All three models got the visual culture right, even for Chhath Puja: soop with thekua, sugarcane, women offering arghya at a river ghat. Gujiya and pichkari for Holi, a brass thali of mithai for Diwali.</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Brands appeared on 6 of 48 posters: fake ones ("AASHIRAAD", "GUPIA ATTA") and real ones (Apple, USHA).</td>
+</tr>
+<tr>
+<td>Interpretation</td>
+<td>For this use case the frontier is spelling and restraint, not cultural knowledge. Fake or real brand logos put a trademark risk on a shop owner who won't notice.</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>Block logos in business templates; keep "fake brand" as a rating tag (already in the app).</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><em>An exploratory note:</em> GPT Image 1's errors clustered in less common words (मोबाइल → मोबाल, डिलीवरी → डिलेबरी) while its densest conjuncts were perfect, which suggests memorised greetings. Gemini 2.5 failed on common and rare words alike, so this pattern is model-specific. I noticed it after seeing the outputs, so it is a hypothesis, not a finding.</p>
+<h2>What an AI lab or product team should do</h2>
+<ol>
+<li><strong>Measure per script, ship per script.</strong> One overall quality score hides the Hindi tax. Set a launch bar such as "80% ship-ready in Hindi" before a poster feature goes live in Hindi.</li>
+<li><strong>Don't let the image model own the text.</strong> Generate a background without text, then typeset the exact words with a proper Indic font engine. If the model keeps rendering text, read it back with OCR, compare it with the request, and retry or fall back on a mismatch.</li>
+<li><strong>Route by script.</strong> If one model wins on Hindi text and another on visuals, send Hindi requests to the first.</li>
+<li><strong>Add guardrails that matter here:</strong> strip text nobody asked for, block brand logos in business templates, and take extra care with price and health notices.</li>
+<li><strong>Fix the data, not just the model.</strong> Errors cluster in less common words, English loanwords written in Devanagari, and nukta. A targeted training set of shop names, prices and loanwords is cheaper than more general data.</li>
+</ol>
+<div class="opener">
+<div class="eyebrow">
+<p>Question 1 · Part D</p>
+</div>
+<h1>The eval as a product, and how it scales</h1>
+<p>The smallest product that is useful: a rating app, an honest leaderboard and a failure explorer.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Who</th>
+<th>What they do</th>
+<th>Screen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rater (Hindi reader, 18+)</td>
+<td>Opens a link, consents, practises, rates 17 screens</td>
+<td>Rating app (built, shown above)</td>
+</tr>
+<tr>
+<td>Eval team at Josh Talks</td>
+<td>Launches a run, watches quality, handles alerts</td>
+<td>Admin dashboard</td>
+</tr>
+<tr>
+<td>Model or product team</td>
+<td>"Which model for Hindi posters?" then digs into failures</td>
+<td>Leaderboard, failure explorer</td>
+</tr>
+</tbody>
+</table>
+<h3>Leaderboard</h3>
+<p>Ranked by <strong>ship-ready rate in Hindi</strong>, with 95% intervals. <strong>Models whose intervals overlap share a rank</strong>, because the data can't separate them. The English score and the Hindi tax sit alongside, so the gap is visible. A model is marked <em>provisional</em> until it has 300+ ratings. Filters: script, business type, difficulty, rater state, eval run.</p>
+<div class="fig"><img src="assets/mock_lb.png"><div class="cap" markdown="1">Leaderboard mockup. Numbers are placeholders ("xx"); ranks fill in from data.</div></div>
+
+<h3>Admin dashboard and failure explorer</h3>
+<p>The admin view tracks completion, rater agreement, repeat-screen consistency and position bias. Alerts fire for raters who rush, for low-agreement prompts, and <strong>when a provider's model version changes</strong> (which re-runs the frozen prompt set). The failure explorer is where teams learn the most: filter by failure type, see the English twin next to the Hindi one, and open every rater's comment.</p>
+<div class="fig"><img src="assets/mock_admin.png"><div class="cap" markdown="1">Admin dashboard mockup (illustrative numbers).</div></div>
+
+<div class="fig"><img src="assets/mock_explore.png"><div class="cap" markdown="1">Failure explorer. Thumbnails are real outputs with my audit notes.</div></div>
+
+<h3>Scaling plan</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Raters</th>
+<th>What grows</th>
+<th>Quality control</th>
+<th>Automation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pilot (now)</strong></td>
+<td>8 to 10</td>
+<td>16 prompts, Hindi, 3 models</td>
+<td>practice item, repeat screen, rater agreement</td>
+<td>none</td>
+</tr>
+<tr>
+<td><strong>Next</strong></td>
+<td>~50</td>
+<td>60 prompts, 2 images per prompt (separates the model from luck), add Marathi</td>
+<td>hidden test posters with known errors; drop raters below 80% on them</td>
+<td>OCR pre-checks text; humans confirm</td>
+</tr>
+<tr>
+<td><strong>Then</strong></td>
+<td>~500</td>
+<td>8 to 10 scripts (Bengali, Tamil, Telugu, Gujarati, Gurmukhi, Urdu...), more business types, new models monthly</td>
+<td>per-script agreement targets, adjudication, state and gender balance</td>
+<td>extra raters only where OCR is unsure or raters disagree</td>
+</tr>
+<tr>
+<td><strong>Platform</strong></td>
+<td>thousands</td>
+<td>live leaderboard, private evals for labs</td>
+<td>rater reputation, drift checks, fixed anchor prompts in every run</td>
+<td>automatic re-run when a model version changes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where raters come from:</strong> Josh Talks already has 20,000+ daily transcribers who read Indian languages. Q1's rating platform and Q2's quality system are the same machine: people whose work is trusted <em>because</em> it is measured.</p>
+<p><strong>What stays human:</strong> "would I post this?", cultural fit and anything sensitive. <strong>What can be automated:</strong> exact text checking with OCR and string matching, extra-text and logo detection. One caution: a vision-LLM judge tends to read a misspelled word as the word it should be, so any automated judge must be checked against human labels before it is trusted.</p>
+<div class="opener">
+<div class="eyebrow">
+<p>Question 2</p>
+</div>
+<h1>Spotting low-quality transcribers</h1>
+<p>Part I finds the warning signs in the data. Part II turns them into a system that is fair enough to block accounts.</p>
+</div>
+<h2>How the work happens, and where it can be gamed</h2>
+<p>Audio → Whisper draft → worker listens → worker edits → submit → paid per accurate hour.</p>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>What it looks like in the data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Not listening</td>
+<td>submitted faster than the audio plays</td>
+</tr>
+<tr>
+<td>Accepting the Whisper draft blindly</td>
+<td>user text = Whisper text, even when Whisper is wrong</td>
+</tr>
+<tr>
+<td>Cosmetic edits to look busy</td>
+<td>only spaces or punctuation change</td>
+</tr>
+<tr>
+<td>Placeholders</td>
+<td><code>[blank]</code>, ".", ",,,,," on clips that have speech</td>
+</tr>
+<tr>
+<td>Accepting Whisper's made-up text</td>
+<td>known fake strings like "प्रस्तुति प्रस्तुति" submitted as-is</td>
+</tr>
+</tbody>
+</table>
+<h2>What the data really contains <span class="pill real">REAL DATA</span></h2>
+<p>Before setting thresholds I checked the file (51,783 rows). Four findings changed the answer:</p>
+<div class="stats">
+<div class="stat">
+<div class="n">
+<p>10</p>
+</div>
+<div class="l">
+<p>of 48,875 user_ids are real people. The rest are task IDs</p>
+</div>
+</div>
+<div class="stat">
+<div class="n">
+<p>99.4%</p>
+</div>
+<div class="l">
+<p>of rows: "chars per second" divides by audio length, not time taken</p>
+</div>
+</div>
+<div class="stat">
+<div class="n">
+<p>4 to 12 s</p>
+</div>
+<div class="l">
+<p>the 10 users' times: whole numbers, unrelated to clip length</p>
+</div>
+</div>
+<div class="stat">
+<div class="n">
+<p>41 × 126</p>
+</div>
+<div class="l">
+<p>hidden gold set: clips × median transcribers each</p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Only 10 IDs repeat</strong> (86 to 609 tasks each). The other 48,865 appear once, and consecutive IDs share a recording folder 83% of the time, so they are task IDs. Per-person analysis is only possible for 10 users.</li>
+<li><strong><code>segment_character_per_second</code> is mislabelled.</strong> It equals characters ÷ <em>audio duration</em> (99.4% of rows), not ÷ time taken (0.07%). It measures how dense the transcript is, not how fast the worker typed.</li>
+<li><strong>The 10 users' timings look generated.</strong> Always whole numbers, spread evenly from 4 to 12 s, with no link to clip length (correlation −0.01, vs 0.54 for everyone else). I make no time-based judgment about these users.</li>
+<li><strong><code>is_edited</code> is inflated.</strong> 83% say "Yes", but 23,104 of those rows have no Whisper text at all, and 963 differ only in spacing or punctuation.</li>
+<li><strong>A hidden gold set:</strong> 41 test clips, each transcribed independently by a median of 126 people. I used the most central transcription as the reference answer and marked any task with over 15% character error as bad. That let me <strong>test</strong> which signals predict bad work instead of guessing.</li>
+</ul>
+<h2>Part I · Warning signs</h2>
+<div class="card">
+<div class="ch">
+<h3>Warning sign 1 · Listening less than the audio</h3>
+<p><span class="pill dark">STRONGEST</span></p>
+</div>
+<div class="cb">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What it tells us</td>
+<td>You can't transcribe a 10-second clip you didn't hear. The minimum honest time is one full listen.</td>
+</tr>
+<tr>
+<td>How to measure</td>
+<td><strong>Speed ratio = time taken ÷ audio duration</strong>, per task, on clips of 2 s or more. Per user: share of the last 100 such tasks below 1.</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>In the gold set, tasks below 1 were <strong>bad 99.6% of the time</strong> (273 tasks) vs <strong>26.5%</strong> for the rest. 1 to 2: 82% bad; 2 to 4: 35%; 4+: about 20%. It also catches workers who <em>do</em> edit: edited tasks at 1 to 2 were still 70% bad. In normal production work, <strong>18.7% of tasks were submitted faster than the audio</strong>, vs 4.9% on test clips. People listen when it might be a test.</td>
+</tr>
+<tr>
+<td>Red flags</td>
+<td>Below <strong>0.5</strong> is impossible even at 2× playback. Between 0.5 and 1 is only possible at fast playback. A user with 30%+ of tasks below 1 gets more QA; 20%+ below 0.5 can lead to restriction. Minimum 30 tasks first.</td>
+</tr>
+<tr>
+<td>False alarms</td>
+<td>Experts using 1.5 to 2× playback; clear audio where Whisper is already right; timer bugs on low-end phones or poor networks; very short clips. Fix: log playback speed and actual audio played, ignore clips under 2 s, act only on patterns across many tasks.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="fig"><img src="assets/fig_gold_rtf.png" style="max-height:62mm"></div>
+
+<div class="card">
+<div class="ch">
+<h3>Warning sign 2 · Accepting Whisper without checking</h3>
+<p><span class="pill dark">STRONG</span></p>
+</div>
+<div class="cb">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What it tells us</td>
+<td>The job is to <em>fix</em> Whisper. Submitting its draft unchanged when Whisper is wrong means the worker didn't really listen.</td>
+</tr>
+<tr>
+<td>How to measure</td>
+<td>Normalise both texts (Unicode form, remove punctuation and extra spaces, so cosmetic edits don't count), then check whether they are equal. Per user: unedited share on clips of 5 s or more, with a 95% interval. <strong>Better: hidden test tasks</strong>, real clips whose Whisper draft has a known, verified error, mixed in at about 1 in 25.</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Whisper was wrong on every gold clip, yet 8.6% of submissions accepted it untouched. Across production, the unedited rate is 34%. <strong>User 632098 left Whisper untouched on 78% of tasks (68 to 85%)</strong>, 84% on longer clips, including obvious errors such as "लाओं से ... सहर में" for "गाँव से ... शहर में".</td>
+</tr>
+<tr>
+<td>Red flags</td>
+<td>Lower end of the user's interval above 60% (30+ tasks) → more QA. Hidden tests: 3 of the last 10 accepted → restrict; 5 of 10 → human review. A careful worker who misses 10% of planted errors hits 5 of 10 only <strong>0.16%</strong> of the time.</td>
+</tr>
+<tr>
+<td>False alarms</td>
+<td>Whisper genuinely right on clear speech; very short clips; a worker only on easy audio. Fix: measure on longer clips, compare with peers on the same language and audio quality, and rely on hidden tests for anything serious.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="fig"><img src="assets/fig_users_unedited.png" style="max-height:60mm"></div>
+
+<h3>More signals (use together, never alone)</h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Evidence</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Accepting Whisper's made-up text.</strong> Whisper repeats fake strings on near-silent clips</td>
+<td>"प्रस्तुति प्रस्तुति" appears on 398 clips: 62% of people wrote <code>[blank]</code>, 17% submitted it as-is. User 580062 accepted 4 of 12</td>
+<td>3+ acceptances and 50%+ of encounters → more QA</td>
+</tr>
+<tr>
+<td><strong>Missing content.</strong> Text much shorter than expected</td>
+<td>Under half the reference length: all 205 such gold tasks were bad</td>
+<td>More QA, stronger with signal 1</td>
+</tr>
+<tr>
+<td><strong>Placeholder on speech.</strong> <code>[blank]</code> where Whisper heard real words</td>
+<td>All 11 gold cases were bad</td>
+<td>Nudge, then QA if repeated</td>
+</tr>
+<tr>
+<td><strong>Junk entries.</strong> Only punctuation, links, wrong script</td>
+<td>User 393886 typed "." on 39 near-silent clips</td>
+<td><strong>Block in the app with a helpful message.</strong> A guideline problem, not fraud</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Weak signals I would not use alone:</strong> the <code>is_edited</code> flag (inflated); raw time taken (depends on clip length); characters per second (fast speakers and tags on tiny clips give extreme values); overall blank rate (19% of clips really are silent); very long times (idle tabs); repeated sounds like "ह ह ह" (real laughter; my first junk rule flagged these, so I removed it).</p>
+<h3>The 10 users today</h3>
+<p>Text signals only, since their timings can't be trusted:</p>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Tasks</th>
+<th>Untouched Whisper (95% CI)</th>
+<th>Other evidence</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>632098</strong></td>
+<td>165</td>
+<td><strong>78% (68 to 85%)</strong></td>
+<td>84% on longer clips; obvious errors left in</td>
+<td><strong>Human review of 20 recent long clips against the audio</strong>; payouts wait for QA. Not an automatic block</td>
+</tr>
+<tr>
+<td>688393</td>
+<td>86</td>
+<td>36% (24 to 51%)</td>
+<td>48% on longer clips; small sample</td>
+<td>3× more QA</td>
+</tr>
+<tr>
+<td>580062</td>
+<td>609</td>
+<td>27% (22 to 32%)</td>
+<td>accepted 4 of 12 fake strings; 21 punctuation-only entries</td>
+<td>More QA and a guideline nudge</td>
+</tr>
+<tr>
+<td>410566</td>
+<td>349</td>
+<td>21% (16 to 28%)</td>
+<td>2 of 5 fake strings accepted</td>
+<td>Nudge</td>
+</tr>
+<tr>
+<td>Other 6</td>
+<td>149 to 509</td>
+<td>0 to 14%</td>
+<td>nothing serious</td>
+<td>No action</td>
+</tr>
+</tbody>
+</table>
+<h2>Part II · The detection system</h2>
+<p><strong>Principle:</strong> behaviour (speed, edit patterns) only decides <em>where to look</em>. Serious actions need proof of <strong>wrong output</strong>: hidden test tasks, or QA on the real audio. No single metric ever blocks anyone.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Trigger (over a rolling window, minimum evidence)</th>
+<th>Action</th>
+<th>Way back</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0 · Prevent</strong></td>
+<td>always on</td>
+<td>App rejects punctuation-only or wrong-script submissions, requires the audio to be played, offers one <code>[blank]</code> button</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>1 · Nudge</strong></td>
+<td>one signal at a soft level, 30+ tasks</td>
+<td>In-app tip: "6 long clips were submitted faster than their audio. Please listen fully." No pay impact</td>
+<td>clears after 7 clean days</td>
+</tr>
+<tr>
+<td><strong>2 · Look closer</strong></td>
+<td>one strong signal, or two soft ones, 50+ tasks</td>
+<td>QA on 15% of tasks; payouts for those wait for QA</td>
+<td>QA error ≤ 5% over 20 audits</td>
+</tr>
+<tr>
+<td><strong>3 · Restrict</strong></td>
+<td><strong>two independent signals</strong> strong, or QA error above 10%</td>
+<td>Easier tasks only, daily cap, all work QA'd, clear notice</td>
+<td>2 weeks at QA error ≤ 5%</td>
+</tr>
+<tr>
+<td><strong>4 · Human review</strong></td>
+<td>level 3 for 14 days, 5 of 10 hidden tests failed, or clear fraud (shared device, scripted timing)</td>
+<td>A trained reviewer listens to 20+ recent tasks; the worker can explain</td>
+<td>reviewer decision</td>
+</tr>
+<tr>
+<td><strong>5 · Block</strong></td>
+<td><strong>all of:</strong> reviewer confirms error far above target on real audio, two or more independent signals, and a prior warning with 7 days to improve (waived only for proven fraud)</td>
+<td>Block, pay for verified good work, <strong>appeal within 14 days to a different reviewer</strong></td>
+<td>appeal</td>
+</tr>
+</tbody>
+</table>
+<div class="block yellow">
+<p><strong>The rule in the brief's format.</strong> If a transcriber <strong>(X)</strong> keeps submitting faster than the audio could be heard, <strong>and/or (Y)</strong> leaves known Whisper errors uncorrected on hidden tests, <strong>and/or (Z)</strong> submits blanks or junk on clips with speech, then raise QA and restrict. <strong>Block only when</strong> at least two of X, Y and Z hold, <strong>and</strong> a reviewer confirms from the audio that their error rate is far above target, <strong>and</strong> they were warned and given time to improve.</p>
+</div>
+<h3>If I were a bad transcriber, how would I game this?</h3>
+<table>
+<thead>
+<tr>
+<th>Trick</th>
+<th>Counter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leave the tab open to pad the time</td>
+<td>Measure seconds of audio actually played, plus tab focus, not wall-clock time</td>
+</tr>
+<tr>
+<td>Play the audio muted</td>
+<td>Hidden tests: you can't fix an error you didn't hear</td>
+</tr>
+<tr>
+<td>Add a space or full stop to look "edited"</td>
+<td>Compare normalised text, where cosmetic edits don't count</td>
+</tr>
+<tr>
+<td>Make random small edits</td>
+<td>Hidden tests and QA measure correctness, not activity</td>
+</tr>
+<tr>
+<td>Learn which tasks are tests</td>
+<td>Tests use real production clips, look identical and rotate</td>
+</tr>
+<tr>
+<td>Mark hard clips <code>[blank]</code></td>
+<td>Blank-on-speech signal; QA before paying for blanks</td>
+</tr>
+<tr>
+<td>Stay just under the thresholds</td>
+<td>Thresholds aren't published; independent signals; random QA for everyone</td>
+</tr>
+</tbody>
+</table>
+<h3>What engineering needs to build</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Data needed</th>
+<th>Window</th>
+<th>Threshold → action</th>
+<th>Monitor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audio coverage and speed ratio</td>
+<td>play/pause/seek events, playback speed, focus, open and submit time</td>
+<td>last 100 tasks ≥ 2 s, min 30</td>
+<td>below 0.5 on 20%+ → level 3 candidate; below 1 on 30%+ → level 2</td>
+<td>spread by language and device</td>
+</tr>
+<tr>
+<td>Hidden test acceptance</td>
+<td>test ID, planted error, submitted text</td>
+<td>last 10 tests</td>
+<td>3 of 10 → level 3; 5 of 10 → level 4</td>
+<td>careful workers must pass 90%+</td>
+</tr>
+<tr>
+<td>Untouched Whisper rate</td>
+<td>Whisper text and version, user text</td>
+<td>last 100 clips ≥ 5 s</td>
+<td>interval lower end &gt; 60% → level 2</td>
+<td>baseline per language and Whisper version</td>
+</tr>
+<tr>
+<td>Made-up text accepted</td>
+<td>weekly auto-mined list of fake strings</td>
+<td>90 days</td>
+<td>3+ and 50%+ → level 2</td>
+<td>list growth</td>
+</tr>
+<tr>
+<td>QA error rate (the ground truth)</td>
+<td>reviewer's corrected text</td>
+<td>20+ audits</td>
+<td>&gt; 10% → level 3; confirmed in review → level 5 eligible</td>
+<td>reviewer agreement on a 5% overlap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Also needed:</strong></p>
+<ul>
+<li><strong>Fix the data first:</strong> a real <code>user_id</code> on every task, a correct definition for the characters-per-second field, a look at why one group's times are whole numbers from 4 to 12, and playback speed logging.</li>
+<li><strong>Guardrails:</strong> no action under 30 tasks; at most one level change per week; compare workers with peers on the same language, clip length and audio quality; re-baseline for 7 days whenever Whisper is upgraded.</li>
+<li><strong>Fairness:</strong> workers see <em>what</em> was flagged and how to fix it (never the exact thresholds); every block has a named reviewer, an evidence bundle and an appeal.</li>
+<li><strong>Watch for false positives:</strong> if more than 10% of appeals are overturned, blocking pauses automatically.</li>
+</ul>
+<p><strong>Rollout:</strong> (1) weeks 0 to 2: add logging, input checks and hidden tests, no enforcement. (2) Weeks 2 to 6: shadow mode, where signals are computed and QA confirms whether flagged workers really are worse, and thresholds are tuned so no more than 2% of workers reach level 2. (3) Weeks 6 to 10: nudges and extra QA only. (4) Then restrictions and review in one language first; blocking only once appeals are staffed. <strong>Success:</strong> lower error in accepted data, lower cost per accurate hour, an overturn rate under 10%, and <strong>good workers staying</strong>.</p>
+<div class="opener">
+<div class="eyebrow">
+<p>Wrap-up</p>
+</div>
+<h1>Final reflection</h1>
+<p>Short answers to the brief's five questions, and the script for the video walkthrough.</p>
+</div>
+<div class="split">
+<div class="panel grey">
+<p><strong>1. Why did you choose this eval?</strong> It is the narrowest idea I found that still answers a real product question. Hindi posters for local shops are common, commercially real and very Indian. With only 8 to 10 raters, they are also judgeable with little noise, since anyone who reads Hindi can check a spelling. The matched pairs turn "is it good for India?" into one number: the Hindi tax.</p>
+<p><strong>2. Why is it useful for India?</strong> Crores of small businesses sell on WhatsApp in their customers' language and can't afford designers. A tool that makes a beautiful poster with one wrong matra fails them without them noticing. This eval measures the thing that decides whether such a tool is usable here, and it extends to every Indian script.</p>
+<p><strong>3. Why would an AI lab building for India care?</strong> Global leaderboards can't see this failure, and neither can evaluators who don't read Hindi. The eval gives a per-script launch decision, a list of failure types that points to the training data needed, and a check to re-run on every new model version.</p>
+</div>
+<div class="panel yellow">
+<p><strong>4. What did you learn from running the sample?</strong> That an English benchmark would have called these three models roughly equal, while in Hindi they ranged from perfect to unreadable. Checking every output before the study also changed the design: I added "fake brand" and "extra text" as rating tags because I saw them in real posters. And the biggest finding was one I didn't design for: a single model generation (Gemini 2.5 → 3.1) closed the Hindi gap, which makes the case for re-running this eval on every release rather than treating it as a one-off.</p>
+<p><strong>5. What would you improve with more time?</strong> Two images per prompt per model and about 60 prompts; raters balanced across Hindi-speaking states; a second Devanagari language (Marathi) and one other script (Tamil or Bengali); checking an OCR text scorer against human labels so people only judge what machines can't; and testing "background + typeset text" as a fourth option to measure the product fix directly. For Q2: run shadow mode on real platform logs with proper user IDs and playback events.</p>
+</div>
+</div>
+<h2>Video walkthrough script (under 2 minutes)</h2>
+<div class="block grey">
+<p><strong>0:00 to 0:15 · Problem.</strong> "Picture a sweet-shop owner in Kanpur. Diwali's coming, so she asks an AI for a WhatsApp poster in Hindi. It looks gorgeous, but her shop's name is misspelled, and she can't tell. That's what I evaluated."</p>
+<p><strong>0:15 to 0:40 · What.</strong> "One narrow use case: Hindi posters for local Indian shops. I compared GPT Image 1, Gemini 2.5 Flash Image and Gemini 3.1 Flash Image Preview on 16 real posters: a kirana discount, a tailor's price, a coaching notice, a Chhath greeting. Six of them are twins: same prompt, only the language changes. So I can measure each model's Hindi tax directly."</p>
+<p><strong>0:40 to 1:10 · How.</strong> "8 to 10 Hindi readers rated all 48 posters blind in an app I built, with names hidden and positions shuffled. For each poster: is the text exactly right, does it look right for an Indian shop, and would you actually post it? That last one, the ship-ready rate, is my main metric."</p>
+<p><strong>1:10 to 1:45 · Findings.</strong> "Here's what surprised me. All three models spelled English perfectly. In Hindi, on the exact same posters? Gemini 3.1 got six out of six. GPT Image 1 got two. Gemini 2.5 got zero, and on the chemist's notice it even misspelled the day of the free sugar test. And every one of those posters looked professional, which is exactly the trap. Also, Google's newer model went from zero to nine out of ten in one generation, so a result like this goes stale fast."</p>
+<p><strong>1:45 to 2:00 · So what.</strong> "For labs building for India: measure ship-ready rate per script, not image quality. For products: never trust an image model to spell Indian scripts unchecked. Check it with OCR, or typeset it. And Q2 is in the doc: a fair way to catch bad transcribers. Thanks!"</p>
+</div>
+<div class="opener">
+<div class="eyebrow">
+<p>Appendix</p>
+</div>
+<h1>Supporting material</h1>
+<p>Prompts, rating questions and consent, generation log, every generated image, and the Q2 tables. Code and full-size files: https://github.com/AbhyudayPatel/josh-talks-hindi-poster-eval</p>
+</div>
+<h2>A · All prompts</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Lang · level</th>
+<th>Category</th>
+<th>Exact text requested</th>
+<th>What it tests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P01</strong> · pair A</td>
+<td>EN · L1 short</td>
+<td>Festival greeting (Diwali)</td>
+<td>Happy Diwali / Sharma Sweets</td>
+<td>Control for P02: same creative, Latin script</td>
+</tr>
+<tr>
+<td><strong>P02</strong> · pair A</td>
+<td>HI · L1 short</td>
+<td>Festival greeting (Diwali)</td>
+<td>शुभ दीपावली / शर्मा स्वीट्स</td>
+<td>Shortest Hindi copy; reph conjunct (र्मा), half-letter cluster (स्व, ट्स)</td>
+</tr>
+<tr>
+<td><strong>P03</strong> · pair B</td>
+<td>EN · L2 offer+number</td>
+<td>Discount offer (kirana)</td>
+<td>Flat 10% Off on All Groceries / Gupta Kirana Store</td>
+<td>Control for P04</td>
+</tr>
+<tr>
+<td><strong>P04</strong> · pair B</td>
+<td>HI · L2 offer+number</td>
+<td>Discount offer (kirana)</td>
+<td>सभी किराना सामान पर 10% की छूट / गुप्ता किराना स्टोर</td>
+<td>6-word offer line mixing Devanagari + digits + %; pre-posed i-matra (कि)</td>
+</tr>
+<tr>
+<td><strong>P05</strong> · pair C</td>
+<td>EN · L2 price (₹)</td>
+<td>Service price (tailor)</td>
+<td>Blouse Stitching Only ₹250 / Laxmi Tailors</td>
+<td>Control for P06</td>
+</tr>
+<tr>
+<td><strong>P06</strong> · pair C</td>
+<td>HI · L2 price (₹)</td>
+<td>Service price (tailor)</td>
+<td>ब्लाउज़ सिलाई सिर्फ़ ₹250 / लक्ष्मी टेलर्स</td>
+<td>Nukta (ज़, फ़), ₹ symbol, hard conjunct in a very common name (क्ष्मी)</td>
+</tr>
+<tr>
+<td><strong>P07</strong> · pair D</td>
+<td>EN · L3 multi-line</td>
+<td>Admissions notice (coaching)</td>
+<td>Admissions Open / Classes 9 to 12: Maths and Science / Call: 98765 43210</td>
+<td>Control for P08</td>
+</tr>
+<tr>
+<td><strong>P08</strong> · pair D</td>
+<td>HI · L3 multi-line</td>
+<td>Admissions notice (coaching)</td>
+<td>प्रवेश प्रारंभ / कक्षा 9 से 12: गणित और विज्ञान / संपर्क करें: 98765 43210</td>
+<td>3 lines, ~11 words; conjuncts प्र, क्ष, ज्ञ, र्क; 10-digit phone number</td>
+</tr>
+<tr>
+<td><strong>P09</strong> · pair E</td>
+<td>EN · L2 festival</td>
+<td>Festival product (Holi)</td>
+<td>Holi Special / Herbal Colours Available</td>
+<td>Control for P10</td>
+</tr>
+<tr>
+<td><strong>P10</strong> · pair E</td>
+<td>HI · L2 festival</td>
+<td>Festival product (Holi)</td>
+<td>होली स्पेशल / हर्बल रंग उपलब्ध</td>
+<td>English loanwords in Devanagari (स्पेशल), reph (र्ब), ब्ध cluster</td>
+</tr>
+<tr>
+<td><strong>P11</strong> · pair F</td>
+<td>EN · L2 public-health</td>
+<td>Health camp notice (chemist)</td>
+<td>Free Sugar Test Every Sunday / Shree Medical Store</td>
+<td>Control for P12</td>
+</tr>
+<tr>
+<td><strong>P12</strong> · pair F</td>
+<td>HI · L2 public-health</td>
+<td>Health camp notice (chemist)</td>
+<td>हर रविवार मुफ़्त शुगर जाँच / श्री मेडिकल स्टोर</td>
+<td>Chandrabindu (ँ), nukta+half letter (फ़्त), श्र; misinformation risk in a health notice</td>
+</tr>
+<tr>
+<td><strong>S13</strong></td>
+<td>MIX · L3 code-mixed</td>
+<td>Festival offer (mobile shop)</td>
+<td>Diwali Dhamaka Offer / हर मोबाइल पर गिफ़्ट पक्का!</td>
+<td>Two scripts on one poster, as real Indian ads do</td>
+</tr>
+<tr>
+<td><strong>S14</strong></td>
+<td>HI · L4 long</td>
+<td>Subscription offer (tiffin service)</td>
+<td>माँ के हाथ जैसा खाना / घर का बना शुद्ध शाकाहारी टिफ़िन / मासिक प्लान सिर्फ़ ₹2500 / फ़्री होम डिलीवरी</td>
+<td>Length stress: 4 lines, ~17 words</td>
+</tr>
+<tr>
+<td><strong>S15</strong></td>
+<td>HI · L4 conjunct-dense</td>
+<td>Festival greeting (Janmashtami)</td>
+<td>श्री कृष्ण जन्माष्टमी की / हार्दिक शुभकामनाएँ</td>
+<td>Densest conjuncts: श्र, कृ (ऋ-matra), ष्ण, न्मा, ष्ट, र्दि (reph + i-matra)</td>
+</tr>
+<tr>
+<td><strong>S16</strong></td>
+<td>HI · L3 cultural grounding</td>
+<td>Regional festival greeting (Chhath Puja)</td>
+<td>छठ महापर्व की / हार्दिक शुभकामनाएँ</td>
+<td>Under-represented regional festival: does the model know Chhath's visual vocabulary?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Full prompt, example P02.</strong> Every prompt is built from the same template; the exact text of each is stored in the generation log.</p>
+<pre class="prompt">Design a square promotional poster for WhatsApp Status for Sharma Sweets, a family-run mithai shop in Kanpur, Uttar Pradesh. Show a brass thali of kaju katli and motichoor laddoos, lit clay diyas and a marigold garland. The poster must contain ONLY the following text, in Hindi (Devanagari script), spelled exactly as given:
+Line 1: &quot;शुभ दीपावली&quot;
+Line 2: &quot;शर्मा स्वीट्स&quot;
+Do not add any other words, letters, logos or watermarks. Style: bright, clean, professional design that a small local shop in India would proudly share with its customers.</pre>
+
+<h2>B · Participant instructions and consent</h2>
+<blockquote>
+<p><strong>Instructions shown to participants:</strong> Imagine you own a small shop in a Hindi-speaking town. You asked an AI tool to make a poster for your WhatsApp Status. On each screen you will see the exact text the shop owner asked for and three posters (A, B, C) from different AI models. The names are hidden and the order is shuffled. For each poster answer three quick questions, then pick the one you would post, or "None". Tap any image to zoom and check the text carefully.</p>
+</blockquote>
+<p><strong>Practice item:</strong> a mock poster reading "शुभ दीपावलि" against the requested "शुभ दीपावली". Correct answer: <em>small error</em> (short ि instead of long ी), with an explanation shown.</p>
+<p><strong>Consent</strong> (exact statement from the brief, a required checkbox): <em>"I confirm that I am 18 years or older. I voluntarily participated in this evaluation. I consent to my name, email, and responses/ratings being included in this assignment submission for hiring evaluation purposes."</em> The app stores the consent text and a timestamp with every rating; under-18s or no consent cannot continue.</p>
+<p><strong>Participants and consent record:</strong> <span class="pending">PENDING</span> - filled automatically from the rating files (name, email, age, Hindi level, consent text + timestamp per participant).</p>
+<h2>C · My audit notes per image</h2>
+<p><strong>Per-image audit notes</strong></p>
+<table>
+<thead>
+<tr>
+<th>Prompt</th>
+<th>Model</th>
+<th>Lang</th>
+<th>Text (my label)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P01</td>
+<td>GPT Image 1</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All text correct; shop name set in caps</td>
+</tr>
+<tr>
+<td>P02</td>
+<td>GPT Image 1</td>
+<td>HI</td>
+<td>Small error</td>
+<td>शुभ दीपावली correct; shop name rendered approx. &#x27;शर्म्मा स्वीट़्स&#x27; (doubled म, stray nukta under ट)</td>
+</tr>
+<tr>
+<td>P03</td>
+<td>GPT Image 1</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>Generic &#x27;ATTA&#x27; packs, no brand</td>
+</tr>
+<tr>
+<td>P04</td>
+<td>GPT Image 1</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>All Hindi text correct; rice packs show fake &#x27;AASHIRAAD&#x27; brand (Aashirvaad look-alike) - trademark risk</td>
+</tr>
+<tr>
+<td>P05</td>
+<td>GPT Image 1</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>₹ correct</td>
+</tr>
+<tr>
+<td>P06</td>
+<td>GPT Image 1</td>
+<td>HI</td>
+<td>Small error</td>
+<td>सिर्फ़ rendered without nukta (सिर्फ); ब्लाउज़ and लक्ष्मी correct</td>
+</tr>
+<tr>
+<td>P07</td>
+<td>GPT Image 1</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All caps; phone number correct</td>
+</tr>
+<tr>
+<td>P08</td>
+<td>GPT Image 1</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>All 3 lines correct incl. विज्ञान, कक्षा, phone number</td>
+</tr>
+<tr>
+<td>P09</td>
+<td>GPT Image 1</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>Added unrequested line &#x27;Agarwal General Store, Mathura&#x27; (legible English)</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>GPT Image 1</td>
+<td>HI</td>
+<td>Major error</td>
+<td>उपलब्ध rendered as &#x27;उपल्वध&#x27;; added unrequested pseudo-Hindi line &#x27;अगरावी गसरलातो सोरर&#x27; (garbled shop name)</td>
+</tr>
+<tr>
+<td>P11</td>
+<td>GPT Image 1</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td></td>
+</tr>
+<tr>
+<td>P12</td>
+<td>GPT Image 1</td>
+<td>HI</td>
+<td>Small error</td>
+<td>मुफ़्त without nukta; जाँच rendered as जांच (anusvara for chandrabindu)</td>
+</tr>
+<tr>
+<td>S13</td>
+<td>GPT Image 1</td>
+<td>MIX</td>
+<td>Major error</td>
+<td>मोबाइल rendered as &#x27;मोबाल&#x27;; added unrequested &#x27;RAJ MOBILE POINT&#x27;; Apple logo on a phone</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>GPT Image 1</td>
+<td>HI</td>
+<td>Major error</td>
+<td>जैसा-&gt;&#x27;जेसा&#x27;, डिलीवरी-&gt;&#x27;डिलेबरी&#x27;, सिर्फ़/फ़्री lose nukta; टिफ़िन and शुद्ध correct</td>
+</tr>
+<tr>
+<td>S15</td>
+<td>GPT Image 1</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>Densest conjuncts (श्र, कृ, ष्ण, ष्ट, र्दि) all correct</td>
+</tr>
+<tr>
+<td>S16</td>
+<td>GPT Image 1</td>
+<td>HI</td>
+<td>Small error</td>
+<td>शुभकामनाएँ rendered as &#x27;शुभकामानाएँ&#x27; (extra ा); added unrequested English &#x27;Maa Tara Fruit Bhandar&#x27;; Chhath visuals (soop, thekua, sugarcane, arghya at ghat) correct</td>
+</tr>
+<tr>
+<td>P01</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All text correct</td>
+</tr>
+<tr>
+<td>P02</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>HI</td>
+<td>Major error</td>
+<td>दीपावली-&gt;&#x27;दोपावली&#x27;; shop name &#x27;शमा स्वोटस&#x27; (शर्मा स्वीट्स)</td>
+</tr>
+<tr>
+<td>P03</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>Text correct; atta packs carry a garbled brand &#x27;GUPIA ATTA&#x27;</td>
+</tr>
+<tr>
+<td>P04</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>HI</td>
+<td>Major error</td>
+<td>सभी-&gt;&#x27;सधी&#x27;, छूट-&gt;&#x27;छाट&#x27;, गुप्ता-&gt;&#x27;गुप्टा&#x27;; packs show garbled pseudo-brand labels</td>
+</tr>
+<tr>
+<td>P05</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>English text correct; added garbled mixed-script shop name &#x27;लसमी टीlors&#x27;; real &#x27;USHA&#x27; logo on sewing machine</td>
+</tr>
+<tr>
+<td>P06</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>HI</td>
+<td>Gibberish / missing</td>
+<td>&#x27;ब्लाुज़ं सेलही सफिं ₹250 / लस्भी टेलरस&#x27;: every word misspelled, only ₹250 survives</td>
+</tr>
+<tr>
+<td>P07</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>Text correct; added &#x27;Vidya Coaching Centre, Patna, Bihar&#x27; (legible)</td>
+</tr>
+<tr>
+<td>P08</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>HI</td>
+<td>Major error</td>
+<td>प्रारंभ-&gt;&#x27;प्राार्म&#x27;, गणित और विज्ञान-&gt;&#x27;गगीत आरे विचान&#x27;, संपर्क करें-&gt;&#x27;संपक कारें&#x27;; phone number correct</td>
+</tr>
+<tr>
+<td>P09</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All text correct</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>HI</td>
+<td>Major error</td>
+<td>स्पेशल-&gt;&#x27;स्पषाल&#x27;, उपलब्ध-&gt;&#x27;उजाब&#x27;; added garbled English &#x27;MATHURA, UTTER UPREASSHI&#x27;</td>
+</tr>
+<tr>
+<td>P11</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All text correct</td>
+</tr>
+<tr>
+<td>P12</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>HI</td>
+<td>Gibberish / missing</td>
+<td>&#x27;हर रनिवार मुफ्टि शुमार जॉच्छ / श्री मडिजल स्तोष&#x27;: every word wrong incl. the day of the week on a health notice</td>
+</tr>
+<tr>
+<td>S13</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>MIX</td>
+<td>Major error</td>
+<td>English line correct; मोबाइल-&gt;&#x27;मोबोल&#x27;, गिफ़्ट-&gt;&#x27;गिर्ष्ट&#x27;, पक्का-&gt;&#x27;पका&#x27;; added &#x27;Raj Mobile Point&#x27; and garbled &#x27;Meerut, Uprasshi&#x27;</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>HI</td>
+<td>Gibberish / missing</td>
+<td>Most words broken: &#x27;हाठ&#x27;, &#x27;काना&#x27;, &#x27;गर&#x27;, &#x27;शूढ&#x27;, &#x27;टेष्नि&#x27;, &#x27;मासाक प्रान सीर्प्र&#x27;, &#x27;दलिरी&#x27;</td>
+</tr>
+<tr>
+<td>S15</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>HI</td>
+<td>Gibberish / missing</td>
+<td>&#x27;श्री क्रूश्न जममताती की हादिक शुभफापाएँ&#x27;: conjunct-dense line collapses</td>
+</tr>
+<tr>
+<td>S16</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>HI</td>
+<td>Major error</td>
+<td>महापर्व-&gt;&#x27;माहापर्व&#x27;, हार्दिक-&gt;&#x27;हादिक&#x27;, शुभकामनाएँ-&gt;&#x27;शुभाफामाएं&#x27;; added garbled Hindi sign &#x27;मां तारा फ्रोट बन्दार, पतना, बेहार&#x27;; Chhath visuals (women in river at sunset, soop, thekua, sugarcane) correct</td>
+</tr>
+<tr>
+<td>P01</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All text correct</td>
+</tr>
+<tr>
+<td>P02</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>शुभ दीपावली and शर्मा स्वीट्स both correct</td>
+</tr>
+<tr>
+<td>P03</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>Text correct; generic &#x27;WHEAT ATTA&#x27; packs</td>
+</tr>
+<tr>
+<td>P04</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>All Hindi text correct; generic &#x27;atta&#x27; packs</td>
+</tr>
+<tr>
+<td>P05</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All text correct</td>
+</tr>
+<tr>
+<td>P06</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>All text correct incl. nukta in ब्लाउज़ and सिर्फ़ and लक्ष्मी; real &#x27;USHA&#x27; logo on sewing machine</td>
+</tr>
+<tr>
+<td>P07</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All text correct</td>
+</tr>
+<tr>
+<td>P08</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>All 3 lines correct; ज्ञ in विज्ञान drawn as a stylised ligature (to confirm with participants); English maths scribbles on the whiteboard background</td>
+</tr>
+<tr>
+<td>P09</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All text correct</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>All text correct incl. उपलब्ध</td>
+</tr>
+<tr>
+<td>P11</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>EN</td>
+<td>Exactly correct</td>
+<td>All text correct</td>
+</tr>
+<tr>
+<td>P12</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>All text correct incl. मुफ़्त (nukta) and जाँच (chandrabindu)</td>
+</tr>
+<tr>
+<td>S13</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>MIX</td>
+<td>Exactly correct</td>
+<td>Both lines correct; printed the instruction word &#x27;WhatsApp Status&#x27; as a heading and added &#x27;Raj Mobile Point&#x27;</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>HI</td>
+<td>Small error</td>
+<td>All 4 lines correct except फ़्री rendered without nukta (फ्री)</td>
+</tr>
+<tr>
+<td>S15</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>Densest conjuncts all correct</td>
+</tr>
+<tr>
+<td>S16</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>HI</td>
+<td>Exactly correct</td>
+<td>Text correct; most authentic Chhath scene (women in river at sunrise/sunset, soop with thekua, sugarcane, ghat)</td>
+</tr>
+</tbody>
+</table>
+<h2>D · Generation log</h2>
+<table>
+<thead>
+<tr>
+<th>Prompt</th>
+<th>Model</th>
+<th>Platform</th>
+<th>Request ID</th>
+<th>Time (UTC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P01</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_ae419bb9c4e1493795ff53398e6d6946</code></td>
+<td>2026-10-07 16:33</td>
+</tr>
+<tr>
+<td>P02</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_6187eea779d84054bbb5769d9e93ac3c</code></td>
+<td>2026-10-07 16:34</td>
+</tr>
+<tr>
+<td>P03</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_1c22c369c3c94ed58d0352cf636d7d4b</code></td>
+<td>2026-10-07 16:34</td>
+</tr>
+<tr>
+<td>P04</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_4559b11dd5334824901f3e3e1faa085e</code></td>
+<td>2026-10-07 16:35</td>
+</tr>
+<tr>
+<td>P05</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_c44b42d1be854d669a0105a4b6d52147</code></td>
+<td>2026-10-07 16:36</td>
+</tr>
+<tr>
+<td>P06</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_f45381e5d80d44cfac276c8c1cd3fbdd</code></td>
+<td>2026-10-07 16:36</td>
+</tr>
+<tr>
+<td>P07</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_3e06700252db4ce49b5fa67ff14633e8</code></td>
+<td>2026-10-07 16:37</td>
+</tr>
+<tr>
+<td>P08</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_3b78314b39e64612a6d6b67cb70716b7</code></td>
+<td>2026-10-07 16:37</td>
+</tr>
+<tr>
+<td>P09</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_e0be16c55e06471f9f7a3bfe18fe2463</code></td>
+<td>2026-10-07 16:38</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_eec1bdd071c94398a0b17b17e554ece7</code></td>
+<td>2026-10-07 16:39</td>
+</tr>
+<tr>
+<td>P11</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_6af0392b0f394176ac7fdba392285722</code></td>
+<td>2026-10-07 16:39</td>
+</tr>
+<tr>
+<td>P12</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_a9deaef23f7e4df0b108c2661c51513c</code></td>
+<td>2026-10-07 16:40</td>
+</tr>
+<tr>
+<td>S13</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_2065d573b98942a0afd6b8380ec4bd92</code></td>
+<td>2026-10-07 16:41</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_6a61951e925740b5a5c358269b5d7585</code></td>
+<td>2026-10-07 16:41</td>
+</tr>
+<tr>
+<td>S15</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_e8ecde12c38f49228fb202af10684b93</code></td>
+<td>2026-10-07 16:42</td>
+</tr>
+<tr>
+<td>S16</td>
+<td>GPT Image 1</td>
+<td>OpenAI Image API</td>
+<td><code>req_87183f30cb3a4b67b968e2ae2d55fa02</code></td>
+<td>2026-10-07 16:43</td>
+</tr>
+<tr>
+<td>P01</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>-YLGat3UMIrFg8UPiNSwoAQ</code></td>
+<td>2026-10-07 17:35</td>
+</tr>
+<tr>
+<td>P02</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>CoPGatHcOur1g8UPouSo4Qo</code></td>
+<td>2026-10-07 17:36</td>
+</tr>
+<tr>
+<td>P03</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>FYPGaticG_mejuMPysDLyAQ</code></td>
+<td>2026-10-07 17:36</td>
+</tr>
+<tr>
+<td>P04</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>HoPGarfnNpTTg8UP7syo0A4</code></td>
+<td>2026-10-07 17:36</td>
+</tr>
+<tr>
+<td>P05</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>KIPGatSqBNy2g8UP6NjOeA</code></td>
+<td>2026-10-07 17:36</td>
+</tr>
+<tr>
+<td>P06</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>M4PGapadGorFg8UPiNSwoAQ</code></td>
+<td>2026-10-07 17:36</td>
+</tr>
+<tr>
+<td>P07</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>O4PGaoG-KK6lg8UPn5DrgQ8</code></td>
+<td>2026-10-07 17:37</td>
+</tr>
+<tr>
+<td>P08</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>RYPGaq_GGZusjuMPtNOmEQ</code></td>
+<td>2026-10-07 17:37</td>
+</tr>
+<tr>
+<td>P09</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>ToPGasiaOYjWg8UP7afJoAY</code></td>
+<td>2026-10-07 17:37</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>WYPGavqfGruog8UP3ZnGmQQ</code></td>
+<td>2026-10-07 17:37</td>
+</tr>
+<tr>
+<td>P11</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>YoPGas2SMcOsmNMPjfzR4AE</code></td>
+<td>2026-10-07 17:37</td>
+</tr>
+<tr>
+<td>P12</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>bIPGavn2LKrdg8UP7pTTiQQ</code></td>
+<td>2026-10-07 17:37</td>
+</tr>
+<tr>
+<td>S13</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>doPGatqtHobVqfkPwai9sA4</code></td>
+<td>2026-10-07 17:38</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>gIPGaq6NOrawg8UPiNXAkQQ</code></td>
+<td>2026-10-07 17:38</td>
+</tr>
+<tr>
+<td>S15</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>i4PGatSFEZTTg8UP7syo0A4</code></td>
+<td>2026-10-07 17:38</td>
+</tr>
+<tr>
+<td>S16</td>
+<td>Gemini 2.5 Flash Image</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>lYPGaobuHPq2g8UPj9aJoAk</code></td>
+<td>2026-10-07 17:38</td>
+</tr>
+<tr>
+<td>P01</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>-oLGauDsBOHFg8UPw8X0gAQ</code></td>
+<td>2026-10-07 17:35</td>
+</tr>
+<tr>
+<td>P02</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>BYPGatnFIJjpjuMPq5-t2A4</code></td>
+<td>2026-10-07 17:36</td>
+</tr>
+<tr>
+<td>P03</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>V4PGav6vDojWg8UP7afJoAY</code></td>
+<td>2026-10-07 17:37</td>
+</tr>
+<tr>
+<td>P04</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>ZIPGapzmFriqg8UPq9ik0QQ</code></td>
+<td>2026-10-07 17:37</td>
+</tr>
+<tr>
+<td>P05</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>boPGav-jNN-ng8UPn5PY2A4</code></td>
+<td>2026-10-07 17:37</td>
+</tr>
+<tr>
+<td>P06</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>eYPGasTXF5HFg8UP1cG3mQQ</code></td>
+<td>2026-10-07 17:38</td>
+</tr>
+<tr>
+<td>P07</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>hIPGaoa3GffjjuMP1tmXMQ</code></td>
+<td>2026-10-07 17:38</td>
+</tr>
+<tr>
+<td>P08</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>j4PGaoy_JbjMqfkPnL-EuA4</code></td>
+<td>2026-10-07 17:38</td>
+</tr>
+<tr>
+<td>P09</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>nYPGauXXEL2iqfkP7LO48Q8</code></td>
+<td>2026-10-07 17:38</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>p4PGasjSNZWng8UPyfuo2AI</code></td>
+<td>2026-10-07 17:38</td>
+</tr>
+<tr>
+<td>P11</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>tIPGasTACMDcg8UPk42_kAQ</code></td>
+<td>2026-10-07 17:39</td>
+</tr>
+<tr>
+<td>P12</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>vYPGaoLKCZ6kg8UPtbiQwA4</code></td>
+<td>2026-10-07 17:39</td>
+</tr>
+<tr>
+<td>S13</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>yIPGauz0POf2juMPp8TSsAE</code></td>
+<td>2026-10-07 17:39</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>04PGatTzOMrBjuMP1aiEgAI</code></td>
+<td>2026-10-07 17:39</td>
+</tr>
+<tr>
+<td>S15</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>4oPGarWyE7rDjuMP-NP4EA</code></td>
+<td>2026-10-07 17:39</td>
+</tr>
+<tr>
+<td>S16</td>
+<td>Gemini 3.1 Flash Image Preview</td>
+<td>Google Gemini API (generateContent)</td>
+<td><code>7YPGaojTN7nRg8UPqsnfiQQ</code></td>
+<td>2026-10-07 17:40</td>
+</tr>
+</tbody>
+</table>
+<p>Every record in <code>q1/generation_log.jsonl</code> also stores the exact prompt, settings and token usage.</p>
+<h2>E · All generated images</h2>
+<table class="gallery"><tr><th>Prompt</th><th>OpenAI · GPT Image 1</th><th>Google · Gemini 2.5 Flash Image</th><th>Google · Gemini 3.1 Flash Image Preview</th></tr><tr><td><b>P01</b><br>EN · Festival greeting (Diwali)<br><span class="req">Happy Diwali<br>Sharma Sweets</span></td><td><img src="assets/P01_gpt1.jpg"></td><td><img src="assets/P01_g25.jpg"></td><td><img src="assets/P01_g31.jpg"></td></tr><tr><td><b>P02</b><br>HI · Festival greeting (Diwali)<br><span class="req">शुभ दीपावली<br>शर्मा स्वीट्स</span></td><td><img src="assets/P02_gpt1.jpg"></td><td><img src="assets/P02_g25.jpg"></td><td><img src="assets/P02_g31.jpg"></td></tr><tr><td><b>P03</b><br>EN · Discount offer (kirana)<br><span class="req">Flat 10% Off on All Groceries<br>Gupta Kirana Store</span></td><td><img src="assets/P03_gpt1.jpg"></td><td><img src="assets/P03_g25.jpg"></td><td><img src="assets/P03_g31.jpg"></td></tr><tr><td><b>P04</b><br>HI · Discount offer (kirana)<br><span class="req">सभी किराना सामान पर 10% की छूट<br>गुप्ता किराना स्टोर</span></td><td><img src="assets/P04_gpt1.jpg"></td><td><img src="assets/P04_g25.jpg"></td><td><img src="assets/P04_g31.jpg"></td></tr><tr><td><b>P05</b><br>EN · Service price (tailor)<br><span class="req">Blouse Stitching Only ₹250<br>Laxmi Tailors</span></td><td><img src="assets/P05_gpt1.jpg"></td><td><img src="assets/P05_g25.jpg"></td><td><img src="assets/P05_g31.jpg"></td></tr><tr><td><b>P06</b><br>HI · Service price (tailor)<br><span class="req">ब्लाउज़ सिलाई सिर्फ़ ₹250<br>लक्ष्मी टेलर्स</span></td><td><img src="assets/P06_gpt1.jpg"></td><td><img src="assets/P06_g25.jpg"></td><td><img src="assets/P06_g31.jpg"></td></tr><tr><td><b>P07</b><br>EN · Admissions notice (coaching)<br><span class="req">Admissions Open<br>Classes 9 to 12: Maths and Science<br>Call: 98765 43210</span></td><td><img src="assets/P07_gpt1.jpg"></td><td><img src="assets/P07_g25.jpg"></td><td><img src="assets/P07_g31.jpg"></td></tr><tr><td><b>P08</b><br>HI · Admissions notice (coaching)<br><span class="req">प्रवेश प्रारंभ<br>कक्षा 9 से 12: गणित और विज्ञान<br>संपर्क करें: 98765 43210</span></td><td><img src="assets/P08_gpt1.jpg"></td><td><img src="assets/P08_g25.jpg"></td><td><img src="assets/P08_g31.jpg"></td></tr><tr><td><b>P09</b><br>EN · Festival product (Holi)<br><span class="req">Holi Special<br>Herbal Colours Available</span></td><td><img src="assets/P09_gpt1.jpg"></td><td><img src="assets/P09_g25.jpg"></td><td><img src="assets/P09_g31.jpg"></td></tr><tr><td><b>P10</b><br>HI · Festival product (Holi)<br><span class="req">होली स्पेशल<br>हर्बल रंग उपलब्ध</span></td><td><img src="assets/P10_gpt1.jpg"></td><td><img src="assets/P10_g25.jpg"></td><td><img src="assets/P10_g31.jpg"></td></tr><tr><td><b>P11</b><br>EN · Health camp notice (chemist)<br><span class="req">Free Sugar Test Every Sunday<br>Shree Medical Store</span></td><td><img src="assets/P11_gpt1.jpg"></td><td><img src="assets/P11_g25.jpg"></td><td><img src="assets/P11_g31.jpg"></td></tr><tr><td><b>P12</b><br>HI · Health camp notice (chemist)<br><span class="req">हर रविवार मुफ़्त शुगर जाँच<br>श्री मेडिकल स्टोर</span></td><td><img src="assets/P12_gpt1.jpg"></td><td><img src="assets/P12_g25.jpg"></td><td><img src="assets/P12_g31.jpg"></td></tr><tr><td><b>S13</b><br>MIX · Festival offer (mobile shop)<br><span class="req">Diwali Dhamaka Offer<br>हर मोबाइल पर गिफ़्ट पक्का!</span></td><td><img src="assets/S13_gpt1.jpg"></td><td><img src="assets/S13_g25.jpg"></td><td><img src="assets/S13_g31.jpg"></td></tr><tr><td><b>S14</b><br>HI · Subscription offer (tiffin service)<br><span class="req">माँ के हाथ जैसा खाना<br>घर का बना शुद्ध शाकाहारी टिफ़िन<br>मासिक प्लान सिर्फ़ ₹2500<br>फ़्री होम डिलीवरी</span></td><td><img src="assets/S14_gpt1.jpg"></td><td><img src="assets/S14_g25.jpg"></td><td><img src="assets/S14_g31.jpg"></td></tr><tr><td><b>S15</b><br>HI · Festival greeting (Janmashtami)<br><span class="req">श्री कृष्ण जन्माष्टमी की<br>हार्दिक शुभकामनाएँ</span></td><td><img src="assets/S15_gpt1.jpg"></td><td><img src="assets/S15_g25.jpg"></td><td><img src="assets/S15_g31.jpg"></td></tr><tr><td><b>S16</b><br>HI · Regional festival greeting (Chhath Puja)<br><span class="req">छठ महापर्व की<br>हार्दिक शुभकामनाएँ</span></td><td><img src="assets/S16_gpt1.jpg"></td><td><img src="assets/S16_g25.jpg"></td><td><img src="assets/S16_g31.jpg"></td></tr></table>
+
+<p>Thumbnails shown; full-resolution PNGs are in <code>q1/images/</code> (https://github.com/AbhyudayPatel/josh-talks-hindi-poster-eval).</p>
+<h2>F · Q2 supporting tables</h2>
+<p><span class="lbl real">REAL DATA</span></p>
+<p><strong>H1. Signal validation against the crowd-consensus gold set</strong> (bad = CER &gt; 15% vs medoid of ~126 transcriptions)</p>
+<table>
+<thead>
+<tr>
+<th>Signal (gold set, 5,544 tasks)</th>
+<th>Tasks flagged</th>
+<th>Bad if flagged (95% CI)</th>
+<th>Bad otherwise</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTF &lt; 1 (submitted faster than audio length)</td>
+<td>273 (4.9%)</td>
+<td>99.6% (98.0-99.9)</td>
+<td>26.5%</td>
+<td></td>
+</tr>
+<tr>
+<td>RTF &lt; 0.5</td>
+<td>163 (2.9%)</td>
+<td>99.4% (96.6-99.9)</td>
+<td>28.0%</td>
+<td></td>
+</tr>
+<tr>
+<td>Unedited when Whisper was wrong</td>
+<td>476 (8.6%)</td>
+<td>100.0% (99.2-100.0)</td>
+<td>23.5%</td>
+<td>true by construction</td>
+</tr>
+<tr>
+<td>Unedited (any clip)</td>
+<td>476 (8.6%)</td>
+<td>100.0% (99.2-100.0)</td>
+<td>23.5%</td>
+<td>true by construction (Whisper wrong on all gold clips)</td>
+</tr>
+<tr>
+<td>RTF &lt; 1 AND unedited</td>
+<td>252 (4.5%)</td>
+<td>100.0% (98.5-100.0)</td>
+<td>26.7%</td>
+<td></td>
+</tr>
+<tr>
+<td>RTF &gt;= 1 AND unedited</td>
+<td>212 (3.8%)</td>
+<td>100.0% (98.2-100.0)</td>
+<td>27.3%</td>
+<td>true by construction</td>
+</tr>
+<tr>
+<td>Blank on a speech clip</td>
+<td>11 (0.2%)</td>
+<td>100.0% (74.1-100.0)</td>
+<td>29.9%</td>
+<td></td>
+</tr>
+<tr>
+<td>Text density &lt; 50% of consensus</td>
+<td>205 (3.7%)</td>
+<td>100.0% (98.2-100.0)</td>
+<td>27.4%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>H2. Error rate by real-time factor (gold set)</strong></p>
+<table>
+<thead>
+<tr>
+<th>RTF bin</th>
+<th>Tasks</th>
+<th>Bad rate</th>
+<th>Median CER</th>
+<th>Unedited share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;0.5</td>
+<td>163</td>
+<td>99%</td>
+<td>0.49</td>
+<td>97%</td>
+</tr>
+<tr>
+<td>0.5-1</td>
+<td>110</td>
+<td>100%</td>
+<td>0.50</td>
+<td>85%</td>
+</tr>
+<tr>
+<td>1-2</td>
+<td>178</td>
+<td>82%</td>
+<td>0.43</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>2-4</td>
+<td>755</td>
+<td>35%</td>
+<td>0.10</td>
+<td>6%</td>
+</tr>
+<tr>
+<td>4-8</td>
+<td>1453</td>
+<td>19%</td>
+<td>0.06</td>
+<td>1%</td>
+</tr>
+<tr>
+<td>&gt;8</td>
+<td>2773</td>
+<td>24%</td>
+<td>0.07</td>
+<td>3%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H3. Production tasks: RTF by clip length</strong> (8-digit task-ID block, real timings)</p>
+<table>
+<thead>
+<tr>
+<th>Clip length</th>
+<th>Tasks</th>
+<th>Median RTF</th>
+<th>Share RTF &lt; 1</th>
+<th>Median time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;1s</td>
+<td>12931</td>
+<td>11.6</td>
+<td>0.0%</td>
+<td>4.4</td>
+</tr>
+<tr>
+<td>1-3s</td>
+<td>8502</td>
+<td>5.2</td>
+<td>4.9%</td>
+<td>8.9</td>
+</tr>
+<tr>
+<td>3-6s</td>
+<td>7035</td>
+<td>5.5</td>
+<td>9.6%</td>
+<td>23.5</td>
+</tr>
+<tr>
+<td>6-10s</td>
+<td>7861</td>
+<td>4.2</td>
+<td>16.8%</td>
+<td>34.0</td>
+</tr>
+<tr>
+<td>10-20s</td>
+<td>12356</td>
+<td>4.0</td>
+<td>22.1%</td>
+<td>47.3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H4. Per-user scorecard (10 users with history; timing-based fields omitted - synthetic)</strong></p>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Tasks</th>
+<th>Audio min</th>
+<th>Unedited (CI)</th>
+<th>Unedited ≥5 s</th>
+<th>Median edit WER</th>
+<th>Blank rate</th>
+<th>Halluc. accepted/seen</th>
+<th>Junk</th>
+<th>[blank]+text</th>
+<th>Dup. long texts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>632098</td>
+<td>165</td>
+<td>14</td>
+<td>78% (68-85)</td>
+<td>84%</td>
+<td>0.27</td>
+<td>2%</td>
+<td>0/0</td>
+<td>1</td>
+<td>11</td>
+<td>0</td>
+</tr>
+<tr>
+<td>688393</td>
+<td>86</td>
+<td>7</td>
+<td>36% (24-51)</td>
+<td>48%</td>
+<td>0.37</td>
+<td>21%</td>
+<td>0/2</td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr>
+<td>580062</td>
+<td>609</td>
+<td>48</td>
+<td>27% (22-32)</td>
+<td>18%</td>
+<td>0.25</td>
+<td>17%</td>
+<td>4/12</td>
+<td>21</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>410566</td>
+<td>349</td>
+<td>28</td>
+<td>21% (16-27)</td>
+<td>17%</td>
+<td>0.17</td>
+<td>10%</td>
+<td>2/5</td>
+<td>0</td>
+<td>15</td>
+<td>0</td>
+</tr>
+<tr>
+<td>467270</td>
+<td>176</td>
+<td>14</td>
+<td>14% (9-23)</td>
+<td>11%</td>
+<td>0.29</td>
+<td>1%</td>
+<td>0/4</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>393886</td>
+<td>509</td>
+<td>36</td>
+<td>13% (10-18)</td>
+<td>7%</td>
+<td>0.17</td>
+<td>3%</td>
+<td>1/8</td>
+<td>40</td>
+<td>56</td>
+<td>0</td>
+</tr>
+<tr>
+<td>222099</td>
+<td>333</td>
+<td>27</td>
+<td>7% (4-12)</td>
+<td>3%</td>
+<td>0.33</td>
+<td>11%</td>
+<td>0/1</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>681509</td>
+<td>358</td>
+<td>29</td>
+<td>5% (3-9)</td>
+<td>2%</td>
+<td>0.31</td>
+<td>8%</td>
+<td>0/4</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>326611</td>
+<td>149</td>
+<td>11</td>
+<td>5% (2-13)</td>
+<td>0%</td>
+<td>0.25</td>
+<td>15%</td>
+<td>0/0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>311760</td>
+<td>184</td>
+<td>15</td>
+<td>0% (0-4)</td>
+<td>0%</td>
+<td>0.16</td>
+<td>12%</td>
+<td>0/2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H5. Whisper hallucinations (strings recurring across unrelated recordings)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Whisper string</th>
+<th>Tasks</th>
+<th>Distinct recordings</th>
+<th>Humans wrote [blank]</th>
+<th>Accepted verbatim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>प्रस्तुति प्रस्तुति</td>
+<td>398</td>
+<td>338</td>
+<td>62%</td>
+<td>17%</td>
+</tr>
+<tr>
+<td>झाल</td>
+<td>134</td>
+<td>122</td>
+<td>68%</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>कर दो</td>
+<td>96</td>
+<td>90</td>
+<td>64%</td>
+<td>19%</td>
+</tr>
+<tr>
+<td>प्रतियों को प्रतियों को प्रतियों को प्रत…</td>
+<td>10</td>
+<td>10</td>
+<td>40%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H6. Why the 10-user timings are unusable</strong></p>
+<div class="fig"><img src="assets/fig_timing_artifact.png" style="max-height:260px"></div>
+
+<p class="small">Reproducible: <code>q1/generate.py</code>, <code>q1/build_rating_app.py</code>, <code>q1/analyze.py</code>, <code>q2/q2_analysis.py</code>, <code>tools/build_submission.py</code>.</p></body></html>

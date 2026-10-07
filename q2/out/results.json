@@ -1,0 +1,694 @@
+{
+ "audit": {
+  "rows": 51783,
+  "distinct_user_id": 48875,
+  "ids_with_history": 10,
+  "cohort10_rows": 2918,
+  "pool_rows": 48865,
+  "pool_ids_unique_frac": 1.0,
+  "pool_consecutive_ids_same_folder": 0.8293222003929273,
+  "pool_median_id_gap": 9.0,
+  "cps_matches_chars_per_duration": 0.9941293474692466,
+  "cps_matches_chars_per_time": 0.000733831566344167,
+  "whisper_missing_frac": 0.4461889036942626,
+  "edited_yes_frac": 0.834096131935191,
+  "edited_yes_but_whisper_missing": 23104,
+  "edited_yes_cosmetic_only": 963,
+  "time_missing": 180,
+  "time_zero": 1,
+  "time_gt_1h": 433,
+  "blank_frac": 0.19162659560087286,
+  "blank_tag_variants": {
+   "ब्लैंक": 74,
+   "Blank": 72,
+   "blank": 15,
+   "BLANK": 8,
+   "खाली": 2
+  },
+  "blank_misuse_rows": 89,
+  "junk_rows": 175,
+  "tac_audios_rows": 5544
+ },
+ "cohort10_timing": {
+  "all_integer": true,
+  "min": 4.0,
+  "max": 12.0,
+  "values": {
+   "4": 317,
+   "5": 310,
+   "6": 345,
+   "7": 321,
+   "8": 348,
+   "9": 307,
+   "10": 329,
+   "11": 291,
+   "12": 350
+  },
+  "chisq_uniform_4_12_p": 0.2425550370677501,
+  "spearman_time_vs_duration_cohort": -0.014944816870095327,
+  "spearman_time_vs_duration_pool": 0.538495440232274,
+  "pool_integer_frac": 6.139363552645042e-05,
+  "duration_2dp_pool": 1.0,
+  "duration_2dp_cohort": 0.0411240575736806
+ },
+ "pool_dist": {
+  "duration": {
+   "0.01": 0.12,
+   "0.05": 0.18,
+   "0.1": 0.39,
+   "0.25": 0.93,
+   "0.5": 4.0,
+   "0.75": 10.11,
+   "0.9": 12.54,
+   "0.95": 13.2,
+   "0.99": 14.25
+  },
+  "time_taken": {
+   "0.01": 1.3823074,
+   "0.05": 1.8434698,
+   "0.1": 2.4412082,
+   "0.25": 4.529808,
+   "0.5": 13.554662,
+   "0.75": 49.070954,
+   "0.9": 137.74573439999998,
+   "0.95": 257.78773219999977,
+   "0.99": 2950.2860825599982
+  },
+  "rtf": {
+   "0.01": 0.1758229944818103,
+   "0.05": 0.3957389143147725,
+   "0.1": 0.910414411983924,
+   "0.25": 2.4608792999999998,
+   "0.5": 6.423636363636364,
+   "0.75": 13.656600000000001,
+   "0.9": 27.21200166666666,
+   "0.95": 51.3447299999999,
+   "0.99": 755.5967574818408
+  },
+  "cps": {
+   "0.01": 0.1926782274,
+   "0.05": 1.538461538,
+   "0.1": 3.25203252,
+   "0.25": 6.862745098,
+   "0.5": 10.36363636,
+   "0.75": 12.90322581,
+   "0.9": 17.77777778,
+   "0.95": 33.33333333,
+   "0.99": 58.33333333
+  },
+  "rtf_lt_1_frac": 0.10574098798397864,
+  "rtf_lt_0_5_frac": 0.06513299784327822,
+  "true_unedited_frac_when_whisper_present": 0.3410955376522091,
+  "edit_wer_median_when_edited": 0.5454545454545454
+ },
+ "pool_rtf_by_duration": [
+  {
+   "dur_bin": "<1s",
+   "n": 12931,
+   "median_rtf": 11.573,
+   "frac_rtf_lt1": 0.0,
+   "median_time": 4.388
+  },
+  {
+   "dur_bin": "1-3s",
+   "n": 8502,
+   "median_rtf": 5.228,
+   "frac_rtf_lt1": 0.049,
+   "median_time": 8.898
+  },
+  {
+   "dur_bin": "3-6s",
+   "n": 7035,
+   "median_rtf": 5.497,
+   "frac_rtf_lt1": 0.096,
+   "median_time": 23.526
+  },
+  {
+   "dur_bin": "6-10s",
+   "n": 7861,
+   "median_rtf": 4.212,
+   "frac_rtf_lt1": 0.168,
+   "median_time": 33.991
+  },
+  {
+   "dur_bin": "10-20s",
+   "n": 12356,
+   "median_rtf": 3.97,
+   "frac_rtf_lt1": 0.221,
+   "median_time": 47.278
+  }
+ ],
+ "hallucination": {
+  "strings": [
+   {
+    "text": "प्रस्तुति प्रस्तुति",
+    "n": 398.0,
+    "folders": 338.0,
+    "dur_sd": 1.777,
+    "blank_share": 0.616,
+    "accept_share": 0.168
+   },
+   {
+    "text": "झाल",
+    "n": 134.0,
+    "folders": 122.0,
+    "dur_sd": 0.694,
+    "blank_share": 0.679,
+    "accept_share": 0.104
+   },
+   {
+    "text": "कर दो",
+    "n": 96.0,
+    "folders": 90.0,
+    "dur_sd": 1.036,
+    "blank_share": 0.635,
+    "accept_share": 0.188
+   },
+   {
+    "text": "प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्रतियों को प्र",
+    "n": 10.0,
+    "folders": 10.0,
+    "dur_sd": 0.263,
+    "blank_share": 0.4,
+    "accept_share": 0.0
+   }
+  ],
+  "pool_rows_with_halluc": 638,
+  "pool_accept_rate": 0.15517241379310345,
+  "pool_blank_rate": 0.6285266457680251
+ },
+ "gold": {
+  "clips": 41,
+  "tasks": 5544,
+  "median_transcribers_per_clip": 126.0,
+  "clips_where_consensus_differs_from_whisper": 41,
+  "median_whisper_cer": 0.5064935064935064,
+  "overall_bad_rate": 0.30068542568542567,
+  "median_cer": 0.08290155440414508
+ },
+ "gold_signals": [
+  {
+   "signal": "RTF < 1 (submitted faster than audio length)",
+   "n_flagged": 273,
+   "share_flagged": 0.0492424242,
+   "bad_rate_flagged": 0.9963369963,
+   "bad_ci_flagged": [
+    0.9795460113,
+    0.9993531136
+   ],
+   "bad_rate_rest": 0.2646556631,
+   "bad_ci_rest": [
+    0.2529206102,
+    0.2767335125
+   ],
+   "lift": 3.764653984,
+   "median_cer_flagged": 0.4938271605,
+   "median_cer_rest": 0.0751173709
+  },
+  {
+   "signal": "RTF < 0.5",
+   "n_flagged": 163,
+   "share_flagged": 0.0294011544,
+   "bad_rate_flagged": 0.9938650307,
+   "bad_ci_flagged": [
+    0.9660709165,
+    0.998916233
+   ],
+   "bad_rate_rest": 0.2796877904,
+   "bad_ci_rest": [
+    0.2678553806,
+    0.291834546
+   ],
+   "lift": 3.5534802193,
+   "median_cer_flagged": 0.487804878,
+   "median_cer_rest": 0.0786516854
+  },
+  {
+   "signal": "Unedited when Whisper was wrong",
+   "n_flagged": 476,
+   "share_flagged": 0.0858585859,
+   "bad_rate_flagged": 1.0,
+   "bad_ci_flagged": [
+    0.9919940247,
+    1.0
+   ],
+   "bad_rate_rest": 0.2350039463,
+   "bad_ci_rest": [
+    0.2235337562,
+    0.246875572
+   ],
+   "lift": 4.255247691,
+   "median_cer_flagged": 0.5,
+   "median_cer_rest": 0.0722891566
+  },
+  {
+   "signal": "Unedited (any clip)",
+   "n_flagged": 476,
+   "share_flagged": 0.0858585859,
+   "bad_rate_flagged": 1.0,
+   "bad_ci_flagged": [
+    0.9919940247,
+    1.0
+   ],
+   "bad_rate_rest": 0.2350039463,
+   "bad_ci_rest": [
+    0.2235337562,
+    0.246875572
+   ],
+   "lift": 4.255247691,
+   "median_cer_flagged": 0.5,
+   "median_cer_rest": 0.0722891566
+  },
+  {
+   "signal": "RTF < 1 AND unedited",
+   "n_flagged": 252,
+   "share_flagged": 0.0454545455,
+   "bad_rate_flagged": 1.0,
+   "bad_ci_flagged": [
+    0.9849844591,
+    1.0
+   ],
+   "bad_rate_rest": 0.2673847317,
+   "bad_ci_rest": [
+    0.2556317657,
+    0.2794751756
+   ],
+   "lift": 3.7399293286,
+   "median_cer_flagged": 0.5,
+   "median_cer_rest": 0.0759493671
+  },
+  {
+   "signal": "RTF >= 1 AND unedited",
+   "n_flagged": 212,
+   "share_flagged": 0.0382395382,
+   "bad_rate_flagged": 1.0,
+   "bad_ci_flagged": [
+    0.9822017628,
+    1.0
+   ],
+   "bad_rate_rest": 0.2728807202,
+   "bad_ci_rest": [
+    0.2610910286,
+    0.284997446
+   ],
+   "lift": 3.664604811,
+   "median_cer_flagged": 0.5064935065,
+   "median_cer_rest": 0.0779220779
+  },
+  {
+   "signal": "Blank on a speech clip",
+   "n_flagged": 11,
+   "share_flagged": 0.001984127,
+   "bad_rate_flagged": 1.0,
+   "bad_ci_flagged": [
+    0.7411599828,
+    1.0
+   ],
+   "bad_rate_rest": 0.2992951383,
+   "bad_ci_rest": [
+    0.2873709472,
+    0.3114978375
+   ],
+   "lift": 3.3411835749,
+   "median_cer_flagged": 1.0,
+   "median_cer_rest": 0.0819672131
+  },
+  {
+   "signal": "Text density < 50% of consensus",
+   "n_flagged": 205,
+   "share_flagged": 0.036976912,
+   "bad_rate_flagged": 1.0,
+   "bad_ci_flagged": [
+    0.9816051974,
+    1.0
+   ],
+   "bad_rate_rest": 0.2738340513,
+   "bad_ci_rest": [
+    0.2620383053,
+    0.2859550321
+   ],
+   "lift": 3.6518467852,
+   "median_cer_flagged": 0.5760869565,
+   "median_cer_rest": 0.078313253
+  }
+ ],
+ "gold_by_rtf": [
+  {
+   "rtf_bin": "<0.5",
+   "n": 163,
+   "bad_rate": 0.994,
+   "median_cer": 0.488,
+   "unedited": 0.969
+  },
+  {
+   "rtf_bin": "0.5-1",
+   "n": 110,
+   "bad_rate": 1.0,
+   "median_cer": 0.5,
+   "unedited": 0.855
+  },
+  {
+   "rtf_bin": "1-2",
+   "n": 178,
+   "bad_rate": 0.82,
+   "median_cer": 0.428,
+   "unedited": 0.399
+  },
+  {
+   "rtf_bin": "2-4",
+   "n": 755,
+   "bad_rate": 0.347,
+   "median_cer": 0.1,
+   "unedited": 0.065
+  },
+  {
+   "rtf_bin": "4-8",
+   "n": 1453,
+   "bad_rate": 0.19,
+   "median_cer": 0.064,
+   "unedited": 0.013
+  },
+  {
+   "rtf_bin": ">8",
+   "n": 2773,
+   "bad_rate": 0.243,
+   "median_cer": 0.074,
+   "unedited": 0.026
+  }
+ ],
+ "gold_spearman_rtf_cer": -0.17340129016271105,
+ "gold_spearman_editwer_cer_needfix": -0.3445329309079169,
+ "cohort10": [
+  {
+   "user_id": 632098,
+   "tasks": 165,
+   "audio_min": 14.2992,
+   "whisper_present": 90,
+   "true_unedited": 70,
+   "true_unedited_rate": 0.7778,
+   "unedited_ci_lo": 0.6815,
+   "unedited_ci_hi": 0.8513,
+   "unedited_long_clips_rate": 0.8361,
+   "median_edit_wer": 0.2667,
+   "blank_rate": 0.0242,
+   "blank_on_whisper_speech": 2,
+   "blank_misuse": 11,
+   "junk": 1,
+   "halluc_seen": 0,
+   "halluc_accepted": 0,
+   "dup_text_long": 0,
+   "median_cps": 10.14,
+   "cps_gt_25": 9,
+   "rtf_lt1_rate_UNRELIABLE": 0.3394
+  },
+  {
+   "user_id": 688393,
+   "tasks": 86,
+   "audio_min": 6.9925,
+   "whisper_present": 44,
+   "true_unedited": 16,
+   "true_unedited_rate": 0.3636,
+   "unedited_ci_lo": 0.2378,
+   "unedited_ci_hi": 0.5113,
+   "unedited_long_clips_rate": 0.4828,
+   "median_edit_wer": 0.3667,
+   "blank_rate": 0.2093,
+   "blank_on_whisper_speech": 0,
+   "blank_misuse": 6,
+   "junk": 0,
+   "halluc_seen": 2,
+   "halluc_accepted": 0,
+   "dup_text_long": 0,
+   "median_cps": 11.11,
+   "cps_gt_25": 14,
+   "rtf_lt1_rate_UNRELIABLE": 0.3372
+  },
+  {
+   "user_id": 580062,
+   "tasks": 609,
+   "audio_min": 47.6213,
+   "whisper_present": 314,
+   "true_unedited": 84,
+   "true_unedited_rate": 0.2675,
+   "unedited_ci_lo": 0.2216,
+   "unedited_ci_hi": 0.3191,
+   "unedited_long_clips_rate": 0.1838,
+   "median_edit_wer": 0.2457,
+   "blank_rate": 0.1658,
+   "blank_on_whisper_speech": 8,
+   "blank_misuse": 0,
+   "junk": 21,
+   "halluc_seen": 12,
+   "halluc_accepted": 4,
+   "dup_text_long": 3,
+   "median_cps": 10.53,
+   "cps_gt_25": 59,
+   "rtf_lt1_rate_UNRELIABLE": 0.2759
+  },
+  {
+   "user_id": 410566,
+   "tasks": 349,
+   "audio_min": 28.4785,
+   "whisper_present": 181,
+   "true_unedited": 38,
+   "true_unedited_rate": 0.2099,
+   "unedited_ci_lo": 0.157,
+   "unedited_ci_hi": 0.275,
+   "unedited_long_clips_rate": 0.1727,
+   "median_edit_wer": 0.1667,
+   "blank_rate": 0.1003,
+   "blank_on_whisper_speech": 0,
+   "blank_misuse": 15,
+   "junk": 0,
+   "halluc_seen": 5,
+   "halluc_accepted": 2,
+   "dup_text_long": 0,
+   "median_cps": 10.7,
+   "cps_gt_25": 30,
+   "rtf_lt1_rate_UNRELIABLE": 0.2951
+  },
+  {
+   "user_id": 467270,
+   "tasks": 176,
+   "audio_min": 14.2643,
+   "whisper_present": 98,
+   "true_unedited": 14,
+   "true_unedited_rate": 0.1429,
+   "unedited_ci_lo": 0.087,
+   "unedited_ci_hi": 0.2256,
+   "unedited_long_clips_rate": 0.1071,
+   "median_edit_wer": 0.2857,
+   "blank_rate": 0.0057,
+   "blank_on_whisper_speech": 0,
+   "blank_misuse": 0,
+   "junk": 0,
+   "halluc_seen": 4,
+   "halluc_accepted": 0,
+   "dup_text_long": 1,
+   "median_cps": 10.31,
+   "cps_gt_25": 11,
+   "rtf_lt1_rate_UNRELIABLE": 0.3125
+  },
+  {
+   "user_id": 393886,
+   "tasks": 509,
+   "audio_min": 36.3044,
+   "whisper_present": 245,
+   "true_unedited": 33,
+   "true_unedited_rate": 0.1347,
+   "unedited_ci_lo": 0.0975,
+   "unedited_ci_hi": 0.1831,
+   "unedited_long_clips_rate": 0.0699,
+   "median_edit_wer": 0.1724,
+   "blank_rate": 0.0255,
+   "blank_on_whisper_speech": 4,
+   "blank_misuse": 56,
+   "junk": 40,
+   "halluc_seen": 8,
+   "halluc_accepted": 1,
+   "dup_text_long": 0,
+   "median_cps": 9.5,
+   "cps_gt_25": 36,
+   "rtf_lt1_rate_UNRELIABLE": 0.2613
+  },
+  {
+   "user_id": 222099,
+   "tasks": 333,
+   "audio_min": 26.7129,
+   "whisper_present": 176,
+   "true_unedited": 13,
+   "true_unedited_rate": 0.0739,
+   "unedited_ci_lo": 0.0437,
+   "unedited_ci_hi": 0.1223,
+   "unedited_long_clips_rate": 0.027,
+   "median_edit_wer": 0.3333,
+   "blank_rate": 0.1081,
+   "blank_on_whisper_speech": 1,
+   "blank_misuse": 0,
+   "junk": 5,
+   "halluc_seen": 1,
+   "halluc_accepted": 0,
+   "dup_text_long": 1,
+   "median_cps": 11.96,
+   "cps_gt_25": 39,
+   "rtf_lt1_rate_UNRELIABLE": 0.2673
+  },
+  {
+   "user_id": 681509,
+   "tasks": 358,
+   "audio_min": 29.3161,
+   "whisper_present": 190,
+   "true_unedited": 10,
+   "true_unedited_rate": 0.0526,
+   "unedited_ci_lo": 0.0288,
+   "unedited_ci_hi": 0.0942,
+   "unedited_long_clips_rate": 0.0179,
+   "median_edit_wer": 0.3116,
+   "blank_rate": 0.0782,
+   "blank_on_whisper_speech": 1,
+   "blank_misuse": 1,
+   "junk": 1,
+   "halluc_seen": 4,
+   "halluc_accepted": 0,
+   "dup_text_long": 0,
+   "median_cps": 10.275,
+   "cps_gt_25": 24,
+   "rtf_lt1_rate_UNRELIABLE": 0.2793
+  },
+  {
+   "user_id": 326611,
+   "tasks": 149,
+   "audio_min": 10.8314,
+   "whisper_present": 61,
+   "true_unedited": 3,
+   "true_unedited_rate": 0.0492,
+   "unedited_ci_lo": 0.0169,
+   "unedited_ci_hi": 0.1349,
+   "unedited_long_clips_rate": 0.0,
+   "median_edit_wer": 0.25,
+   "blank_rate": 0.1477,
+   "blank_on_whisper_speech": 2,
+   "blank_misuse": 0,
+   "junk": 0,
+   "halluc_seen": 0,
+   "halluc_accepted": 0,
+   "dup_text_long": 0,
+   "median_cps": 10.9,
+   "cps_gt_25": 8,
+   "rtf_lt1_rate_UNRELIABLE": 0.2617
+  },
+  {
+   "user_id": 311760,
+   "tasks": 184,
+   "audio_min": 15.2481,
+   "whisper_present": 96,
+   "true_unedited": 0,
+   "true_unedited_rate": 0.0,
+   "unedited_ci_lo": 0.0,
+   "unedited_ci_hi": 0.0385,
+   "unedited_long_clips_rate": 0.0,
+   "median_edit_wer": 0.1603,
+   "blank_rate": 0.125,
+   "blank_on_whisper_speech": 1,
+   "blank_misuse": 0,
+   "junk": 0,
+   "halluc_seen": 2,
+   "halluc_accepted": 0,
+   "dup_text_long": 0,
+   "median_cps": 9.81,
+   "cps_gt_25": 10,
+   "rtf_lt1_rate_UNRELIABLE": 0.2772
+  }
+ ],
+ "pool_ref": {
+  "true_unedited_rate": 0.3410955376522091,
+  "blank_rate": 0.19731914458201166,
+  "halluc_accept_rate": 0.15517241379310345,
+  "junk_rate": 0.002189706333776732,
+  "blank_misuse_rate": 0.0
+ },
+ "examples": {
+  "632098_unedited_long": [
+   {
+    "whisper_text": "नहीं, नहीं, वो जैसे बैकग्राउंड से रहते हैं, मतलब जैसे उसको मिलता है, जैसे कि आप लाओं से हैं, लेकिन आप सहर में रह रहे हैं।",
+    "user_text": "नहीं, नहीं, वो जैसे बैकग्राउंड से रहते हैं, मतलब जैसे उसको मिलता है, जैसे कि आप लाओं से हैं, लेकिन आप सहर में रह रहे हैं।",
+    "duration": 9.116809116809117
+   },
+   {
+    "whisper_text": "जी जी जी लगता था जब सारे दोस्त साथ में होते थे अब तो पता नहीं कौन कहा कौन कहा ढंच से बात में नहीं हो पाता जी जी जी",
+    "user_text": "जी जी जी लगता था जब सारे दोस्त साथ में होते थे अब तो पता नहीं कौन कहा कौन कहा ढंच से बात में नहीं हो पाता जी जी जी",
+    "duration": 8.1888246628131
+   },
+   {
+    "whisper_text": "नर्वस और उठाइद महसूस करना और मिलिवी प्रितिक्रिया पर विचार करना, साक्षक्तार से बात के बाद इंसिजार करने की बात करना और अनुवप से सीखे गई बातें शेयर करना और बाद में हुए साक्षक्तारों से तुलना करना.",
+    "user_text": "नर्वस और उठाइद महसूस करना और मिलिवी प्रितिक्रिया पर विचार करना, साक्षक्तार से बात के बाद इंसिजार करने की बात करना और अनुवप से सीखे गई बातें शेयर करना और बाद में हुए साक्षक्तारों से तुलना करना.",
+    "duration": 12.570507655116842
+   }
+  ],
+  "junk": [
+   {
+    "user_id": 393886,
+    "user_text": ".",
+    "duration": 0.12004801920768307
+   },
+   {
+    "user_id": 393886,
+    "user_text": ".",
+    "duration": 0.27027027027027023
+   },
+   {
+    "user_id": 393886,
+    "user_text": ".",
+    "duration": 0.33003300330033003
+   },
+   {
+    "user_id": 222099,
+    "user_text": "..",
+    "duration": 0.38986354775828463
+   },
+   {
+    "user_id": 632098,
+    "user_text": ",",
+    "duration": 0.14992503748125938
+   },
+   {
+    "user_id": 222099,
+    "user_text": ".........",
+    "duration": 0.72
+   }
+  ],
+  "blank_misuse": [
+   {
+    "user_id": 688393,
+    "user_text": "[blank] बोला नहीं भाई दुबारा चलते है फिर दुबारा गए"
+   },
+   {
+    "user_id": 393886,
+    "user_text": "[blank]."
+   },
+   {
+    "user_id": 393886,
+    "user_text": "[blank]."
+   },
+   {
+    "user_id": 688393,
+    "user_text": "[blank] लेकिन दवाई के दुकान पर हम नहीं बोलते है"
+   },
+   {
+    "user_id": 393886,
+    "user_text": "[blank]."
+   }
+  ],
+  "gold_clip": {
+   "whisper": "हमने सुना है कि बालाजी मंदिर में आप जो समान ले जाते",
+   "consensus": "अच्छा अच्छा हमने सुना है कि बालाजी मंदिर में आप जो समान ले जाते वो लेके नहीं आ सकते",
+   "n": 242,
+   "unedited_share": 0.04132231404958678
+  }
+ },
+ "volume": {
+  "pool_tasks_rtf_lt1_and_unedited": 0.07309935536682698,
+  "pool_tasks_rtf_lt0.5": 0.0648930727514581,
+  "pool_tasks_halluc_accepted": 0.002025989972372864
+ }
+}

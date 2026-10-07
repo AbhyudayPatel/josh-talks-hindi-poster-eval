@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poster Eval - Josh Talks AI hiring task</title>
+<style>
+  :root { --ink:#0b0b0b; --ink2:#52514e; --line:#e4e2dc; --bg:#fcfcfb; --card:#fff; --accent:#111111; --ok:#1a7f37; --warn:#b54708; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans", "Noto Sans Devanagari", sans-serif; background:var(--bg); color:var(--ink); }
+  header { position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); padding:10px 16px; z-index:5; display:flex; align-items:center; gap:12px; }
+  header b { font-size:14px; font-family:Bahnschrift,sans-serif; }
+  .bar { flex:1; height:6px; background:var(--line); border-radius:3px; overflow:hidden; }
+  .bar i { display:block; height:100%; background:#f04e23; width:0; transition:width .3s; }
+  .count { font-size:12px; color:var(--ink2); min-width:60px; text-align:right; }
+  main { max-width:1280px; margin:0 auto; padding:16px; }
+  h1 { font-size:22px; margin:8px 0 4px; } h2 { font-size:18px; margin:4px 0 8px; }
+  p, li { line-height:1.5; font-size:15px; }
+  .muted { color:var(--ink2); font-size:13px; }
+  .card { background:var(--card); border:1px solid #111; border-radius:0; padding:16px; margin:12px 0; }
+  label.f { display:block; margin:10px 0 4px; font-weight:600; font-size:14px; }
+  input[type=text], input[type=email], input[type=number], select, textarea { width:100%; padding:9px; border:1px solid #cfcdc6; border-radius:7px; font-size:15px; font-family:inherit; }
+  button { font-size:15px; padding:10px 18px; border-radius:0; font-family:Bahnschrift,"Segoe UI",sans-serif; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+  button.ghost { background:#fff; color:var(--accent); }
+  button:disabled { opacity:.4; cursor:not-allowed; }
+  .brief { background:#fefbe8; border:1px solid #111; border-radius:0; padding:12px 14px; margin-bottom:12px; }
+  .req { font-size:20px; line-height:1.6; font-family:"Noto Sans Devanagari","Nirmala UI","Mangal",system-ui,sans-serif; background:#fff; border:1px solid #111; border-radius:0; padding:8px 12px; margin-top:6px; }
+  .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+  @media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+  .opt img { width:100%; border-radius:8px; border:1px solid var(--line); cursor:zoom-in; display:block; }
+  .opt .tag { font-family:Bahnschrift,sans-serif; font-weight:700; font-size:18px; margin-bottom:6px; }
+  .q { margin-top:10px; }
+  .q .qt { font-size:13px; font-weight:600; margin-bottom:4px; }
+  .choices { display:flex; flex-direction:column; gap:4px; }
+  .choices label { display:flex; gap:8px; align-items:flex-start; font-size:13.5px; padding:5px 7px; border:1px solid var(--line); border-radius:6px; cursor:pointer; background:#fff; }
+  .choices label:has(input:checked) { border-color:#111; background:#fefbe8; }
+  .chips { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
+  .chips label { font-family:Consolas,monospace; font-size:11px; border:1px solid var(--line); border-radius:12px; padding:3px 8px; cursor:pointer; background:#fff; }
+  .chips label:has(input:checked) { background:#fff3eb; border-color:#eb6834; }
+  .chips input { display:none; }
+  .best { display:flex; gap:8px; flex-wrap:wrap; }
+  .best label { padding:8px 16px; border:1px solid var(--line); border-radius:8px; cursor:pointer; font-weight:600; background:#fff; }
+  .best label:has(input:checked) { border-color:#111; background:#fefbe8; }
+  .nav { display:flex; justify-content:space-between; align-items:center; margin:16px 0 40px; gap:10px; }
+  .err { color:#b42318; font-size:13px; }
+  #zoom { position:fixed; inset:0; background:rgba(0,0,0,.88); display:none; align-items:center; justify-content:center; z-index:20; cursor:zoom-out; }
+  #zoom img { max-width:96vw; max-height:96vh; }
+  .mock { width:100%; max-width:360px; aspect-ratio:1; border-radius:10px; background:linear-gradient(160deg,#7a1010,#c0392b); color:#ffd54a; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:"Noto Sans Devanagari","Nirmala UI","Mangal",sans-serif; text-align:center; }
+  .mock .t1 { font-size:38px; font-weight:800; } .mock .t2 { font-size:26px; color:#fff; margin-top:6px; } .mock .ico { font-size:56px; margin-top:16px; }
+  table.key { border-collapse:collapse; font-size:13.5px; } table.key td { border:1px solid var(--line); padding:6px 8px; vertical-align:top; }
+</style>
+</head>
+<body>
+<header><b>Poster Eval</b><div class="bar"><i id="prog"></i></div><div class="count" id="count"></div></header>
+<main id="app"></main>
+<div id="zoom" onclick="this.style.display='none'"><img id="zimg" alt=""></div>
+<script>
+/* ---- injected by build_rating_app.py ---- */
+const SCREENS = __SCREENS__;      // [{sid, prompt_id, business, lines[], lang, images:[{iid, src}]}]
+const REPEAT_PID = "__REPEAT__";
+const ENDPOINT = "__ENDPOINT__";  // optional Google Apps Script web-app URL; empty = download only
+const BUILD = "__BUILD__";
+const CONSENT = "I confirm that I am 18 years or older. I voluntarily participated in this evaluation. I consent to my name, email, and responses/ratings being included in this assignment submission for hiring evaluation purposes.";
+/* ----------------------------------------- */
+
+const $ = s => document.querySelector(s);
+const app = $("#app");
+let S = JSON.parse(localStorage.getItem("posterEval_" + BUILD) || "null") || { step:"consent", p:{}, order:null, i:0, answers:{}, t0:null };
+const save = () => localStorage.setItem("posterEval_" + BUILD, JSON.stringify(S));
+
+// deterministic PRNG seeded from the participant's email -> reproducible, auditable randomisation
+function rng(seedStr){ let h=1779033703^seedStr.length; for(let i=0;i<seedStr.length;i++){h=Math.imul(h^seedStr.charCodeAt(i),3432918353);h=h<<13|h>>>19;}
+  return function(){ h=Math.imul(h^h>>>16,2246822507); h=Math.imul(h^h>>>13,3266489909); h^=h>>>16; return (h>>>0)/4294967296; }; }
+function shuffle(a,r){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+
+function buildOrder(email){
+  const r = rng(email.trim().toLowerCase() + BUILD);
+  // prompt order randomised; the repeat screen (test-retest) always comes last with fresh image positions
+  const main = shuffle(SCREENS.map(s=>s.sid), r);
+  const rep = SCREENS.find(s=>s.prompt_id===REPEAT_PID);
+  const order = main.map(sid=>({sid, repeat:false, pos:shuffle([0,1,2], r)}));
+  if (rep) order.push({sid:rep.sid, repeat:true, pos:shuffle([0,1,2], r)});
+  return order;
+}
+
+function progress(){
+  const n = S.order ? S.order.length : 1;
+  const k = S.step==="rate" ? S.i : (S.step==="done" ? n : 0);
+  $("#prog").style.width = (100*k/n)+"%";
+  $("#count").textContent = S.step==="rate" ? `${S.i+1} / ${n}` : "";
+}
+
+function render(){ progress(); ({consent, intro, practice, rate, done})[S.step](); window.scrollTo(0,0); }
+
+function consent(){
+  app.innerHTML = `
+  <h1>Which AI poster would a local shop actually post?</h1>
+  <p class="muted">A ~20-minute study for a Josh Talks AI hiring assignment. You will compare posters made by three AI image models (names hidden) for small Indian businesses.</p>
+  <div class="card">
+    <label class="f">Full name</label><input type="text" id="name" value="${S.p.name||""}">
+    <label class="f">Email</label><input type="email" id="email" value="${S.p.email||""}">
+    <label class="f">Age</label><input type="number" id="age" min="0" max="120" value="${S.p.age||""}">
+    <label class="f">How well do you read Hindi (Devanagari)?</label>
+    <select id="hindi"><option value="">Select…</option><option>Native / first language</option><option>Fluent reader</option><option>Can read, slowly</option><option>Cannot read</option></select>
+    <label class="f">State you grew up in (optional)</label><input type="text" id="state" value="${S.p.state||""}">
+    <label class="f">Occupation (optional)</label><input type="text" id="occ" value="${S.p.occ||""}">
+    <div class="card" style="background:#fafaf8"><label style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="consent"> <span>${CONSENT}</span></label></div>
+    <div class="err" id="err"></div>
+    <div class="nav"><span></span><button id="go">Start</button></div>
+  </div>`;
+  if (S.p.hindi) $("#hindi").value = S.p.hindi;
+  $("#go").onclick = () => {
+    const p = { name:$("#name").value.trim(), email:$("#email").value.trim(), age:+$("#age").value, hindi:$("#hindi").value, state:$("#state").value.trim(), occ:$("#occ").value.trim() };
+    const e = [];
+    if (!p.name) e.push("name"); if (!/^\S+@\S+\.\S+$/.test(p.email)) e.push("valid email");
+    if (!(p.age>=18)) e.push("age 18+ (this study is for adults only)");
+    if (!p.hindi) e.push("Hindi reading level"); if (!$("#consent").checked) e.push("consent");
+    if (e.length) { $("#err").textContent = "Please provide: " + e.join(", "); return; }
+    if (p.hindi==="Cannot read") { $("#err").textContent = "Thank you! This study needs participants who can read Hindi, so we cannot include your ratings."; return; }
+    p.consent = true; p.consent_text = CONSENT; p.consent_ts = new Date().toISOString(); p.ua = navigator.userAgent;
+    p.pid = "R" + Math.floor(rng(p.email.toLowerCase())()*1e6).toString().padStart(6,"0");
+    S.p = p; S.order = buildOrder(p.email); S.step = "intro"; save(); render();
+  };
+}
+
+function intro(){
+  app.innerHTML = `
+  <h1>How to rate</h1>
+  <div class="card">
+  <p><b>The situation:</b> imagine you own a small shop in a Hindi-speaking town. You asked an AI tool to make a poster for your WhatsApp Status. On each screen you will see <b>the exact text the shop owner asked for</b> and <b>three posters</b> (A, B, C) from different AI models. The model names are hidden and the order is shuffled.</p>
+  <p>For <b>each poster</b> answer three quick questions:</p>
+  <table class="key">
+   <tr><td><b>1. Text</b></td><td>Compare the poster letter-by-letter with the requested text.<br>
+      <b>Exactly correct</b> - every word, matra and number matches.<br>
+      <b>Small error</b> - 1-2 letters/matras/nukta wrong, but a customer would still read it correctly.<br>
+      <b>Major error</b> - wrong, missing or extra words, wrong number/price, or hard to read.<br>
+      <b>Gibberish / missing</b> - fake letters that only look like Hindi, or the text is absent.</td></tr>
+   <tr><td><b>2. Looks right?</b></td><td>Does the picture fit this Indian shop and occasion (right festival items, Indian setting, real-looking food/products)? Tick any problem tags you notice.</td></tr>
+   <tr><td><b>3. Would you post it?</b></td><td>If it were your shop: post as-is, post only after small fixes, or not post at all.</td></tr>
+  </table>
+  <p>Then pick the <b>one poster you would post</b> (or “None”).</p>
+  <p class="muted">Tap any image to zoom - please zoom in to check the text. There are no right answers on taste, but please read the text carefully. Your progress is saved in this browser if you need a break.</p>
+  </div>
+  <div class="nav"><span></span><button id="go">Try a practice poster →</button></div>`;
+  $("#go").onclick = () => { S.step="practice"; save(); render(); };
+}
+
+function practice(){
+  app.innerHTML = `
+  <h2>Practice (not scored)</h2>
+  <div class="brief">Requested text:<div class="req">शुभ दीपावली<br>गुप्ता स्वीट्स</div></div>
+  <div class="mock"><div class="t1">शुभ दीपावलि</div><div class="t2">गुप्ता स्वीट्स</div><div class="ico">🪔</div></div>
+  <div class="card"><div class="qt">How would you rate the <b>text</b>?</div>
+  <div class="choices" id="pq">
+   ${["Exactly correct","Small error","Major error","Gibberish / missing"].map(o=>`<label><input type="radio" name="pq" value="${o}"> ${o}</label>`).join("")}
+  </div><div id="pfb" class="muted" style="margin-top:8px"></div></div>
+  <div class="nav"><span></span><button id="go" disabled>Start the real posters →</button></div>`;
+  document.querySelectorAll("input[name=pq]").forEach(x => x.onchange = () => {
+    const ok = x.value==="Small error";
+    $("#pfb").innerHTML = (ok ? "✅ Right. " : "Not quite. ") + "“दीपावली” is written as “दीपावलि” (short ि instead of long ी). One matra is wrong but customers would still read it → <b>Small error</b>. If a whole word were wrong or missing, it would be a Major error.";
+    $("#go").disabled = false; S.p.practice_answer = x.value; save();
+  });
+  $("#go").onclick = () => { S.step="rate"; S.i=0; S.t0=Date.now(); save(); render(); };
+}
+
+const TEXT = ["Exactly correct","Small error","Major error","Gibberish / missing"];
+const CULT = ["Looks right","Something is a bit off","Clearly wrong / not Indian"];
+const TAGS = ["Wrong festival / ritual items","Not Indian-looking setting or people","Wrong food / product","Distorted objects, hands or faces","Fake or misspelled brand / logo","Extra unrequested text"];
+const USE  = ["Post as-is","Post after small fixes","Would not post"];
+
+function rate(){
+  const o = S.order[S.i]; const sc = SCREENS.find(s=>s.sid===o.sid); const L = ["A","B","C"];
+  const key = S.i + ""; const a = S.answers[key] || {};
+  const radios = (name, opts, cur) => `<div class="choices">${opts.map(v=>`<label><input type="radio" name="${name}" value="${v}" ${cur===v?"checked":""}> ${v}</label>`).join("")}</div>`;
+  app.innerHTML = `
+  <div class="brief"><div class="muted">Shop: <b>${sc.business}</b></div>Requested text (must match exactly):<div class="req">${sc.lines.join("<br>")}</div></div>
+  <div class="grid">
+   ${o.pos.map((k,j)=>{ const im=sc.images[k]; const r=a[im.iid]||{}; return `
+   <div class="card opt">
+     <div class="tag">${L[j]}</div>
+     <img src="${im.src}" alt="Poster ${L[j]}" onclick="zoom(this.src)">
+     <div class="q"><div class="qt">1. Text accuracy</div>${radios("t_"+im.iid, TEXT, r.text)}</div>
+     <div class="q"><div class="qt">2. Looks right for this shop & occasion?</div>${radios("c_"+im.iid, CULT, r.cult)}
+       <div class="chips">${TAGS.map(t=>`<label><input type="checkbox" name="g_${im.iid}" value="${t}" ${(r.tags||[]).includes(t)?"checked":""}>${t}</label>`).join("")}</div></div>
+     <div class="q"><div class="qt">3. Would you post it?</div>${radios("u_"+im.iid, USE, r.use)}</div>
+   </div>`; }).join("")}
+  </div>
+  <div class="card"><div class="qt" style="font-weight:600;margin-bottom:6px">Which ONE would you post for this shop?</div>
+   <div class="best">${o.pos.map((k,j)=>`<label><input type="radio" name="best" value="${sc.images[k].iid}" ${a.best===sc.images[k].iid?"checked":""}> ${L[j]}</label>`).join("")}<label><input type="radio" name="best" value="none" ${a.best==="none"?"checked":""}> None of these</label></div>
+   <label class="f" style="font-weight:400" for="cm">Anything specific you noticed? (optional)</label><textarea id="cm" rows="2">${a.comment||""}</textarea>
+  </div>
+  <div class="err" id="err"></div>
+  <div class="nav"><button class="ghost" id="back" ${S.i===0?"disabled":""}>← Back</button><button id="next">${S.i===S.order.length-1?"Finish":"Next →"}</button></div>`;
+  $("#back").onclick = () => { collect(o, sc, false); S.i--; save(); render(); };
+  $("#next").onclick = () => { if (!collect(o, sc, true)) return; S.i++; S.t0=Date.now(); if (S.i>=S.order.length) S.step="done"; save(); render(); };
+}
+
+function collect(o, sc, validate){
+  const key = S.i + ""; const a = S.answers[key] || { ms:0 };
+  const val = n => (document.querySelector(`input[name="${n}"]:checked`)||{}).value;
+  let missing = 0;
+  sc.images.forEach(im => {
+    const r = { text:val("t_"+im.iid), cult:val("c_"+im.iid), use:val("u_"+im.iid),
+                tags:[...document.querySelectorAll(`input[name="g_${im.iid}"]:checked`)].map(x=>x.value) };
+    if (!r.text || !r.cult || !r.use) missing++;
+    a[im.iid] = r;
+  });
+  a.best = val("best"); a.comment = $("#cm").value.trim();
+  a.ms = (a.ms||0) + (Date.now() - (S.t0||Date.now()));
+  a.sid = o.sid; a.prompt_id = sc.prompt_id; a.repeat = o.repeat; a.pos = o.pos.map(k=>sc.images[k].iid);
+  S.answers[key] = a;
+  if (validate && (missing || !a.best)) { $("#err").textContent = "Please answer all three questions for every poster and pick one (or None)."; return false; }
+  return true;
+}
+
+function rows(){
+  const P = S.p, out = [];
+  S.order.forEach((o, idx) => {
+    const a = S.answers[idx+""]; if (!a) return; const sc = SCREENS.find(s=>s.sid===o.sid);
+    a.pos.forEach((iid, j) => { const r = a[iid] || {};
+      out.push({ build:BUILD, participant_id:P.pid, name:P.name, email:P.email, age:P.age, hindi_level:P.hindi, state:P.state, occupation:P.occ,
+        consent:P.consent, consent_ts:P.consent_ts, practice_answer:P.practice_answer||"", screen_index:idx+1, prompt_id:sc.prompt_id, is_repeat:o.repeat,
+        image_id:iid, position:["A","B","C"][j], text_accuracy:r.text, looks_right:r.cult, problem_tags:(r.tags||[]).join("|"),
+        would_post:r.use, best_pick:a.best, picked_this:a.best===iid, comment:a.comment, seconds_on_screen:Math.round(a.ms/1000), submitted_at:new Date().toISOString() }); });
+  });
+  return out;
+}
+function toCSV(rs){ const h = Object.keys(rs[0]); const esc = v => `"${String(v??"").replace(/"/g,'""')}"`; return [h.join(","), ...rs.map(r=>h.map(k=>esc(r[k])).join(","))].join("\n"); }
+
+function done(){
+  const rs = rows(), csv = toCSV(rs);
+  app.innerHTML = `<h1>Thank you, ${S.p.name.split(" ")[0]}! 🙏</h1>
+  <div class="card"><p id="st">${ENDPOINT ? "Submitting your ratings…" : "Please download your ratings file and send it back to the researcher."}</p>
+  <div class="nav"><button id="dl">Download my ratings (CSV)</button><button class="ghost" id="cp">Copy to clipboard</button></div>
+  <p class="muted">${rs.length} ratings · participant ${S.p.pid}</p></div>`;
+  $("#dl").onclick = () => { const b = new Blob(["﻿"+csv], {type:"text/csv"}); const u = URL.createObjectURL(b); const x = document.createElement("a"); x.href=u; x.download=`ratings_${S.p.pid}.csv`; x.click(); };
+  $("#cp").onclick = () => navigator.clipboard.writeText(csv).then(()=>$("#cp").textContent="Copied ✓");
+  if (ENDPOINT && !S.submitted) fetch(ENDPOINT, { method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain"}, body:JSON.stringify(rs) })
+     .then(()=>{ S.submitted=true; save(); $("#st").textContent="✅ Submitted. You can also download a copy for your records."; })
+     .catch(()=>{ $("#st").textContent="Automatic submit failed - please download the file and send it to the researcher."; });
+}
+function zoom(src){ $("#zimg").src=src; $("#zoom").style.display="flex"; }
+render();
+</script>
+</body>
+</html>

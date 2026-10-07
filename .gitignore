@@ -1,0 +1,14 @@
+# provided dataset: internal Josh Talks data (links to real recordings) - not published
+Data Check.xlsx
+*.xlsx
+*.pkl
+
+# scratch, caches, pipeline-test data
+work/
+__pycache__/
+q1/ratings_SYNTHETIC/
+q1/out_SYNTHETIC/
+q1/rating_app/rate_PREVIEW.html
+q1/manual/
+*.pyc
+.env

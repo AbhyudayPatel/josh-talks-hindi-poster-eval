@@ -1,0 +1,194 @@
+{
+ "i2a9b5b": {
+  "prompt_id": "P01",
+  "model": "gpt1"
+ },
+ "i045af4": {
+  "prompt_id": "P01",
+  "model": "g25"
+ },
+ "i6cc97d": {
+  "prompt_id": "P01",
+  "model": "g31"
+ },
+ "i0ccc85": {
+  "prompt_id": "P02",
+  "model": "gpt1"
+ },
+ "i5ef304": {
+  "prompt_id": "P02",
+  "model": "g25"
+ },
+ "ia56423": {
+  "prompt_id": "P02",
+  "model": "g31"
+ },
+ "ib52f35": {
+  "prompt_id": "P03",
+  "model": "gpt1"
+ },
+ "ic708dd": {
+  "prompt_id": "P03",
+  "model": "g25"
+ },
+ "i198656": {
+  "prompt_id": "P03",
+  "model": "g31"
+ },
+ "i462a94": {
+  "prompt_id": "P04",
+  "model": "gpt1"
+ },
+ "i9d0193": {
+  "prompt_id": "P04",
+  "model": "g25"
+ },
+ "i1d8091": {
+  "prompt_id": "P04",
+  "model": "g31"
+ },
+ "i1bf94d": {
+  "prompt_id": "P05",
+  "model": "gpt1"
+ },
+ "i0e867b": {
+  "prompt_id": "P05",
+  "model": "g25"
+ },
+ "ib6e422": {
+  "prompt_id": "P05",
+  "model": "g31"
+ },
+ "i62f811": {
+  "prompt_id": "P06",
+  "model": "gpt1"
+ },
+ "id2c446": {
+  "prompt_id": "P06",
+  "model": "g25"
+ },
+ "ifa861b": {
+  "prompt_id": "P06",
+  "model": "g31"
+ },
+ "iaea3c3": {
+  "prompt_id": "P07",
+  "model": "gpt1"
+ },
+ "i10c11d": {
+  "prompt_id": "P07",
+  "model": "g25"
+ },
+ "ifcd11d": {
+  "prompt_id": "P07",
+  "model": "g31"
+ },
+ "i42ae8f": {
+  "prompt_id": "P08",
+  "model": "gpt1"
+ },
+ "i800e7a": {
+  "prompt_id": "P08",
+  "model": "g25"
+ },
+ "i4c5198": {
+  "prompt_id": "P08",
+  "model": "g31"
+ },
+ "ic8f59d": {
+  "prompt_id": "P09",
+  "model": "gpt1"
+ },
+ "idce0cc": {
+  "prompt_id": "P09",
+  "model": "g25"
+ },
+ "i6b2122": {
+  "prompt_id": "P09",
+  "model": "g31"
+ },
+ "iad4404": {
+  "prompt_id": "P10",
+  "model": "gpt1"
+ },
+ "iba05ef": {
+  "prompt_id": "P10",
+  "model": "g25"
+ },
+ "if4a1bb": {
+  "prompt_id": "P10",
+  "model": "g31"
+ },
+ "ib0fc94": {
+  "prompt_id": "P11",
+  "model": "gpt1"
+ },
+ "ic3e1ed": {
+  "prompt_id": "P11",
+  "model": "g25"
+ },
+ "ia9da9c": {
+  "prompt_id": "P11",
+  "model": "g31"
+ },
+ "i214f64": {
+  "prompt_id": "P12",
+  "model": "gpt1"
+ },
+ "i05528e": {
+  "prompt_id": "P12",
+  "model": "g25"
+ },
+ "i8d0c3c": {
+  "prompt_id": "P12",
+  "model": "g31"
+ },
+ "if7838f": {
+  "prompt_id": "S13",
+  "model": "gpt1"
+ },
+ "id177dc": {
+  "prompt_id": "S13",
+  "model": "g25"
+ },
+ "ic4a351": {
+  "prompt_id": "S13",
+  "model": "g31"
+ },
+ "i52950f": {
+  "prompt_id": "S14",
+  "model": "gpt1"
+ },
+ "i35fc9d": {
+  "prompt_id": "S14",
+  "model": "g25"
+ },
+ "i07b093": {
+  "prompt_id": "S14",
+  "model": "g31"
+ },
+ "i11fd43": {
+  "prompt_id": "S15",
+  "model": "gpt1"
+ },
+ "ib84c5e": {
+  "prompt_id": "S15",
+  "model": "g25"
+ },
+ "ib3e37f": {
+  "prompt_id": "S15",
+  "model": "g31"
+ },
+ "i979680": {
+  "prompt_id": "S16",
+  "model": "gpt1"
+ },
+ "ie7f05e": {
+  "prompt_id": "S16",
+  "model": "g25"
+ },
+ "idf0c34": {
+  "prompt_id": "S16",
+  "model": "g31"
+ }
+}

@@ -1,0 +1,870 @@
+{
+ "data_label": "REAL participant data",
+ "participants": {
+  "n_total": 3,
+  "n_included": 3,
+  "excluded": [],
+  "median_age": NaN,
+  "hindi_levels": {
+   "AI": 3
+  },
+  "states": {
+   "": 3
+  },
+  "median_minutes": 51.0
+ },
+ "n_ratings": 144,
+ "n_prompts": 16,
+ "leaderboard": {
+  "g25": {
+   "post_asis": 0.10416666666666667,
+   "post_any": 0.3125,
+   "text_exact": 0.3125,
+   "text_readable": 0.3125,
+   "cult_ok": 0.16666666666666666,
+   "best_pick_share": 0.0625,
+   "none_share": 0.0,
+   "bt_strength": 0.18750000000000003,
+   "post_asis_ci": [
+    0.0,
+    0.25
+   ],
+   "text_exact_ci": [
+    0.125,
+    0.5625
+   ]
+  },
+  "g31": {
+   "post_asis": 0.6458333333333334,
+   "post_any": 1.0,
+   "text_exact": 0.9375,
+   "text_readable": 1.0,
+   "cult_ok": 0.6875,
+   "best_pick_share": 0.6458333333333334,
+   "none_share": 0.0,
+   "bt_strength": 1.9375,
+   "post_asis_ci": [
+    0.4375,
+    0.8541666666666666
+   ],
+   "text_exact_ci": [
+    0.8125,
+    1.0
+   ]
+  },
+  "gpt1": {
+   "post_asis": 0.4583333333333333,
+   "post_any": 0.9375,
+   "text_exact": 0.4375,
+   "text_readable": 0.8541666666666666,
+   "cult_ok": 0.8125,
+   "best_pick_share": 0.2916666666666667,
+   "none_share": 0.0,
+   "bt_strength": 0.8750000000000001,
+   "post_asis_ci": [
+    0.20833333333333334,
+    0.7083333333333334
+   ],
+   "text_exact_ci": [
+    0.22864583333333335,
+    0.6666666666666666
+   ]
+  }
+ },
+ "pairwise_wins": {
+  "g31>gpt1": 31,
+  "g31>g25": 31,
+  "g25>g31": 3,
+  "g25>gpt1": 3,
+  "gpt1>g31": 14,
+  "gpt1>g25": 14
+ },
+ "hindi_tax": {
+  "gpt1": {
+   "EN_post_asis": 0.9444444444444443,
+   "HI_post_asis": 0.1111111111111111,
+   "tax_post_asis_pp": 83.33333333333334,
+   "tax_ci_pp": [
+    72.22222222222221,
+    94.44444444444446
+   ],
+   "EN_text_exact": 0.7777777777777777,
+   "HI_text_exact": 0.2222222222222222,
+   "tax_text_exact_pp": 55.55555555555556,
+   "pairs_where_HI_worse": 6,
+   "n_pairs": 6
+  },
+  "g25": {
+   "EN_post_asis": 0.27777777777777773,
+   "HI_post_asis": 0.0,
+   "tax_post_asis_pp": 27.777777777777775,
+   "tax_ci_pp": [
+    0.0,
+    61.11111111111111
+   ],
+   "EN_text_exact": 0.8333333333333334,
+   "HI_text_exact": 0.0,
+   "tax_text_exact_pp": 83.33333333333334,
+   "pairs_where_HI_worse": 2,
+   "n_pairs": 6
+  },
+  "g31": {
+   "EN_post_asis": 0.27777777777777773,
+   "HI_post_asis": 0.9444444444444443,
+   "tax_post_asis_pp": -66.66666666666666,
+   "tax_ci_pp": [
+    -83.33333333333334,
+    -50.000000000000014
+   ],
+   "EN_text_exact": 1.0,
+   "HI_text_exact": 1.0,
+   "tax_text_exact_pp": 0.0,
+   "pairs_where_HI_worse": 0,
+   "n_pairs": 6
+  }
+ },
+ "per_prompt": [
+  {
+   "prompt_id": "P01",
+   "model": "g25",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "P01",
+   "model": "g31",
+   "post_asis": 0.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P01",
+   "model": "gpt1",
+   "post_asis": 1.0,
+   "text_exact": 0.333,
+   "text_score": 2.333,
+   "cult_ok": 1.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P02",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 1.0,
+   "cult_ok": 1.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P02",
+   "model": "g31",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "P02",
+   "model": "gpt1",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 2.0,
+   "cult_ok": 1.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P03",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P03",
+   "model": "g31",
+   "post_asis": 0.333,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.0,
+   "picked": 0.333
+  },
+  {
+   "prompt_id": "P03",
+   "model": "gpt1",
+   "post_asis": 0.667,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.333,
+   "picked": 0.667
+  },
+  {
+   "prompt_id": "P04",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 1.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P04",
+   "model": "g31",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "P04",
+   "model": "gpt1",
+   "post_asis": 0.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P05",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 1.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P05",
+   "model": "g31",
+   "post_asis": 0.333,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.333,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P05",
+   "model": "gpt1",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "P06",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 0.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P06",
+   "model": "g31",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "P06",
+   "model": "gpt1",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 2.0,
+   "cult_ok": 1.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P07",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P07",
+   "model": "g31",
+   "post_asis": 0.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P07",
+   "model": "gpt1",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "P08",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 0.333,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P08",
+   "model": "g31",
+   "post_asis": 0.667,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.667,
+   "picked": 0.667
+  },
+  {
+   "prompt_id": "P08",
+   "model": "gpt1",
+   "post_asis": 0.333,
+   "text_exact": 0.333,
+   "text_score": 2.333,
+   "cult_ok": 1.0,
+   "picked": 0.333
+  },
+  {
+   "prompt_id": "P09",
+   "model": "g25",
+   "post_asis": 0.667,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.667,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P09",
+   "model": "g31",
+   "post_asis": 0.667,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.667,
+   "picked": 0.667
+  },
+  {
+   "prompt_id": "P09",
+   "model": "gpt1",
+   "post_asis": 1.0,
+   "text_exact": 0.333,
+   "text_score": 2.0,
+   "cult_ok": 0.667,
+   "picked": 0.333
+  },
+  {
+   "prompt_id": "P10",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 0.333,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P10",
+   "model": "g31",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "P10",
+   "model": "gpt1",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 1.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P11",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P11",
+   "model": "g31",
+   "post_asis": 0.333,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 0.333,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P11",
+   "model": "gpt1",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "P12",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 0.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "P12",
+   "model": "g31",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "P12",
+   "model": "gpt1",
+   "post_asis": 0.333,
+   "text_exact": 0.0,
+   "text_score": 2.0,
+   "cult_ok": 1.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "S13",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 1.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "S13",
+   "model": "g31",
+   "post_asis": 0.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "S13",
+   "model": "gpt1",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 2.0,
+   "cult_ok": 1.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "S14",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 0.333,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "S14",
+   "model": "g31",
+   "post_asis": 1.0,
+   "text_exact": 0.0,
+   "text_score": 2.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "S14",
+   "model": "gpt1",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 1.0,
+   "cult_ok": 1.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "S15",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 0.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "S15",
+   "model": "g31",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 0.667
+  },
+  {
+   "prompt_id": "S15",
+   "model": "gpt1",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 0.333
+  },
+  {
+   "prompt_id": "S16",
+   "model": "g25",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 1.0,
+   "cult_ok": 0.0,
+   "picked": 0.0
+  },
+  {
+   "prompt_id": "S16",
+   "model": "g31",
+   "post_asis": 1.0,
+   "text_exact": 1.0,
+   "text_score": 3.0,
+   "cult_ok": 1.0,
+   "picked": 1.0
+  },
+  {
+   "prompt_id": "S16",
+   "model": "gpt1",
+   "post_asis": 0.0,
+   "text_exact": 0.0,
+   "text_score": 2.0,
+   "cult_ok": 1.0,
+   "picked": 0.0
+  }
+ ],
+ "by_level_hindi": {
+  "g25": {
+   "L1 short": 0.0,
+   "L2 festival": 0.0,
+   "L2 offer+number": 0.0,
+   "L2 price (₹)": 0.0,
+   "L2 public-health": 0.0,
+   "L3 code-mixed": 0.0,
+   "L3 cultural grounding": 0.0,
+   "L3 multi-line": 0.0,
+   "L4 conjunct-dense": 0.0,
+   "L4 long": 0.0
+  },
+  "g31": {
+   "L1 short": 1.0,
+   "L2 festival": 1.0,
+   "L2 offer+number": 1.0,
+   "L2 price (₹)": 1.0,
+   "L2 public-health": 1.0,
+   "L3 code-mixed": 0.0,
+   "L3 cultural grounding": 1.0,
+   "L3 multi-line": 0.667,
+   "L4 conjunct-dense": 1.0,
+   "L4 long": 1.0
+  },
+  "gpt1": {
+   "L1 short": 0.0,
+   "L2 festival": 0.0,
+   "L2 offer+number": 0.0,
+   "L2 price (₹)": 0.0,
+   "L2 public-health": 0.333,
+   "L3 code-mixed": 0.0,
+   "L3 cultural grounding": 0.0,
+   "L3 multi-line": 0.333,
+   "L4 conjunct-dense": 1.0,
+   "L4 long": 0.0
+  }
+ },
+ "paired_tests": {
+  "gpt1_vs_g25": {
+   "mean_diff_pp": 35.416666666666664,
+   "prompts_i_better": 8,
+   "prompts_j_better": 0,
+   "ties": 8,
+   "wilcoxon_p": 0.0078125,
+   "sign_test_p": 0.0078125
+  },
+  "gpt1_vs_g31": {
+   "mean_diff_pp": -18.75,
+   "prompts_i_better": 6,
+   "prompts_j_better": 8,
+   "ties": 2,
+   "wilcoxon_p": 0.27510000979738625,
+   "sign_test_p": 0.79052734375
+  },
+  "g25_vs_g31": {
+   "mean_diff_pp": -54.166666666666664,
+   "prompts_i_better": 1,
+   "prompts_j_better": 12,
+   "ties": 3,
+   "wilcoxon_p": 0.005859375,
+   "sign_test_p": 0.00341796875
+  }
+ },
+ "alpha": {
+  "text_ordinal": 0.9452400287862882,
+  "post_ordinal": 0.8805974764967838,
+  "culture_ordinal": 0.8044921875
+ },
+ "test_retest": {
+  "n": 9,
+  "text_exact_agree": 1.0,
+  "text_within1": 1.0,
+  "post_agree": 1.0,
+  "same_best_pick": 1.0
+ },
+ "position_bias": {
+  "A": 0.3541666666666667,
+  "B": 0.3333333333333333,
+  "C": 0.3125
+ },
+ "tags_per_rating": {
+  "Distorted objects, hands or faces": {
+   "g25": 0.604,
+   "g31": 0.292,
+   "gpt1": 0.0
+  },
+  "Extra unrequested text": {
+   "g25": 0.375,
+   "g31": 0.25,
+   "gpt1": 0.208
+  },
+  "Fake or misspelled brand / logo": {
+   "g25": 0.292,
+   "g31": 0.083,
+   "gpt1": 0.104
+  },
+  "Wrong food / product": {
+   "g25": 0.083,
+   "g31": 0.0,
+   "gpt1": 0.042
+  }
+ },
+ "comments": [
+  {
+   "prompt_id": "P05",
+   "model": "g31",
+   "comment": "A and B both carry the exact requested text with clean tailoring visuals - sewing machine, measuring tape and a real-looking blouse. B is the cleanest: bold readable headline, bright Indian pink blouse, proper name band at the bottom, nothing distorted. A is also postable, though the hand-crank machine illustration is a bit mismatched with the photo-style blouse and the decorative border makes it busier. C fails badly on the shop name - it reads 'लखमी टीlors', a half-Hindi half-English mess instead of 'Laxmi Tailors', and it also puts a real USHA brand mark on the machine, which I would not want on my own ad. I would post B. || read: Blouse Stitching Only ₹250 / Laxmi Tailors"
+  },
+  {
+   "prompt_id": "P05",
+   "model": "gpt1",
+   "comment": "A and B both carry the exact requested text with clean tailoring visuals - sewing machine, measuring tape and a real-looking blouse. B is the cleanest: bold readable headline, bright Indian pink blouse, proper name band at the bottom, nothing distorted. A is also postable, though the hand-crank machine illustration is a bit mismatched with the photo-style blouse and the decorative border makes it busier. C fails badly on the shop name - it reads 'लखमी टीlors', a half-Hindi half-English mess instead of 'Laxmi Tailors', and it also puts a real USHA brand mark on the machine, which I would not want on my own ad. I would post B. || read: Blouse Stitching Only ₹250 / Laxmi Tailors"
+  },
+  {
+   "prompt_id": "P05",
+   "model": "g25",
+   "comment": "A and B both carry the exact requested text with clean tailoring visuals - sewing machine, measuring tape and a real-looking blouse. B is the cleanest: bold readable headline, bright Indian pink blouse, proper name band at the bottom, nothing distorted. A is also postable, though the hand-crank machine illustration is a bit mismatched with the photo-style blouse and the decorative border makes it busier. C fails badly on the shop name - it reads 'लखमी टीlors', a half-Hindi half-English mess instead of 'Laxmi Tailors', and it also puts a real USHA brand mark on the machine, which I would not want on my own ad. I would post B. || read: Blouse Stitching Only ₹250 / लखमी  टीlors"
+  },
+  {
+   "prompt_id": "P11",
+   "model": "g25",
+   "comment": "All three posters spell the requested English text correctly with no missing or extra words. Poster A has a clean pharmacy look and an Indian pharmacist, but the small counter sign has garbled fake lettering and the pointing hand looks slightly odd. Poster B is bright and professional but the medicine boxes on the counter carry blurry fake label text and the glucometer strip in hand is a bit mushy. Poster C is the cleanest: the name sits in a strong orange band that reads clearly on a phone screen, the pharmacist and glucometer look natural, and there is no stray gibberish text. I would post C as-is. || read: Free Sugar Test Every Sunday Shree Medical Store"
+  },
+  {
+   "prompt_id": "P11",
+   "model": "g31",
+   "comment": "All three posters spell the requested English text correctly with no missing or extra words. Poster A has a clean pharmacy look and an Indian pharmacist, but the small counter sign has garbled fake lettering and the pointing hand looks slightly odd. Poster B is bright and professional but the medicine boxes on the counter carry blurry fake label text and the glucometer strip in hand is a bit mushy. Poster C is the cleanest: the name sits in a strong orange band that reads clearly on a phone screen, the pharmacist and glucometer look natural, and there is no stray gibberish text. I would post C as-is. || read: Free Sugar Test Every Sunday Shree Medical Store"
+  },
+  {
+   "prompt_id": "P11",
+   "model": "gpt1",
+   "comment": "All three posters spell the requested English text correctly with no missing or extra words. Poster A has a clean pharmacy look and an Indian pharmacist, but the small counter sign has garbled fake lettering and the pointing hand looks slightly odd. Poster B is bright and professional but the medicine boxes on the counter carry blurry fake label text and the glucometer strip in hand is a bit mushy. Poster C is the cleanest: the name sits in a strong orange band that reads clearly on a phone screen, the pharmacist and glucometer look natural, and there is no stray gibberish text. I would post C as-is. || read: Free Sugar Test Every Sunday Shree Medical Store"
+  },
+  {
+   "prompt_id": "P12",
+   "model": "g31",
+   "comment": "A ka text bilkul sahi hai — nukta aur chandrabindu dono theek (मुफ़्त, जाँच), dukaan bhi asli medical store jaisi lagti hai aur glucometer haath mein saaf dikh raha hai. B ki photo achhi hai par 'मुफ्त' mein nukta nahi aur 'जांच' chandrabindu ke bina likha hai; naam line coat par chipak rahi hai, chhoti galtiyan sudhar kar post kar sakte hain. C ka text poora bigda hua hai — 'रनिवार', 'मुफ्टि', 'शुमुर', 'मडिजल स्तोष' — koi grahak padh nahi payega, aur haath mein device bhi glucometer se zyada remote jaisa lagta hai. Main A hi post karunga. || read: हर रविवार मुफ़्त शुगर जाँच\nश्री मेडिकल स्टोर"
+  },
+  {
+   "prompt_id": "P12",
+   "model": "gpt1",
+   "comment": "A ka text bilkul sahi hai — nukta aur chandrabindu dono theek (मुफ़्त, जाँच), dukaan bhi asli medical store jaisi lagti hai aur glucometer haath mein saaf dikh raha hai. B ki photo achhi hai par 'मुफ्त' mein nukta nahi aur 'जांच' chandrabindu ke bina likha hai; naam line coat par chipak rahi hai, chhoti galtiyan sudhar kar post kar sakte hain. C ka text poora bigda hua hai — 'रनिवार', 'मुफ्टि', 'शुमुर', 'मडिजल स्तोष' — koi grahak padh nahi payega, aur haath mein device bhi glucometer se zyada remote jaisa lagta hai. Main A hi post karunga. || read: हर रविवार\nमुफ्त शुगर जांच\nश्री मेडिकल स्टोर"
+  },
+  {
+   "prompt_id": "P12",
+   "model": "g25",
+   "comment": "A ka text bilkul sahi hai — nukta aur chandrabindu dono theek (मुफ़्त, जाँच), dukaan bhi asli medical store jaisi lagti hai aur glucometer haath mein saaf dikh raha hai. B ki photo achhi hai par 'मुफ्त' mein nukta nahi aur 'जांच' chandrabindu ke bina likha hai; naam line coat par chipak rahi hai, chhoti galtiyan sudhar kar post kar sakte hain. C ka text poora bigda hua hai — 'रनिवार', 'मुफ्टि', 'शुमुर', 'मडिजल स्तोष' — koi grahak padh nahi payega, aur haath mein device bhi glucometer se zyada remote jaisa lagta hai. Main A hi post karunga. || read: हर रनिवार मुफ्टि शुमुर जॉच\nश्री मडिजल स्तोष"
+  },
+  {
+   "prompt_id": "P01",
+   "model": "g31",
+   "comment": "Teeno posters par text bilkul sahi likha hai - 'Happy Diwali' aur 'Sharma Sweets', koi spelling galti nahi. Poster A mein ek saaf dikhne wala chaukor overlay box hai jo background ke upar chipka lagta hai, kinare par diye aur phool kat gaye hain - yeh thoda ghatiya lagta hai, thoda sudhar ke baad hi post karunga. Poster B sabse professional hai: laddu, kaju katli, diye, genda phool, warm orange background aur text saaf padha jaata hai - Diwali ke liye bilkul sahi. Poster C bhi accha aur saaf hai, bas 'SHARMA SWEETS' capital letters mein hai aur design thoda simple hai. Main Poster B post karunga. || read: Happy Diwali\nSharma Sweets"
+  },
+  {
+   "prompt_id": "P01",
+   "model": "g25",
+   "comment": "Teeno posters par text bilkul sahi likha hai - 'Happy Diwali' aur 'Sharma Sweets', koi spelling galti nahi. Poster A mein ek saaf dikhne wala chaukor overlay box hai jo background ke upar chipka lagta hai, kinare par diye aur phool kat gaye hain - yeh thoda ghatiya lagta hai, thoda sudhar ke baad hi post karunga. Poster B sabse professional hai: laddu, kaju katli, diye, genda phool, warm orange background aur text saaf padha jaata hai - Diwali ke liye bilkul sahi. Poster C bhi accha aur saaf hai, bas 'SHARMA SWEETS' capital letters mein hai aur design thoda simple hai. Main Poster B post karunga. || read: Happy Diwali\nSharma Sweets"
+  },
+  {
+   "prompt_id": "P01",
+   "model": "gpt1",
+   "comment": "Teeno posters par text bilkul sahi likha hai - 'Happy Diwali' aur 'Sharma Sweets', koi spelling galti nahi. Poster A mein ek saaf dikhne wala chaukor overlay box hai jo background ke upar chipka lagta hai, kinare par diye aur phool kat gaye hain - yeh thoda ghatiya lagta hai, thoda sudhar ke baad hi post karunga. Poster B sabse professional hai: laddu, kaju katli, diye, genda phool, warm orange background aur text saaf padha jaata hai - Diwali ke liye bilkul sahi. Poster C bhi accha aur saaf hai, bas 'SHARMA SWEETS' capital letters mein hai aur design thoda simple hai. Main Poster B post karunga. || read: Happy Diwali\nSHARMA SWEETS"
+  },
+  {
+   "prompt_id": "P08",
+   "model": "g31",
+   "comment": "A ka text bilkul sahi hai - teeno lines, number sab exact, aur bada saaf dikhta hai; sirf background ki kitabon ke spine par bekaar se akshar hain jo kisi ko dikhte nahi. B bhi lagbhag sahi hai, par heading mein 'प्रारंभ' thoda 'प्रारांभ' jaisa dikh raha hai aur text ek taraf dabba hua hai. C ka text poori tarah kharab hai - 'प्राार्म', 'गगीत आरे यिचान', 'संपक कारें' - isko post karna sharminda karega. Main A post karunga. || read: प्रवेश प्रारंभ\nकक्षा 9 से 12: गणित और विज्ञान\nसंपर्क करें: 98765 43210"
+  },
+  {
+   "prompt_id": "P08",
+   "model": "gpt1",
+   "comment": "A ka text bilkul sahi hai - teeno lines, number sab exact, aur bada saaf dikhta hai; sirf background ki kitabon ke spine par bekaar se akshar hain jo kisi ko dikhte nahi. B bhi lagbhag sahi hai, par heading mein 'प्रारंभ' thoda 'प्रारांभ' jaisa dikh raha hai aur text ek taraf dabba hua hai. C ka text poori tarah kharab hai - 'प्राार्म', 'गगीत आरे यिचान', 'संपक कारें' - isko post karna sharminda karega. Main A post karunga. || read: प्रवेश प्रारांभ\nकक्षा 9 से 12:\nगणित और विज्ञान\nसंपर्क करें:\n98765 43210"
+  },
+  {
+   "prompt_id": "P08",
+   "model": "g25",
+   "comment": "A ka text bilkul sahi hai - teeno lines, number sab exact, aur bada saaf dikhta hai; sirf background ki kitabon ke spine par bekaar se akshar hain jo kisi ko dikhte nahi. B bhi lagbhag sahi hai, par heading mein 'प्रारंभ' thoda 'प्रारांभ' jaisa dikh raha hai aur text ek taraf dabba hua hai. C ka text poori tarah kharab hai - 'प्राार्म', 'गगीत आरे यिचान', 'संपक कारें' - isko post karna sharminda karega. Main A post karunga. || read: प्रवेश प्राार्म\nकक्षा 9 से 12: गगीत आरे यिचान\nसंपक कारें: 98765 43210"
+  },
+  {
+   "prompt_id": "S14",
+   "model": "g31",
+   "comment": "A is the clear winner — all four lines read exactly as asked, only the nukta in फ़्री is missing (reads फ्री), which no customer would notice. The steel tiffin with roti, dal, sabzi, rice and salad looks like a real ghar-ka-khana tiffin and the kitchen background suits the business. B looks attractive (good colours, clean layout) but the text has three mistakes: जेसा instead of जैसा, an odd double conjunct in शुद्ध्ध, and डिलेबरी instead of डिलीवरी — I'd have to get those fixed before posting. C is badly broken: काना, हाठ, गर, शूढ, टेफ़िन, मासाक प्रान, दलिरी — almost every word is misspelt, and the empty steel plate lying next to the thali looks odd. I would post A as-is. || read: माँ के हाथ जैसा खाना\nघर का बना शुद्ध शाकाहारी टिफ़िन\nमासिक प्लान सिर्फ़ ₹2500\nफ्री होम डिलीवरी"
+  },
+  {
+   "prompt_id": "S14",
+   "model": "gpt1",
+   "comment": "A is the clear winner — all four lines read exactly as asked, only the nukta in फ़्री is missing (reads फ्री), which no customer would notice. The steel tiffin with roti, dal, sabzi, rice and salad looks like a real ghar-ka-khana tiffin and the kitchen background suits the business. B looks attractive (good colours, clean layout) but the text has three mistakes: जेसा instead of जैसा, an odd double conjunct in शुद्ध्ध, and डिलेबरी instead of डिलीवरी — I'd have to get those fixed before posting. C is badly broken: काना, हाठ, गर, शूढ, टेफ़िन, मासाक प्रान, दलिरी — almost every word is misspelt, and the empty steel plate lying next to the thali looks odd. I would post A as-is. || read: माँ के हाथ जेसा खाना\nघर का बना शुद्ध्ध शाकाहारी टिफ़िन\nमासिक प्लान सिर्फ ₹2500\nफ्री होम डिलेबरी"
+  },
+  {
+   "prompt_id": "S14",
+   "model": "g25",
+   "comment": "A is the clear winner — all four lines read exactly as asked, only the nukta in फ़्री is missing (reads फ्री), which no customer would notice. The steel tiffin with roti, dal, sabzi, rice and salad looks like a real ghar-ka-khana tiffin and the kitchen background suits the business. B looks attractive (good colours, clean layout) but the text has three mistakes: जेसा instead of जैसा, an odd double conjunct in शुद्ध्ध, and डिलेबरी instead of डिलीवरी — I'd have to get those fixed before posting. C is badly broken: काना, हाठ, गर, शूढ, टेफ़िन, मासाक प्रान, दलिरी — almost every word is misspelt, and the empty steel plate lying next to the thali looks odd. I would post A as-is. || read: माॅ के हाठ जेसा काना\nगर का बना शूढ शाकहारी टेफ़िन\nमासाक प्रान सीर्फ़ ₹2500\nफ्री होम दलिरी"
+  },
+  {
+   "prompt_id": "P07",
+   "model": "gpt1",
+   "comment": "All three carry the requested lines correctly with the right phone number. A is the cleanest: bold readable whiteboard text, an Indian student in uniform, neat books, nothing extra or garbled. B is nice too but the clock face and wall charts have nonsense lettering and the boy's hand near the board looks slightly odd. C adds the shop name 'Vidya Coaching Centre, Patna, Bihar' which is a plus, but the book spines are complete gibberish and the city was not requested. For a WhatsApp Status I would post A as-is. || read: "
+  },
+  {
+   "prompt_id": "P07",
+   "model": "g31",
+   "comment": "All three carry the requested lines correctly with the right phone number. A is the cleanest: bold readable whiteboard text, an Indian student in uniform, neat books, nothing extra or garbled. B is nice too but the clock face and wall charts have nonsense lettering and the boy's hand near the board looks slightly odd. C adds the shop name 'Vidya Coaching Centre, Patna, Bihar' which is a plus, but the book spines are complete gibberish and the city was not requested. For a WhatsApp Status I would post A as-is. || read: Admissions Open\nClasses 9 to 12:\nMaths and Science\nCall: 98765 43210"
+  },
+  {
+   "prompt_id": "P07",
+   "model": "g25",
+   "comment": "All three carry the requested lines correctly with the right phone number. A is the cleanest: bold readable whiteboard text, an Indian student in uniform, neat books, nothing extra or garbled. B is nice too but the clock face and wall charts have nonsense lettering and the boy's hand near the board looks slightly odd. C adds the shop name 'Vidya Coaching Centre, Patna, Bihar' which is a plus, but the book spines are complete gibberish and the city was not requested. For a WhatsApp Status I would post A as-is. || read: Admissions Open\nClasses 9 to 12:\nMaths and Science\nCall: 98765 43210\nVidya Coaching Centre\nPatna, Bihar\n(on books: SCIENCE, Science, Gesneral Gamunlledgeg, Gosnral Gamunlinleg)"
+  },
+  {
+   "prompt_id": "P03",
+   "model": "g25",
+   "comment": "All three carry the exact requested English text with correct spelling and the 10% number intact. Poster A has a nice real shopkeeper photo but the atta bags read 'GUPIA ATTA' and 'GUPTTA/GUETTA', which looks like a misprinted brand on my own packets. Poster C is a lively Indian kirana shop and the headline is clean, but the packet labels say 'WHEAT ATTA' / 'HEAT ATTA' and the shelves are a bit mushy in places; the store name sits awkwardly over the counter. Poster B is simple and clean, the sacks of rice, moong dal and masoor dal plus masala containers look genuine, text is large and readable on a phone screen, and only the generic 'ATTA' packet label is extra. I would post B as-is. || read: Flat 10% Off on All Groceries\nGupta Kirana Store"
+  },
+  {
+   "prompt_id": "P03",
+   "model": "gpt1",
+   "comment": "All three carry the exact requested English text with correct spelling and the 10% number intact. Poster A has a nice real shopkeeper photo but the atta bags read 'GUPIA ATTA' and 'GUPTTA/GUETTA', which looks like a misprinted brand on my own packets. Poster C is a lively Indian kirana shop and the headline is clean, but the packet labels say 'WHEAT ATTA' / 'HEAT ATTA' and the shelves are a bit mushy in places; the store name sits awkwardly over the counter. Poster B is simple and clean, the sacks of rice, moong dal and masoor dal plus masala containers look genuine, text is large and readable on a phone screen, and only the generic 'ATTA' packet label is extra. I would post B as-is. || read: Flat 10% Off\non All Groceries\nGupta Kirana Store"
+  },
+  {
+   "prompt_id": "P03",
+   "model": "g31",
+   "comment": "All three carry the exact requested English text with correct spelling and the 10% number intact. Poster A has a nice real shopkeeper photo but the atta bags read 'GUPIA ATTA' and 'GUPTTA/GUETTA', which looks like a misprinted brand on my own packets. Poster C is a lively Indian kirana shop and the headline is clean, but the packet labels say 'WHEAT ATTA' / 'HEAT ATTA' and the shelves are a bit mushy in places; the store name sits awkwardly over the counter. Poster B is simple and clean, the sacks of rice, moong dal and masoor dal plus masala containers look genuine, text is large and readable on a phone screen, and only the generic 'ATTA' packet label is extra. I would post B as-is. || read: Flat 10% Off on All Groceries\nGupta Kirana Store"
+  },
+  {
+   "prompt_id": "P10",
+   "model": "g25",
+   "comment": "B is the only one with perfect Hindi — 'होली स्पेशल / हर्बल रंग उपलब्ध' is spelled exactly right, and the picture (gulal thalis, brass pichkari, gujiya, colourful bazaar behind) fits a Mathura Holi poster perfectly. A has badly garbled words (स्पषाल, हॅबिल रंग उजाब) and a nonsense address 'UTTER UPREASSHI', plus the sweets look like sugar-dusted samosas, not gujiya. C gets the first line right but writes 'उपत्वध' instead of 'उपलब्ध' and adds a fake gibberish shop name at the bottom. I'd post B as-is. || read: होली स्पषाल\nहॅबिल रंग उजाब\nAGARWAL GENERAL STORE\nMATHURA, UTTER UPREASSHI"
+  },
+  {
+   "prompt_id": "P10",
+   "model": "g31",
+   "comment": "B is the only one with perfect Hindi — 'होली स्पेशल / हर्बल रंग उपलब्ध' is spelled exactly right, and the picture (gulal thalis, brass pichkari, gujiya, colourful bazaar behind) fits a Mathura Holi poster perfectly. A has badly garbled words (स्पषाल, हॅबिल रंग उजाब) and a nonsense address 'UTTER UPREASSHI', plus the sweets look like sugar-dusted samosas, not gujiya. C gets the first line right but writes 'उपत्वध' instead of 'उपलब्ध' and adds a fake gibberish shop name at the bottom. I'd post B as-is. || read: होली स्पेशल\nहर्बल रंग उपलब्ध"
+  },
+  {
+   "prompt_id": "P10",
+   "model": "gpt1",
+   "comment": "B is the only one with perfect Hindi — 'होली स्पेशल / हर्बल रंग उपलब्ध' is spelled exactly right, and the picture (gulal thalis, brass pichkari, gujiya, colourful bazaar behind) fits a Mathura Holi poster perfectly. A has badly garbled words (स्पषाल, हॅबिल रंग उजाब) and a nonsense address 'UTTER UPREASSHI', plus the sweets look like sugar-dusted samosas, not gujiya. C gets the first line right but writes 'उपत्वध' instead of 'उपलब्ध' and adds a fake gibberish shop name at the bottom. I'd post B as-is. || read: होली स्पेशल\nहर्बल रंग उपत्वध\nअगरावी गसरलातो सोरर"
+  },
+  {
+   "prompt_id": "P06",
+   "model": "g31",
+   "comment": "A is the only one with the text letter-perfect — nukta on ज़ and फ़ both correct, price right, shop name right — and the picture (purani silai machine, rangeen saree thaan, kadhai wala pink blouse) looks exactly like a real tailor shop. C is clean and clear too but सिर्फ़ ka nukta missing; easy fix, second choice. B is unusable — 'ब्लाुज़ं सेलही सफिं' aur 'लस्भी टेलरस' padha hi nahi jaata, customer ko shop ka naam galat dikhega. || read: ब्लाउज़ सिलाई सिर्फ़ ₹250\nलक्ष्मी टेलर्स"
+  },
+  {
+   "prompt_id": "P06",
+   "model": "g25",
+   "comment": "A is the only one with the text letter-perfect — nukta on ज़ and फ़ both correct, price right, shop name right — and the picture (purani silai machine, rangeen saree thaan, kadhai wala pink blouse) looks exactly like a real tailor shop. C is clean and clear too but सिर्फ़ ka nukta missing; easy fix, second choice. B is unusable — 'ब्लाुज़ं सेलही सफिं' aur 'लस्भी टेलरस' padha hi nahi jaata, customer ko shop ka naam galat dikhega. || read: ब्लाुज़ं सेलही\nसफिं ₹250\nलस्भी टेलरस"
+  },
+  {
+   "prompt_id": "P06",
+   "model": "gpt1",
+   "comment": "A is the only one with the text letter-perfect — nukta on ज़ and फ़ both correct, price right, shop name right — and the picture (purani silai machine, rangeen saree thaan, kadhai wala pink blouse) looks exactly like a real tailor shop. C is clean and clear too but सिर्फ़ ka nukta missing; easy fix, second choice. B is unusable — 'ब्लाुज़ं सेलही सफिं' aur 'लस्भी टेलरस' padha hi nahi jaata, customer ko shop ka naam galat dikhega. || read: ब्लाउज़ सिलाई सिर्फ\n₹250\nलक्ष्मी टेलर्स"
+  },
+  {
+   "prompt_id": "P09",
+   "model": "g25",
+   "comment": "All three spell the two English lines correctly with no broken letters. A is the prettiest and most festive — gulal heaps, brass pichkaris and a plate of gujiya all look real, nothing distorted. B's text is fine but the pichkaris look like plain metal rods/syringes and the white studio background feels flat for a Holi status. C is clean, the colour bowls and gujiya look genuine, and it even carries my shop name 'Agarwal General Store, Mathura' which I did not ask for but is exactly what I'd want on a WhatsApp Status — so I'd post C, with A as a close second. || read: Holi Special\nHerbal Colours Available"
+  },
+  {
+   "prompt_id": "P09",
+   "model": "g31",
+   "comment": "All three spell the two English lines correctly with no broken letters. A is the prettiest and most festive — gulal heaps, brass pichkaris and a plate of gujiya all look real, nothing distorted. B's text is fine but the pichkaris look like plain metal rods/syringes and the white studio background feels flat for a Holi status. C is clean, the colour bowls and gujiya look genuine, and it even carries my shop name 'Agarwal General Store, Mathura' which I did not ask for but is exactly what I'd want on a WhatsApp Status — so I'd post C, with A as a close second. || read: Holi Special\nHerbal Colours Available"
+  },
+  {
+   "prompt_id": "P09",
+   "model": "gpt1",
+   "comment": "All three spell the two English lines correctly with no broken letters. A is the prettiest and most festive — gulal heaps, brass pichkaris and a plate of gujiya all look real, nothing distorted. B's text is fine but the pichkaris look like plain metal rods/syringes and the white studio background feels flat for a Holi status. C is clean, the colour bowls and gujiya look genuine, and it even carries my shop name 'Agarwal General Store, Mathura' which I did not ask for but is exactly what I'd want on a WhatsApp Status — so I'd post C, with A as a close second. || read: Holi Special\nHerbal Colours Available\nAgarwal General Store, Mathura"
+  },
+  {
+   "prompt_id": "S15",
+   "model": "g25",
+   "comment": "Poster A की लिखावट पूरी तरह गलत है — 'जममताती' और 'शुभफापाएॅ' जैसे शब्द ग्राहक पढ़ ही नहीं पाएगा, इसलिए वह बेकार है। B और C दोनों में टेक्स्ट बिल्कुल सही है। B ज्यादा सुंदर और त्योहार जैसा लगता है — मटकी, माखन, मोरपंख, बांसुरी, दीये, फूल सब सही हैं और सुनहरा बॉर्डर मिठाई की दुकान के लिए अच्छा लगता है। C भी साफ-सुथरा है पर थोड़ा सादा है। इसलिए B चुनूँगा। || read: श्री क्रूश्न जममताती की हादिक शुभफापाएॅ"
+  },
+  {
+   "prompt_id": "S15",
+   "model": "g31",
+   "comment": "Poster A की लिखावट पूरी तरह गलत है — 'जममताती' और 'शुभफापाएॅ' जैसे शब्द ग्राहक पढ़ ही नहीं पाएगा, इसलिए वह बेकार है। B और C दोनों में टेक्स्ट बिल्कुल सही है। B ज्यादा सुंदर और त्योहार जैसा लगता है — मटकी, माखन, मोरपंख, बांसुरी, दीये, फूल सब सही हैं और सुनहरा बॉर्डर मिठाई की दुकान के लिए अच्छा लगता है। C भी साफ-सुथरा है पर थोड़ा सादा है। इसलिए B चुनूँगा। || read: श्री कृष्ण जन्माष्टमी की हार्दिक शुभकामनाएँ"
+  },
+  {
+   "prompt_id": "S15",
+   "model": "gpt1",
+   "comment": "Poster A की लिखावट पूरी तरह गलत है — 'जममताती' और 'शुभफापाएॅ' जैसे शब्द ग्राहक पढ़ ही नहीं पाएगा, इसलिए वह बेकार है। B और C दोनों में टेक्स्ट बिल्कुल सही है। B ज्यादा सुंदर और त्योहार जैसा लगता है — मटकी, माखन, मोरपंख, बांसुरी, दीये, फूल सब सही हैं और सुनहरा बॉर्डर मिठाई की दुकान के लिए अच्छा लगता है। C भी साफ-सुथरा है पर थोड़ा सादा है। इसलिए B चुनूँगा। || read: श्री कृष्ण जन्माष्टमी की हार्दिक शुभकामनाएँ"
+  },
+  {
+   "prompt_id": "S16",
+   "model": "gpt1",
+   "comment": "C की लिखावट बिल्कुल सही है — 'छठ महापर्व की हार्दिक शुभकामनाएँ' अक्षर-अक्षर मिलती है, और घाट, सूप में ठेकुआ, केला, नारियल, गन्ना सब छठ के हिसाब से एकदम सही लगता है। A भी देखने में अच्छा है पर 'शुभकामानाएँ' में एक मात्रा ज़्यादा है; दुकान का नाम अंग्रेज़ी में जुड़ा है जो चाहें तो ठीक, पर मांगा नहीं था। B की हिंदी तो टूटी-फूटी है ही ('माहापर्व', 'हादिक', 'शुभाफामाएँ') और बोर्ड पर 'मां तारा फ़्रूट बंन्दार, पतना, बेहार' लिखा है — नाम और शहर दोनों गलत वर्तनी में, इसे कभी पोस्ट नहीं करूँगा। || read: छठ महापर्व की\nहार्दिक शुभकामानाएँ\nMaa Tara Fruit Bhandar"
+  },
+  {
+   "prompt_id": "S16",
+   "model": "g25",
+   "comment": "C की लिखावट बिल्कुल सही है — 'छठ महापर्व की हार्दिक शुभकामनाएँ' अक्षर-अक्षर मिलती है, और घाट, सूप में ठेकुआ, केला, नारियल, गन्ना सब छठ के हिसाब से एकदम सही लगता है। A भी देखने में अच्छा है पर 'शुभकामानाएँ' में एक मात्रा ज़्यादा है; दुकान का नाम अंग्रेज़ी में जुड़ा है जो चाहें तो ठीक, पर मांगा नहीं था। B की हिंदी तो टूटी-फूटी है ही ('माहापर्व', 'हादिक', 'शुभाफामाएँ') और बोर्ड पर 'मां तारा फ़्रूट बंन्दार, पतना, बेहार' लिखा है — नाम और शहर दोनों गलत वर्तनी में, इसे कभी पोस्ट नहीं करूँगा। || read: छठ माहापर्व की\nहादिक शुभाफामाएँ\nमां तारा फ़्रूट बंन्दार, पतना, बेहार"
+  },
+  {
+   "prompt_id": "S16",
+   "model": "g31",
+   "comment": "C की लिखावट बिल्कुल सही है — 'छठ महापर्व की हार्दिक शुभकामनाएँ' अक्षर-अक्षर मिलती है, और घाट, सूप में ठेकुआ, केला, नारियल, गन्ना सब छठ के हिसाब से एकदम सही लगता है। A भी देखने में अच्छा है पर 'शुभकामानाएँ' में एक मात्रा ज़्यादा है; दुकान का नाम अंग्रेज़ी में जुड़ा है जो चाहें तो ठीक, पर मांगा नहीं था। B की हिंदी तो टूटी-फूटी है ही ('माहापर्व', 'हादिक', 'शुभाफामाएँ') और बोर्ड पर 'मां तारा फ़्रूट बंन्दार, पतना, बेहार' लिखा है — नाम और शहर दोनों गलत वर्तनी में, इसे कभी पोस्ट नहीं करूँगा। || read: छठ महापर्व की\nहार्दिक शुभकामनाएँ"
+  },
+  {
+   "prompt_id": "P04",
+   "model": "g31",
+   "comment": "A की लाइन-बाय-लाइन हिंदी बिलकुल सही है और दुकान का माहौल असली किराना जैसा लगता है — आटे के पैकेट पर सिर्फ 'atta' लिखा है, कोई नकली ब्रांड नहीं, इसलिए सीधे पोस्ट कर सकता हूँ। B का टेक्स्ट भी सही है पर शेल्फ पर 'AASHRVAAD/AASHIAAD' जैसा टूटा-फूटा नकली ब्रांड साफ दिख रहा है, वो हटाना पड़ेगा। C में 'सभी' की जगह 'सधी' और 'छूट' की जगह 'छाट' लिखा है — ग्राहक को गलत पढ़ेगा, साथ ही पैकेटों पर बेमतलब के अक्षर हैं, इसलिए नहीं लगाऊँगा। || read: सभी किराना सामान पर 10% की छूट\nगुप्ता किराना स्टोर"
+  }
+ ],
+ "audit_agreement": {
+  "n": 48,
+  "exact": 0.8541666666666666,
+  "within1": 0.9791666666666666
+ }
+}

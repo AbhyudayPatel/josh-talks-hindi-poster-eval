@@ -300,7 +300,7 @@ Per-image notes are in Appendix C.
 
 Ranked by **ship-ready rate in Hindi**, with 95% intervals. **Models whose intervals overlap share a rank**, because the data can't separate them. The English score and the Hindi tax sit alongside, so the gap is visible. A model is marked *provisional* until it has 300+ ratings. Filters: script, business type, difficulty, rater state, eval run.
 
-<div class="fig"><img src="assets/mock_lb.png"><div class="cap">Leaderboard mockup. Numbers are placeholders ("xx"); ranks fill in from data.</div></div>
+<div class="fig"><img src="assets/mock_lb.png"><div class="cap">Leaderboard with the real ratings from the 2 participants. Gemini 3.1 and GPT Image 1 share rank 1–2 because their intervals overlap; every model is provisional (well under 300 ratings).</div></div>
 
 ### Admin dashboard and failure explorer
 

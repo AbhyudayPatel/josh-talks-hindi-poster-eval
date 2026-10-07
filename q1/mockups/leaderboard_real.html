@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+.viz-root{ --surface-1:#fcfcfb; --card:#ffffff; --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#8a8984; --line:#e6e4de;
+  --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a; --good:#1a7f37; --warn:#b54708; --crit:#b42318; }
+*{box-sizing:border-box} body{margin:0;font-family:"Segoe UI","Nirmala UI",sans-serif;background:var(--surface-1);color:var(--text-primary)}
+.view{display:none;padding:22px 28px;width:1360px;background:#fff} .view.on{display:block}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.logo{font-family:Bahnschrift,sans-serif;font-weight:700;font-size:19px} .logo span{color:#f04e23}
+.tabs{display:flex;gap:4px;margin-left:20px} .tabs div{padding:6px 12px;border-radius:0;font-size:13px;color:var(--text-secondary)} .tabs .a{background:#111;color:#fff;font-weight:600}
+.stamp{margin-left:auto;font-family:Consolas,monospace;font-size:11px;color:var(--crit);border:1px solid var(--crit);padding:3px 10px;border-radius:999px;letter-spacing:.5px}
+.filters{display:flex;gap:8px;margin:6px 0 14px;flex-wrap:wrap} .filters div{border:1px solid #111;background:#fff;border-radius:999px;font-family:Consolas,monospace;padding:6px 10px;font-size:12.5px;color:var(--text-secondary)} .filters b{color:var(--text-primary);font-weight:600}
+.card{background:var(--card);border:1px solid #111;border-radius:0;padding:16px;margin-bottom:14px}
+h2{font-family:Bahnschrift,sans-serif;font-size:17px;margin:0 0 4px} .sub{font-size:12.5px;color:var(--text-secondary);margin-bottom:12px}
+table{border-collapse:collapse;width:100%;font-size:13px} th{font-family:Consolas,monospace;text-align:left;font-weight:400;color:var(--text-secondary);font-size:11.5px;text-transform:uppercase;letter-spacing:.3px;border-bottom:1px solid var(--line);padding:8px} td{padding:10px 8px;border-bottom:1px solid #f0efeb;vertical-align:middle}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:middle}
+.ci{position:relative;height:16px;width:180px;background:linear-gradient(to right,#f3f2ef 0,#f3f2ef 100%);border-radius:3px}
+.ci i{position:absolute;top:7px;height:2px;background:#9b9a94} .ci b{position:absolute;top:3px;width:10px;height:10px;border-radius:50%;margin-left:-5px}
+.pill{font-family:Consolas,monospace;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid #111;color:var(--text-secondary)}
+.rank{font-weight:700;font-size:15px}
+.grid3{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .kpi .v{font-family:Bahnschrift,sans-serif;font-size:28px;font-weight:600} .kpi .l{font-size:12px;color:var(--text-secondary)} .kpi .d{font-size:12px;margin-top:4px}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:8px;border:1px solid var(--line);margin-bottom:8px;font-size:13px} .alert .ic{font-weight:700;min-width:74px}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.heat td{text-align:center;font-size:12px;padding:7px} .heat td:first-child{text-align:left}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .thumbs img{width:100%;border-radius:8px;border:1px solid var(--line)} .thumbs .cap{font-size:12px;margin-top:4px;line-height:1.35} .thumbs .cap b{color:var(--crit)}
+.note{font-size:11.5px;color:var(--muted);margin-top:8px}
+
+.stamp.real{color:#1a7f37;border-color:#1a7f37} .ci{display:inline-block} td .note{display:block}</style></head>
+<body class="viz-root"><section class="view on" id="lb">
+ <div class="top"><div class="logo">Bharat <span>Poster</span> Arena</div>
+  <div class="tabs"><div class="a">Leaderboard</div><div>Explore failures</div><div>Compare versions</div><div>Methodology</div></div>
+  <div class="stamp real">REAL DATA · 2 HUMAN RATERS · PROVISIONAL</div></div>
+ <div class="filters"><div>Script: <b>Devanagari (Hindi)</b> ▾</div><div>Business: <b>All 8</b> ▾</div><div>Difficulty: <b>All</b> ▾</div><div>Rater pool: <b>Hindi readers, 18+</b> ▾</div><div>Eval run: <b>2026-10 · v1</b> ▾</div></div>
+ <div class="card">
+  <h2>Which model makes posters a local Indian shop would post as-is?</h2>
+  <div class="sub">Ranked by <b>Ship-ready rate</b> (% of ratings "Post as-is") on the 10 Hindi prompts. Models whose 95% intervals overlap share a rank band. All models are <i>provisional</i>: fewer than 300 ratings each.</div>
+  <table><tr><th>Rank</th><th>Model</th><th>Ship-ready (Hindi)</th><th>95% interval</th><th>English twin</th><th>Hindi tax</th><th>Text exact (Hindi)</th><th>Looks Indian (Hindi)</th><th>Ratings</th><th>Status</th></tr><tr><td class="rank">1–2</td><td><span class="sw" style="background:var(--series-3)"></span>Gemini 3.1 Flash Image Preview<br><span class="note">Google · gemini-3.1-flash-image-preview</span></td><td><b>80%</b></td><td><div class="ci"><i style="left:50%;width:50%"></i><b style="left:80%;background:var(--series-3)"></b></div><span class="note">50% to 100%</span></td><td>67%</td><td>+17 pp</td><td>90%</td><td>95%</td><td>32</td><td><span class="pill">provisional</span></td></tr><tr><td class="rank">1–2</td><td><span class="sw" style="background:var(--series-1)"></span>GPT Image 1<br><span class="note">OpenAI · gpt-image-1 · quality=high</span></td><td><b>35%</b></td><td><div class="ci"><i style="left:10%;width:60%"></i><b style="left:35%;background:var(--series-1)"></b></div><span class="note">10% to 70%</span></td><td>75%</td><td>−33 pp</td><td>35%</td><td>65%</td><td>32</td><td><span class="pill">provisional</span></td></tr><tr><td class="rank">3</td><td><span class="sw" style="background:var(--series-2)"></span>Gemini 2.5 Flash Image<br><span class="note">Google · gemini-2.5-flash-image</span></td><td><b>0%</b></td><td><div class="ci"><i style="left:0%;width:1%"></i><b style="left:0%;background:var(--series-2)"></b></div><span class="note">0% to 0%</span></td><td>42%</td><td>−42 pp</td><td>5%</td><td>30%</td><td>32</td><td><span class="pill">provisional</span></td></tr></table>
+  <div class="note">Hindi tax = change in ship-ready rate from the English twin to the Hindi twin on the 6 matched pairs (− = worse in Hindi, + = better in Hindi). Interval = two-level bootstrap over prompts and raters. Ratings = all 16 prompts per model, repeat screen excluded.</div>
+ </div>
+ <div class="two">
+  <div class="card"><h2>Where each model breaks (Hindi)</h2><div class="sub">Ship-ready rate by difficulty level</div>
+   <table class="heat"><tr><th>Level</th><th>GPT Image 1</th><th>Gemini 2.5</th><th>Gemini 3.1</th></tr><tr><td>L1 short greeting</td><td style="background:#f3f8fe;">0%</td><td style="background:#f3f8fe;">0%</td><td style="background:#2a78d6;color:#fff;">100%</td></tr><tr><td>L2 offer / price</td><td style="background:#86b6ef;">50%</td><td style="background:#f3f8fe;">0%</td><td style="background:#5598e7;color:#fff;">75%</td></tr><tr><td>L3 multi-line / code-mixed / festival</td><td style="background:#86b6ef;">50%</td><td style="background:#f3f8fe;">0%</td><td style="background:#6da7ec;color:#fff;">67%</td></tr><tr><td>L4 long / dense conjuncts</td><td style="background:#f3f8fe;">0%</td><td style="background:#f3f8fe;">0%</td><td style="background:#2a78d6;color:#fff;">100%</td></tr></table></div>
+  <div class="card"><h2>Why posters get rejected</h2><div class="sub">Share of "Would not post" ratings with each reason (GPT Image 1 n=4 · Gem 2.5 n=9 · Gem 3.1 n=1)</div>
+   <table><tr><th>Reason</th><th>GPT 1</th><th>Gem 2.5</th><th>Gem 3.1</th></tr><tr><td>Misspelled / gibberish text</td><td>75%</td><td>56%</td><td>0%</td></tr><tr><td>Extra unrequested text</td><td>0%</td><td>0%</td><td>0%</td></tr><tr><td>Fake brand / logo</td><td>0%</td><td>0%</td><td>0%</td></tr><tr><td>Distorted objects, hands or faces</td><td>0%</td><td>0%</td><td>0%</td></tr></table></div>
+ </div>
+</section></body></html>

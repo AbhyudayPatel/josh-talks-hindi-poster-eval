@@ -78,6 +78,17 @@ def load(ratings_dir):
     if not files:
         raise SystemExit(f"no ratings CSVs in {ratings_dir}")
     df = pd.concat([pd.read_csv(f, encoding="utf-8-sig") for f in files], ignore_index=True)
+    # Integrity gate: human rows must reproduce the app's email-seeded randomisation exactly (see verify_ratings.py).
+    human = df[~df.build.astype(str).isin(["AI-PANEL", "SYNTH"])]
+    if len(human):
+        from verify_ratings import expected
+        spec_ = json.loads((HERE / "prompts.json").read_text(encoding="utf-8"))
+        key_ = json.loads((HERE / "rating_app" / "key.json").read_text())
+        for email, s in human.groupby("email"):
+            pid, exp = expected(email, str(s.build.iloc[0]), spec_, key_)
+            bad = sum(exp.get((int(r.screen_index), r.position)) != (r.prompt_id, r.image_id) for r in s.itertuples())
+            if s.participant_id.iloc[0] != pid or bad:
+                raise SystemExit(f"REJECTED: ratings for {email} were not produced by rate.html ({bad} rows off the app's layout).")
     key = json.loads((HERE / "rating_app" / "key.json").read_text())
     df["model"] = df.image_id.map(lambda i: key[i]["model"])
     df["key_prompt"] = df.image_id.map(lambda i: key[i]["prompt_id"])

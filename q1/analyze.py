@@ -141,7 +141,7 @@ def main():
     R["participants"] = {"n_total": len(part), "n_included": int((~part.excluded).sum()),
                          "excluded": part[part.excluded].index.tolist(), "median_age": float(part.age.median()),
                          "hindi_levels": part.hindi.value_counts().to_dict(), "states": part.state.fillna("").value_counts().to_dict(),
-                         "median_minutes": float(df.groupby("participant_id").seconds_on_screen.sum().median() / 60)}
+                         "median_minutes": float(df.drop_duplicates(["participant_id", "screen_index"]).groupby("participant_id").seconds_on_screen.sum().median() / 60)}
     df = df[df.participant_id.isin(part[~part.excluded].index)]
     main_ = df[~df.is_repeat].copy()
     R["n_ratings"] = len(main_); R["n_prompts"] = main_.prompt_id.nunique()
@@ -247,7 +247,7 @@ def main():
             v = lb.loc[mdl, met] * 100; lo, hi_ = (np.array(ci[met][mdl]) * 100)
             ax.plot([lo, hi_], [y, y], color="#c3c2b7", lw=2, solid_capstyle="round")
             ax.plot(v, y, "o", color=COLOR[mdl], ms=9); ax.text(v, y + 0.22, f"{v:.0f}%", ha="center", fontsize=9)
-        ax.set_yticks(range(len(order))); ax.set_yticklabels([MODEL_NAME[m] for m in order[::-1]]); ax.set_xlim(0, 100)
+        ax.set_yticks(range(len(order))); ax.set_yticklabels([MODEL_NAME[m] for m in order[::-1]]); ax.set_xlim(0, 100); ax.set_ylim(-0.5, len(order) - 0.2)
         ax.set_title(ttl + " (% of ratings, 95% CI)", loc="left", fontsize=10); ax.grid(axis="x", color="#eee")
     if stamp: fig.suptitle(stamp, color="#b42318", fontsize=12, y=1.02)
     fig.tight_layout(); fig.savefig(OUT / "fig_leaderboard.png", dpi=200, bbox_inches="tight"); plt.close(fig)

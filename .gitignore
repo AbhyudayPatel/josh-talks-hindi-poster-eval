@@ -12,3 +12,10 @@ q1/rating_app/rate_PREVIEW.html
 q1/manual/
 *.pyc
 .env
+
+# participant personal data (consent covers the submission, not public hosting)
+q1/ratings/
+q1/out/participants.csv
+q1/out/results.json
+submission/Submission.pdf
+submission/Submission.html

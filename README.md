@@ -2,7 +2,7 @@
 
 Josh Talks AI · Product Task (July 2026) · Abhyuday Patel
 
-**Submission document:** [`submission/Submission.pdf`](submission/Submission.pdf)
+**Submission document:** submitted directly to Josh Talks (it contains participant names and emails, so it is not hosted here). Rebuild it with `python tools/build_submission.py`.
 
 ## Q1 · Hindi-text posters for India's local shops
 

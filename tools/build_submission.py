@@ -116,7 +116,14 @@ if q1r:
         i, j = k.split("_vs_")
         pt_t += f"| {MN[i]} vs {MN[j]} | {v['mean_diff_pp']:+.0f} pp | {v['prompts_i_better']} / {v['prompts_j_better']} / {v['ties']} | {v['wilcoxon_p'] if v['wilcoxon_p'] is None else round(v['wilcoxon_p'],3)} | {v['sign_test_p'] if v['sign_test_p'] is None else round(v['sign_test_p'],3)} |\n"
     pp = q1r["participants"]
-    R["q1_results_block"] = f"""<span class="lbl real">REAL DATA</span> {pp['n_included']} participants included ({pp['n_total']} completed; exclusions: {', '.join(pp['excluded']) or 'none'}), median {pp['median_minutes']:.0f} minutes, {q1r['n_ratings']} image-ratings over {q1r['n_prompts']} prompts.
+    small = pp['n_included'] < 8
+    R["q1_results_block"] = (f"""<div class="block yellow">
+
+<span class="pill real">REAL DATA</span> **{pp['n_included']} of the planned 8 to 10 participants have completed the study so far.** With this few raters the numbers below are descriptive only: they show direction, not a ranking anyone should rely on. Rater agreement needs at least two raters.
+
+</div>
+
+""" if small else "") + f"""<span class="pill real">REAL DATA</span> {pp['n_included']} participant(s) included ({pp['n_total']} completed; exclusions: {', '.join(pp['excluded']) or 'none'}), median {pp['median_minutes']:.0f} minutes, {q1r['n_ratings']} image-ratings over {q1r['n_prompts']} prompts.
 
 **Leaderboard (all 16 prompts).**
 
@@ -132,10 +139,8 @@ if q1r:
 
 <div class="fig"><img src="assets/fig_prompt_heatmap.png" style="max-height:520px"></div>
 
-**Exploratory paired tests across prompts (n = 16; Holm-adjust before claiming).**
-
-{pt_t}
-**Reliability.** Krippendorff's α (ordinal): text {al['text_ordinal']:.2f}, would-post {al['post_ordinal']:.2f}, looks-right {al['culture_ordinal']:.2f}. Test–retest on the repeated screen: identical text label {pct(tr['text_exact_agree'] or 0)}, within one level {pct(tr['text_within1'] or 0)}, identical would-post {pct(tr['post_agree'] or 0)}. Best-pick share by position: {', '.join(f'{k} {pct(v)}' for k, v in sorted(q1r['position_bias'].items()))}.
+{'' if small else '**Exploratory paired tests across prompts (n = 16; Holm-adjust before claiming).**' + chr(10) + chr(10) + pt_t}
+**Reliability.** {'Rater agreement (alpha) needs two or more raters.' if small else f"Krippendorff's alpha (ordinal): text {al['text_ordinal']:.2f}, would-post {al['post_ordinal']:.2f}, looks-right {al['culture_ordinal']:.2f}."} Test-retest on the repeated screen: identical text label {pct(tr['text_exact_agree'] or 0)}, within one level {pct(tr['text_within1'] or 0)}, identical would-post {pct(tr['post_agree'] or 0)}. Best-pick share by position: {', '.join(f'{k} {pct(v)}' for k, v in sorted(q1r['position_bias'].items()))}.
 """ + (f"\n**Agreement with my researcher audit:** participants' median text label matched mine on {pct(q1r['audit_agreement']['exact'])} of images (within one level: {pct(q1r['audit_agreement']['within1'])})." if "audit_agreement" in q1r else "")
 else:
     R["q1_results_block"] = f"""<div class="block grey">

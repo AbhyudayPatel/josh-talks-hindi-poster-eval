@@ -1,4 +1,4 @@
 - **English is solved; Hindi splits the models.** All three spelled English perfectly (6 of 6). On the identical Hindi posters: Gemini 3.1 Flash Image Preview 6 of 6, GPT Image 1 2 of 6, Gemini 2.5 Flash Image 0 of 6. <span class="pill audit">MY AUDIT</span>
 - **One model generation closed the gap.** Gemini 2.5 → 3.1 went from 0 to 9 of 10 Hindi posters exactly right, so India-specific results go stale fast. <span class="pill audit">MY AUDIT</span>
 - **Looks great ≠ usable.** Every poster looked professional, yet Gemini 2.5's chemist notice got every word wrong, including the day of the free health check. Unrequested text and fake brands appeared across models. <span class="pill audit">MY AUDIT</span>
-- <span class="pending">PENDING</span> Participant ship-ready ratings fill in from the rating files.
+- **The first real participant agrees.** Marked Hindi text exactly right on 100% of Gemini 3.1 posters, 33% of GPT Image 1 and 0% of Gemini 2.5 (1 of 8 to 10 planned raters, descriptive only). <span class="pill real">REAL DATA</span>

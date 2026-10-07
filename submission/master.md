@@ -41,7 +41,7 @@ Image models make beautiful posters. For a shop in Kanpur that wants its offer i
 <span class="pill dark">GPT Image 1</span><span class="pill">Gemini 2.5 Flash Image</span><span class="pill">Gemini 3.1 Flash Image Preview</span>
 
 <div class="eyebrow" style="margin-top:8pt">Labels used</div>
-<span class="pill real">REAL DATA</span><span class="pill audit">MY AUDIT</span><span class="pill illus">ILLUSTRATIVE</span><span class="pending">PENDING</span>
+<span class="pill real">REAL DATA</span><span class="pill audit">MY AUDIT</span><span class="pill illus">ILLUSTRATIVE</span><span class="pill">AI, NOT HUMAN</span>
 
 <div class="eyebrow" style="margin-top:8pt">Video walkthrough</div>
 {{video_url}}
@@ -242,7 +242,7 @@ With only 8 to 10 people, every minute of rating must count. Pure A/B voting giv
 | Rating looks, not text | The text question comes first; the reference text is pinned; tap to zoom |
 | Eligibility | 18+ gate, consent checkbox, "can you read Hindi?" check |
 
-**Design in numbers:** 16 prompts × 3 models = 48 posters. Every participant rates every poster (16 screens + 1 repeat, about 20 minutes). With 9 people that is 432 poster ratings and 144 best-of-three picks.
+**Design in numbers:** 16 prompts × 3 models = 48 posters. Every participant rates every poster (16 screens + 1 repeat, about 20 minutes). At 9 people that would be 432 poster ratings. **This run: 2 verified participants, 102 poster ratings (including the repeat screen) and 34 best-of-three picks.**
 
 **What this sample can and can't prove.** Ratings of the same poster aren't independent, so the real sample size is **16 prompts**, not 432 ratings. I use intervals that resample both prompts and raters. With 16 prompts, only gaps of **about 25 percentage points or more** count as a real direction; smaller gaps are reported as description. Agreement between raters is measured with Krippendorff's alpha. I planned this analysis before seeing any ratings, and I deliberately avoid significance tests on single prompts.
 
@@ -485,7 +485,7 @@ Text signals only, since their timings can't be trusted:
 
 **4. What did you learn from running the sample?** {{reflection_learned}}
 
-**5. What would you improve with more time?** Two images per prompt per model and about 60 prompts; raters balanced across Hindi-speaking states; a second Devanagari language (Marathi) and one other script (Tamil or Bengali); checking an OCR text scorer against human labels so people only judge what machines can't; and testing "background + typeset text" as a fourth option to measure the product fix directly. For Q2: run shadow mode on real platform logs with proper user IDs and playback events.
+**5. What would you improve with more time?** First, finish the human study: 2 raters show direction, 8 to 10 would give a ranking. Then two images per prompt per model and about 60 prompts; raters balanced across Hindi-speaking states; a second Devanagari language (Marathi) and one other script (Tamil or Bengali); checking an OCR text scorer against human labels so people only judge what machines can't; and testing "background + typeset text" as a fourth option to measure the product fix directly. For Q2: run shadow mode on real platform logs with proper user IDs and playback events.
 
 </div>
 </div>

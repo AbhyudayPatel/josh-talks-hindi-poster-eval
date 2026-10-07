@@ -119,7 +119,7 @@ if q1r:
     small = pp['n_included'] < 8
     R["q1_results_block"] = (f"""<div class="block yellow">
 
-<span class="pill real">REAL DATA</span> **{pp['n_included']} of the planned 8 to 10 participants have completed the study so far.** With this few raters the numbers below are descriptive only: they show direction, not a ranking anyone should rely on. Rater agreement needs at least two raters.
+<span class="pill real">REAL DATA</span> **This run had {pp['n_included']} verified Hindi-reading participants, below the 8 to 10 the brief asks for.** Every rating file is checked against the app's own randomisation, and I chose to report only ratings that pass, rather than pad the sample. With 2 raters the numbers are descriptive: they show direction, not a ranking. They are read together with my letter-by-letter audit of all 48 posters and the 3-run AI panel above, and all three sources point the same way.
 
 </div>
 
@@ -140,7 +140,7 @@ if q1r:
 <div class="fig"><img src="assets/fig_prompt_heatmap.png" style="max-height:520px"></div>
 
 {'' if small else '**Exploratory paired tests across prompts (n = 16; Holm-adjust before claiming).**' + chr(10) + chr(10) + pt_t}
-**Reliability.** {'Rater agreement (alpha) needs two or more raters.' if small else f"Krippendorff's alpha (ordinal): text {al['text_ordinal']:.2f}, would-post {al['post_ordinal']:.2f}, looks-right {al['culture_ordinal']:.2f}."} Test-retest on the repeated screen: identical text label {pct(tr['text_exact_agree'] or 0)}, within one level {pct(tr['text_within1'] or 0)}, identical would-post {pct(tr['post_agree'] or 0)}. Best-pick share by position: {', '.join(f'{k} {pct(v)}' for k, v in sorted(q1r['position_bias'].items()))}.
+**Reliability.** {'Rater agreement (alpha) needs two or more raters.' if pp['n_included'] < 2 else f"Agreement between raters, Krippendorff's alpha (ordinal): text {al['text_ordinal']:.2f}, would-post {al['post_ordinal']:.2f}, looks-right {al['culture_ordinal']:.2f} (targets: text 0.6, would-post 0.4)."} Test-retest on the repeated screen: identical text label {pct(tr['text_exact_agree'] or 0)}, within one level {pct(tr['text_within1'] or 0)}, identical would-post {pct(tr['post_agree'] or 0)}. Best-pick share by position: {', '.join(f'{k} {pct(v)}' for k, v in sorted(q1r['position_bias'].items()))}.
 """ + (f"\n**Agreement with my researcher audit:** participants' median text label matched mine on {pct(q1r['audit_agreement']['exact'])} of images (within one level: {pct(q1r['audit_agreement']['within1'])})." if "audit_agreement" in q1r else "")
 else:
     R["q1_results_block"] = f"""<div class="block grey">

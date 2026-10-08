@@ -14,21 +14,7 @@
 <div class="eyebrow">Inside this document</div>
 
 <div class="rows">
-
-One-page report
-
-Q1 · The evaluation and why it matters
-
-Q1 · How it works and how people judged
-
-Q1 · Results and findings
-
-Q1 · The eval as a product, and scale
-
-Q2 · Spotting low-quality transcribers
-
-Reflection, video script, appendix
-
+<a class="row" href="#onepager">One-page report</a><a class="row" href="#q1a">Q1 · The evaluation and why it matters</a><a class="row" href="#q1b">Q1 · How it works and how people judged</a><a class="row" href="#q1c">Q1 · Results and findings</a><a class="row" href="#q1d">Q1 · The eval as a product, and scale</a><a class="row" href="#q2">Q2 · Spotting low-quality transcribers</a><a class="row" href="#wrap">Reflection and video script</a><a class="row" href="#appendix">Appendix: prompts, images, logs, data</a>
 </div>
 </div>
 <div class="panel yellow">
@@ -41,16 +27,20 @@ Image models make beautiful posters. For a shop in Kanpur that wants its offer i
 <span class="pill dark">GPT Image 1</span><span class="pill">Gemini 2.5 Flash Image</span><span class="pill">Gemini 3.1 Flash Image Preview</span>
 
 <div class="eyebrow" style="margin-top:8pt">Labels used</div>
-<span class="pill real">REAL DATA</span><span class="pill audit">MY AUDIT</span><span class="pill illus">ILLUSTRATIVE</span><span class="pill">AI, NOT HUMAN</span>
+<span class="pill real">REAL DATA</span><span class="pill audit">MY AUDIT</span><span class="pill">AI, NOT HUMAN</span>
 
 <div class="eyebrow" style="margin-top:8pt">Video walkthrough</div>
-{{video_url}}
+<a class="extlink" href="{{video_url}}">▶ {{video_url}}</a>
+
+<div class="eyebrow" style="margin-top:8pt">Code, images and data</div>
+<a class="extlink" href="{{materials_url}}">{{materials_url}}</a>
 
 </div>
 </div>
 </div>
 
 <div class="onepager">
+<a id="onepager"></a>
 
 <div class="eyebrow">One-page report</div>
 
@@ -96,6 +86,7 @@ India has 7.3 crore registered MSMEs, almost all micro, and WhatsApp is their sh
 </div>
 
 <div class="opener">
+<a id="q1a"></a>
 <div class="eyebrow">Question 1 · Part A</div>
 
 # The evaluation and why it matters
@@ -155,6 +146,7 @@ I listed ten India-specific ideas and scored each 1 to 5 on the brief's criteria
 - **The result drives a decision.** For a lab: is Indic text a weakness, and which words break (which tells you what training data to add)? For a product team building a "make my poster" feature: which model to use for Hindi, and **whether a text-checking layer is required before launch**.
 
 <div class="opener">
+<a id="q1b"></a>
 <div class="eyebrow">Question 1 · Part B</div>
 
 # How the evaluation works
@@ -247,6 +239,7 @@ With only 8 to 10 people, every minute of rating must count. Pure A/B voting giv
 **What this sample can and can't prove.** Ratings of the same poster aren't independent, so the real sample size is **16 prompts**, not 432 ratings. I use intervals that resample both prompts and raters. With 16 prompts, only gaps of **about 25 percentage points or more** count as a real direction; smaller gaps are reported as description. Agreement between raters is measured with Krippendorff's alpha. I planned this analysis before seeing any ratings, and I deliberately avoid significance tests on single prompts.
 
 <div class="opener">
+<a id="q1c"></a>
 <div class="eyebrow">Question 1 · Part C</div>
 
 # Results and findings
@@ -283,6 +276,7 @@ Per-image notes are in Appendix C.
 5. **Fix the data, not just the model.** Errors cluster in less common words, English loanwords written in Devanagari, and nukta. A targeted training set of shop names, prices and loanwords is cheaper than more general data.
 
 <div class="opener">
+<a id="q1d"></a>
 <div class="eyebrow">Question 1 · Part D</div>
 
 # The eval as a product, and how it scales
@@ -306,15 +300,15 @@ Ranked by **ship-ready rate in Hindi**, with 95% intervals. **Models whose inter
 
 The admin view tracks completion, rater agreement, repeat-screen consistency and position bias. Alerts fire for raters who rush, for low-agreement prompts, and **when a provider's model version changes** (which re-runs the frozen prompt set). The failure explorer is where teams learn the most: filter by failure type, see the English twin next to the Hindi one, and open every rater's comment.
 
-<div class="fig"><img src="assets/mock_admin.png"><div class="cap">Admin dashboard mockup (illustrative numbers).</div></div>
+<div class="fig"><img src="assets/mock_admin.png"><div class="cap">Admin dashboard for this run, real data: 2 raters, agreement, consistency, a position-bias warning, and the 2 rating files the integrity check rejected.</div></div>
 
-<div class="fig"><img src="assets/mock_explore.png"><div class="cap">Failure explorer. Thumbnails are real outputs with my audit notes.</div></div>
+<div class="fig"><img src="assets/mock_explore.png"><div class="cap">Failure explorer, real outputs: the same chemist notice from all three models, plus a broken greeting both raters called a "small error". Lay raters miss Devanagari errors that a letter-by-letter check catches.</div></div>
 
 ### Scaling plan
 
 | Stage | Raters | What grows | Quality control | Automation |
 |---|---|---|---|---|
-| **Pilot (now)** | 8 to 10 | 16 prompts, Hindi, 3 models | practice item, repeat screen, rater agreement | none |
+| **Pilot (now)** | 2 (target 8 to 10) | 16 prompts, Hindi, 3 models | practice item, repeat screen, rater agreement | none |
 | **Next** | ~50 | 60 prompts, 2 images per prompt (separates the model from luck), add Marathi | hidden test posters with known errors; drop raters below 80% on them | OCR pre-checks text; humans confirm |
 | **Then** | ~500 | 8 to 10 scripts (Bengali, Tamil, Telugu, Gujarati, Gurmukhi, Urdu...), more business types, new models monthly | per-script agreement targets, adjudication, state and gender balance | extra raters only where OCR is unsure or raters disagree |
 | **Platform** | thousands | live leaderboard, private evals for labs | rater reputation, drift checks, fixed anchor prompts in every run | automatic re-run when a model version changes |
@@ -324,6 +318,7 @@ The admin view tracks completion, rater agreement, repeat-screen consistency and
 **What stays human:** "would I post this?", cultural fit and anything sensitive. **What can be automated:** exact text checking with OCR and string matching, extra-text and logo detection. One caution: a vision-LLM judge tends to read a misspelled word as the word it should be, so any automated judge must be checked against human labels before it is trusted.
 
 <div class="opener">
+<a id="q2"></a>
 <div class="eyebrow">Question 2</div>
 
 # Spotting low-quality transcribers
@@ -464,6 +459,7 @@ Text signals only, since their timings can't be trusted:
 **Rollout:** (1) weeks 0 to 2: add logging, input checks and hidden tests, no enforcement. (2) Weeks 2 to 6: shadow mode, where signals are computed and QA confirms whether flagged workers really are worse, and thresholds are tuned so no more than 2% of workers reach level 2. (3) Weeks 6 to 10: nudges and extra QA only. (4) Then restrictions and review in one language first; blocking only once appeals are staffed. **Success:** lower error in accepted data, lower cost per accurate hour, an overturn rate under 10%, and **good workers staying**.
 
 <div class="opener">
+<a id="wrap"></a>
 <div class="eyebrow">Wrap-up</div>
 
 # Final reflection
@@ -507,11 +503,12 @@ Text signals only, since their timings can't be trusted:
 </div>
 
 <div class="opener">
+<a id="appendix"></a>
 <div class="eyebrow">Appendix</div>
 
 # Supporting material
 
-<p>Prompts, rating questions and consent, generation log, every generated image, and the Q2 tables. Code and full-size files: {{materials_url}}</p>
+<p>Prompts, rating questions and consent, generation log, every generated image, and the Q2 tables. Code and full-size files: <a href="{{materials_url}}">{{materials_url}}</a></p>
 </div>
 
 ## A · All prompts

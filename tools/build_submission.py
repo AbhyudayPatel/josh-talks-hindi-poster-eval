@@ -255,7 +255,7 @@ for p in spec["prompts"]:
         f = IMG / f"{p['id']}_{k}.png"
         g += f'<td><img src="{thumb(f, f.stem + ".jpg")}"></td>' if f.exists() else f'<td class="ph">{PENDING}</td>'
     g += "</tr>"
-R["gallery"] = g + "</table>\n\nThumbnails shown; full-resolution PNGs are in `q1/images/` (" + cfg["materials_url"] + ")."
+R["gallery"] = g + "</table>\n\nThumbnails shown; full-resolution PNGs are in `q1/images/` at <a href=\"" + cfg["materials_url"] + "\">" + cfg["materials_url"] + "</a>."
 
 # Q2 tables
 copy(ROOT / "q2" / "out" / "fig_timing_artifact.png")

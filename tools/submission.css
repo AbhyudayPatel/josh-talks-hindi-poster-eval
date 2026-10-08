@@ -101,3 +101,9 @@ table.gallery .req { font-size:8pt; color:var(--ink2); }
 .pagebreak { break-after:page; }
 
 .card thead { display:none; }
+
+.rows a.row { border:1px solid var(--ink); background:#fff; padding:5pt 9pt; margin:0 0 5pt; display:flex; justify-content:space-between; font-size:9.6pt; color:var(--ink); text-decoration:none; }
+.rows a.row::after { content:"→"; font-size:10pt; }
+a.extlink { font-family:var(--mono); font-size:8.2pt; word-break:break-all; }
+.rows p { display:block; border:0; padding:0; margin:0; background:none; }
+.rows p::after { content:none; }

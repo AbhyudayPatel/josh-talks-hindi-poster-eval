@@ -24,7 +24,9 @@ def shot(url, png, w, h):
 shot((ROOT / "work" / "demo_rate.html").as_uri(), out / "ui_rate.png", 1400, 1330)
 base = (ROOT / "q1" / "mockups" / "product.html").as_uri()
 subprocess.run([sys.executable, str(ROOT / "q1" / "mockups" / "build_leaderboard.py")], check=True)
+subprocess.run([sys.executable, str(ROOT / "q1" / "mockups" / "build_admin_explorer.py")], check=True)
+subprocess.run([sys.executable, str(ROOT / "q1" / "mockups" / "make_arena.py")], check=True)
 shot((ROOT / "q1" / "mockups" / "leaderboard_real.html").as_uri(), out / "mock_lb.png", 1400, 720)
-for v, h in [("admin", 600), ("explore", 600)]:
-    shot(base + "#" + v, out / f"mock_{v}.png", 1400, h)
+shot((ROOT / "q1" / "mockups" / "admin_real.html").as_uri(), out / "mock_admin.png", 1400, 640)
+shot((ROOT / "q1" / "mockups" / "explorer_real.html").as_uri(), out / "mock_explore.png", 1400, 660)
 print("screenshots refreshed")

@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+.viz-root{ --surface-1:#fcfcfb; --card:#ffffff; --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#8a8984; --line:#e6e4de;
+  --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a; --good:#1a7f37; --warn:#b54708; --crit:#b42318; }
+*{box-sizing:border-box} body{margin:0;font-family:"Segoe UI","Nirmala UI",sans-serif;background:var(--surface-1);color:var(--text-primary)}
+.view{display:none;padding:22px 28px;width:1360px;background:#fff} .view.on{display:block}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.logo{font-family:Bahnschrift,sans-serif;font-weight:700;font-size:19px} .logo span{color:#f04e23}
+.tabs{display:flex;gap:4px;margin-left:20px} .tabs div{padding:6px 12px;border-radius:0;font-size:13px;color:var(--text-secondary)} .tabs .a{background:#111;color:#fff;font-weight:600}
+.stamp{margin-left:auto;font-family:Consolas,monospace;font-size:11px;color:var(--crit);border:1px solid var(--crit);padding:3px 10px;border-radius:999px;letter-spacing:.5px}
+.filters{display:flex;gap:8px;margin:6px 0 14px;flex-wrap:wrap} .filters div{border:1px solid #111;background:#fff;border-radius:999px;font-family:Consolas,monospace;padding:6px 10px;font-size:12.5px;color:var(--text-secondary)} .filters b{color:var(--text-primary);font-weight:600}
+.card{background:var(--card);border:1px solid #111;border-radius:0;padding:16px;margin-bottom:14px}
+h2{font-family:Bahnschrift,sans-serif;font-size:17px;margin:0 0 4px} .sub{font-size:12.5px;color:var(--text-secondary);margin-bottom:12px}
+table{border-collapse:collapse;width:100%;font-size:13px} th{font-family:Consolas,monospace;text-align:left;font-weight:400;color:var(--text-secondary);font-size:11.5px;text-transform:uppercase;letter-spacing:.3px;border-bottom:1px solid var(--line);padding:8px} td{padding:10px 8px;border-bottom:1px solid #f0efeb;vertical-align:middle}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:middle}
+.ci{position:relative;height:16px;width:180px;background:linear-gradient(to right,#f3f2ef 0,#f3f2ef 100%);border-radius:3px}
+.ci i{position:absolute;top:7px;height:2px;background:#9b9a94} .ci b{position:absolute;top:3px;width:10px;height:10px;border-radius:50%;margin-left:-5px}
+.pill{font-family:Consolas,monospace;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid #111;color:var(--text-secondary)}
+.rank{font-weight:700;font-size:15px}
+.grid3{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .kpi .v{font-family:Bahnschrift,sans-serif;font-size:28px;font-weight:600} .kpi .l{font-size:12px;color:var(--text-secondary)} .kpi .d{font-size:12px;margin-top:4px}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:8px;border:1px solid var(--line);margin-bottom:8px;font-size:13px} .alert .ic{font-weight:700;min-width:74px}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.heat td{text-align:center;font-size:12px;padding:7px} .heat td:first-child{text-align:left}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .thumbs img{width:100%;border-radius:8px;border:1px solid var(--line)} .thumbs .cap{font-size:12px;margin-top:4px;line-height:1.35} .thumbs .cap b{color:var(--crit)}
+.note{font-size:11.5px;color:var(--muted);margin-top:8px}
+
+.stamp.real{color:#1a7f37;border-color:#1a7f37}.thumbs .cap{font-size:12px;line-height:1.4}</style><style>.tabs a{padding:6px 12px;color:var(--text-secondary);text-decoration:none;font-size:13px}.tabs a.a{background:#111;color:#fff;font-weight:600}.tabs a:hover:not(.a){background:#f2f2f2}</style></head><body class="viz-root"><section class="view on" id="explore">
+ <div class="top"><div class="logo">Bharat <span>Poster</span> Arena</div>
+  <div class="tabs"><a href="leaderboard_real.html" class="">Leaderboard</a><a href="explorer_real.html" class="a">Explore failures</a><a href="admin_real.html" class="">Admin</a><a href="../rating_app/rate.html" class="">Rate posters ↗</a></div>
+  <div class="stamp real">REAL OUTPUTS · AUDIT + 2 RATERS</div></div>
+ <div class="filters"><div>Failure type: <b>Text in Hindi</b> ▾</div><div>Model: <b>All 3</b> ▾</div><div>Sort: <b>Rater vs audit disagreement</b> ▾</div></div>
+ <div class="card"><h2>Same chemist's notice, three models, and where lay raters miss errors</h2><div class="sub">First three: P12 "हर रविवार मुफ़्त शुगर जाँच" from each model. Last: a broken greeting both raters called a "small error", which shows why text checks need zoom, OCR or expert raters.</div>
+  <div class="thumbs"><div><img src="../images/P12_g31.png"><div class="cap"><b style="color:var(--text-primary)">P12 · Gemini 3.1 Flash Image Preview</b><br>My audit: <b style="color:var(--good)">exactly correct</b>. All text correct, incl. मुफ़्त and जाँच<br>Raters: 2× exactly correct</div></div><div><img src="../images/P12_gpt1.png"><div class="cap"><b style="color:var(--text-primary)">P12 · GPT Image 1</b><br>My audit: <b style="color:var(--crit)">small error</b>. Nukta and chandrabindu missing (मुफ्त, जांच)<br>Raters: 2× exactly correct</div></div><div><img src="../images/P12_g25.png"><div class="cap"><b style="color:var(--text-primary)">P12 · Gemini 2.5 Flash Image</b><br>My audit: <b style="color:var(--crit)">gibberish / missing</b>. Every word wrong, incl. the day: 'हर रनिवार मुफ्टि शुमार जॉच्छ'<br>Raters: 2× major error</div></div><div><img src="../images/S15_g25.png"><div class="cap"><b style="color:var(--text-primary)">S15 · Gemini 2.5 Flash Image</b><br>My audit: <b style="color:var(--crit)">gibberish / missing</b>. 'श्री क्रूश्न जममताती की हादिक शुभफापाएँ'<br>Raters: 2× small error</div></div></div>
+  <div class="note">Each card opens: the prompt, all three outputs, every rater's label and comment, and the generation log (request ID, timestamp, settings).</div>
+ </div>
+</section></body></html>
